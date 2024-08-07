@@ -15,6 +15,9 @@ public class Potion extends Consumable{
 
     @Override
     public void showDetails() {
-        // Shows important information about the Potion
+        System.out.println("** Detalhes da Poção **");
+        System.out.println("Recuperação de Hp: " + this.healing);
+        System.out.println("Incremento de força: " + this.strengthIncrement);
+        super.showDetails();
     }
 }

@@ -13,7 +13,9 @@ public class CombatConsumable extends Consumable{
 
     @Override
     public void showDetails() {
-        // Shows important information about the Combat Consumable
+        System.out.println("** Detalhes do Consumível de Combate **");
+        System.out.println("Ataque instantâneo: " + this.instantAttack);
+        super.showDetails();
     }
 
 }
