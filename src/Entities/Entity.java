@@ -16,5 +16,11 @@ public abstract class Entity {
         this.gold = gold;
     }
 
-    public abstract void showDetails();
+    protected void showDetails(){
+        System.out.println("Nome: " + this.name);
+        System.out.println("Hp máximo: " + this.maxHp);
+        System.out.println("Hp atual: " + this.hp);
+        System.out.println("Força: " + this.strength);
+        System.out.println("Moedas: " + this.gold);
+    }
 }

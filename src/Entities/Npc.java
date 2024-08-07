@@ -8,6 +8,7 @@ public class Npc extends Entity {
 
     @Override
     public void showDetails() {
-        // Shows important information about the NPC
+        System.out.println("\n ** Informações do Desafio **");
+        super.showDetails();
     }
 }

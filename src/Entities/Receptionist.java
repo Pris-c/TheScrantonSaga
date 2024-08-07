@@ -12,6 +12,12 @@ public class Receptionist extends Hero{
     }
 
     @Override
+    public void showDetails() {
+        System.out.println("\n** Herói: Recepcionista **");
+        super.showDetails();
+    }
+
+    @Override
     public boolean attack(Npc enemy) {
         // Builds a combat and returns yes if the hero wins
         return false;
