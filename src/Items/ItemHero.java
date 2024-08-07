@@ -14,5 +14,17 @@ public abstract class ItemHero {
         this.allowedTo = allowedTo;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public ArrayList<String> getAllowedTo() {
+        return allowedTo;
+    }
+
     public abstract void showDetails();
 }
