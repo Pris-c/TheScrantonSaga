@@ -20,4 +20,12 @@ public class Potion extends Consumable{
         System.out.println("Incremento de força: " + this.strengthIncrement);
         super.showDetails();
     }
+
+    public int getHealing() {
+        return healing;
+    }
+
+    public int getStrengthIncrement() {
+        return strengthIncrement;
+    }
 }
