@@ -5,7 +5,6 @@ import Items.Potion;
 import Items.Weapon;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
 import static Util.Util.readAndValidateInput;
 
@@ -36,7 +35,7 @@ public abstract class Hero extends Entity {
     }
 
     public void usePotion() {
-        if (inventory.isEmpty()){
+        if (this.inventory.isEmpty()){
             System.out.println("Desculpe, o seu inventário está vazio!");
 
         } else {
@@ -57,7 +56,7 @@ public abstract class Hero extends Entity {
                 System.out.println("Poções disponíveis: ");
                 for (int i = 0; i < potions.size(); i++) {
                     System.out.println("# " + (i + 1));
-                    inventory.get(i).showDetails();
+                    potions.get(i).showDetails();
                     System.out.println();
                 }
 
