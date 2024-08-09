@@ -23,4 +23,9 @@ public abstract class Entity {
         System.out.println("Força: " + this.strength);
         System.out.println("Moedas: " + this.gold);
     }
+
+    public void addHp(int hp){
+        int newHp = this.hp + hp;
+        this.hp = Math.min(newHp, this.maxHp);
+    }
 }
