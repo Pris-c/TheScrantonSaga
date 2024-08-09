@@ -18,4 +18,7 @@ public class CombatConsumable extends Consumable{
         super.showDetails();
     }
 
+    public int getInstantAttack() {
+        return instantAttack;
+    }
 }
