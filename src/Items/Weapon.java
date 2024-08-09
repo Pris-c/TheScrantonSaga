@@ -20,4 +20,12 @@ public class Weapon extends ItemHero{
         System.out.println("Ataque especial: " + this.specialAttack);
         super.showDetails();
     }
+
+    public int getStandardAttack() {
+        return standardAttack;
+    }
+
+    public int getSpecialAttack() {
+        return specialAttack;
+    }
 }
