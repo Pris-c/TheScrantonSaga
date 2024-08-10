@@ -1,5 +1,6 @@
 package Test;
 
+import Entities.Intern;
 import Entities.Npc;
 import Entities.Receptionist;
 import Entities.SalesRepresentative;
@@ -20,9 +21,14 @@ public class HeroTest {
         receptionist.showDetails();
         receptionist.attack(NpcCreator.createChallenge2());*/
 
-        SalesRepresentative salesRepresentative = HeroCreator.createSalesRepresentative();
+/*        SalesRepresentative salesRepresentative = HeroCreator.createSalesRepresentative();
         salesRepresentative.showDetails();
-        salesRepresentative.attack(NpcCreator.createChallenge3());
+        salesRepresentative.attack(NpcCreator.createChallenge3());*/
+
+        Intern intern = HeroCreator.createIntern();
+        intern.showDetails();
+        System.out.println();
+        intern.attack(NpcCreator.createChallenge1());
 
     }
 }
