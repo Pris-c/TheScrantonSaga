@@ -1,5 +1,6 @@
 package Entities;
 
+import Items.CombatConsumable;
 import Items.Consumable;
 import Items.Potion;
 import Items.Weapon;
@@ -76,6 +77,45 @@ public abstract class Hero extends Entity {
                 }
             }
         }
+    }
+
+    protected int instantAttack() {
+        // Shows CombatConsumables in inventory
+        if (this.inventory.isEmpty()) {
+            System.out.println("Desculpe, o seu inventário está vazio!");
+            return -1;
+        }
+
+        // Filter CombatConsumable in inventory
+        ArrayList<CombatConsumable> consumables =
+                new ArrayList<>(inventory.stream().
+                        filter(i -> i instanceof CombatConsumable)
+                        .map(i -> (CombatConsumable) i)
+                        .toList()
+                );
+
+        if (consumables.isEmpty()) {
+            System.out.println("Desculpe, você não tem nenhum Consumível de Combate disponível!");
+            return -1;
+        }
+
+        // Show available consumables
+        System.out.println("Consumíveis disponíveis: ");
+        for (int i = 0; i < consumables.size(); i++) {
+            System.out.println("# " + (i + 1));
+            consumables.get(i).showDetails();
+            System.out.println();
+        }
+
+        // Read and validate an option
+        int option = readAndValidateInput("Escolha o item a utilizar:", 0, consumables.size());
+        if (option != 0) {
+            CombatConsumable consumable = consumables.get(option-1);
+            int decrement = consumable.getInstantAttack();
+            inventory.remove(consumable);
+            return decrement;
+        }
+        return -1;
     }
 
     public abstract boolean attack(Npc enemy);
