@@ -20,4 +20,8 @@ public class WeaponCreator {
         return new Weapon("Ter uma recomendação pessoal de um cliente importante", 0, LimitationsCreator.allHeroes(), 10, 20);
     }
 
+    public static Weapon createUnpayableWeapon() {
+        return new Weapon("Muito caro para um herói", 10000000, LimitationsCreator.allHeroes(), 10, 20);
+    }
+
 }
