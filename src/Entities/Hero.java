@@ -22,6 +22,24 @@ public abstract class Hero extends Entity {
         this.inventory = inventory;
     }
 
+    public void setMainWeapon(Weapon mainWeapon) {
+        this.mainWeapon = mainWeapon;
+    }
+
+    public boolean pay(int price) {
+        if (this.gold < price) {
+            return false;
+
+        } else {
+            this.gold -= price;
+            return true;
+        }
+    }
+
+    public void addConsumableToInventory(Consumable consumable) {
+        this.inventory.add(consumable);
+    }
+
     @Override
     public void showDetails() {
         super.showDetails();
@@ -36,7 +54,7 @@ public abstract class Hero extends Entity {
     }
 
     public void usePotion() {
-        if (this.inventory.isEmpty()){
+        if (this.inventory.isEmpty()) {
             System.out.println("Desculpe, o seu inventário está vazio!");
 
         } else {
@@ -48,18 +66,20 @@ public abstract class Hero extends Entity {
                             .toList()
                     );
 
-            if (potions.isEmpty()){
+            if (potions.isEmpty()) {
                 System.out.println("Desculpe, você não tem nenhuma Poção disponível!");
 
             } else {
 
                 // Show potions
-                System.out.println("Poções disponíveis: ");
+                System.out.println("******** Poções disponíveis: ");
                 for (int i = 0; i < potions.size(); i++) {
-                    System.out.println("# " + (i + 1));
+                    System.out.println("## " + (i + 1));
                     potions.get(i).showDetails();
                     System.out.println();
                 }
+                System.out.println("******** Fim das Poções");
+
 
                 // Read and validate an option
                 int option = readAndValidateInput("Escolha a poção a utilizar:", 0, potions.size());
@@ -110,7 +130,7 @@ public abstract class Hero extends Entity {
         // Read and validate an option
         int option = readAndValidateInput("Escolha o item a utilizar:", 0, consumables.size());
         if (option != 0) {
-            CombatConsumable consumable = consumables.get(option-1);
+            CombatConsumable consumable = consumables.get(option - 1);
             int decrement = consumable.getInstantAttack();
             inventory.remove(consumable);
             return decrement;
