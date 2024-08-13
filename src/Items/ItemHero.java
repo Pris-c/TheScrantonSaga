@@ -27,7 +27,6 @@ public abstract class ItemHero {
     }
 
     public void showDetails(){
-        System.out.println("Nome: " + this.name);
         System.out.println("Preço: " + this.price);
         System.out.println("Disponível para: [");
         for (String heroi : allowedTo){

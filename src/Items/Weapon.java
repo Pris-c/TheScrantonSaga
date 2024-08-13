@@ -15,7 +15,7 @@ public class Weapon extends ItemHero{
 
     @Override
     public void showDetails() {
-        System.out.println("** Detalhes da Arma **");
+        System.out.println("** Arma: " + super.name + " **");
         System.out.println("Ataque comum: " + this.standardAttack);
         System.out.println("Ataque especial: " + this.specialAttack);
         super.showDetails();
