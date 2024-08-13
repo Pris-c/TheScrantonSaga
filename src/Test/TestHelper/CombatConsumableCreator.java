@@ -7,31 +7,71 @@ import java.util.Arrays;
 
 public class CombatConsumableCreator {
 
-    public static CombatConsumable createDwightSchruteHelp() {
-        return new CombatConsumable("Ajuda do Dwight Schrute", 10, new ArrayList<>(Arrays.asList("Intern", "SalesRepresentative", "Receptionist")), 40);
+    public static CombatConsumable createDwightHelp() {
+        return new CombatConsumable(
+                "Ajuda do Dwight",
+                35,
+                LimitationsCreator.internAndReceptionist(),
+                40,
+                "Dwight alcança uma arma escondida e amedronta o inimigo."
+        );
     }
 
-    public static CombatConsumable createJimHalpertHelp() {
-        return new CombatConsumable("Ajuda do Jim Halpert", 15, new ArrayList<>(Arrays.asList("Intern", "SalesRepresentative", "Receptionist")), 60);
+    public static CombatConsumable createJimHelp() {
+        return new CombatConsumable(
+                "Ajuda do Jim",
+                50,
+                LimitationsCreator.allHeroes(),
+                45,
+                "Jim prega uma pegadinha no inimigo, distraindo-o."
+        );
     }
 
-    public static CombatConsumable createPamBeeslyHelp() {
-        return new CombatConsumable("Ajuda da Pam Beesly", 12, new ArrayList<>(Arrays.asList("Intern", "SalesRepresentative", "Receptionist")), 50);
+    public static CombatConsumable createPamHelp() {
+        return new CombatConsumable(
+                "Ajuda da Pam",
+                45,
+                LimitationsCreator.salesAndReceptionist(),
+                43,
+                "Pam usa suas habilidades com pessoas para enganar o inimigo."
+        );
     }
 
-    public static CombatConsumable createPhyllisVanceHelp() {
-        return new CombatConsumable("Ajuda da Phyllis Vance", 14, new ArrayList<>(Arrays.asList("Intern", "SalesRepresentative", "Receptionist")), 50);
+    public static CombatConsumable createPhyllisHelp() {
+        return new CombatConsumable(
+                "Ajuda da Phyllis",
+                40, LimitationsCreator.allHeroes(),
+                30,
+                "Phyllis usa sua diplomacia para entediar o inimigo."
+        );
     }
 
-    public static CombatConsumable createAngelaMartinHelp() {
-        return new CombatConsumable("Ajuda da Angela Martin", 10, new ArrayList<>(Arrays.asList("Intern", "SalesRepresentative", "Receptionist")), 40);
+    public static CombatConsumable createAngelaHelp() {
+        return new CombatConsumable(
+                "Ajuda da Angela",
+                45, LimitationsCreator.allHeroes(),
+                35,
+                "Angela convoca seus gatos para distrair o inimigo."
+        );
     }
 
-    public static CombatConsumable createRyanHowardHelp() {
-        return new CombatConsumable("Ajuda do Ryan Howard", 13, new ArrayList<>(Arrays.asList("Intern", "SalesRepresentative", "Receptionist")), 40);
+    public static CombatConsumable createRyanHelp() {
+        return new CombatConsumable(
+                "Ajuda do Ryan",
+                50, LimitationsCreator.internOnly(),
+                40,
+                "Ryan oferece ideias 'inovadoras' que confundem o inimigo."
+        );
+
     }
 
     public static CombatConsumable createStanleyHudsonHelp() {
-        return new CombatConsumable("Ajuda do Stanley Hudson", 16, new ArrayList<>(Arrays.asList("Intern", "SalesRepresentative", "Receptionist")), 50);
+        return new CombatConsumable(
+                "Ajuda do Stanley",
+                50,
+                LimitationsCreator.salesAndReceptionist(),
+                48,
+                "Stanley usa sua paciência para cansar o inimigo."
+        );
     }
 }
