@@ -1,15 +1,15 @@
-package Test.TestHelper;
+package Util.ItemsCreator;
 
 import Entities.Npc;
 
 public class NpcCreator {
 
-    public static Npc createChallenge1() {
+    public static Npc createMichaelLunch() {
         return new Npc("Pedido Especial do Michael", 30, 15, 20,
                 "Michael esqueceu de trazer o almoço novamente e você foi encarregado de buscar. Cuidado, ele pode ser exigente!");
     }
 
-    public static Npc createChallenge2() {
+    public static Npc createFixingPrinter() {
         return new Npc("O Eterno Conserto da Impressora", 40, 20, 25,
                 "A impressora do escritório quebrou de novo, e todos estão esperando por você para consertá-la. Este é um trabalho delicado!");
 
