@@ -1,36 +1,36 @@
-package Test.TestHelper;
+package Util.ItemsCreator;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class LimitationsCreator {
+public class ItemsLimitationCreator {
 
-    protected static ArrayList<String> allHeroes(){
+
+    public static ArrayList<String> allHeroes(){
         return new ArrayList<>(Arrays.asList("Intern", "SalesRepresentative", "Receptionist"));
     }
 
-    protected static ArrayList<String> internOnly() {
+    public static ArrayList<String> internOnly() {
         return new ArrayList<>(Arrays.asList("Intern"));
     }
 
-    protected static ArrayList<String> salesOnly() {
+    public static ArrayList<String> salesOnly() {
         return new ArrayList<>(Arrays.asList("SalesRepresentative"));
     }
 
-    protected static ArrayList<String> receptionistOnly() {
+    public static ArrayList<String> receptionistOnly() {
         return new ArrayList<>(Arrays.asList("Receptionist"));
     }
 
-    protected static ArrayList<String> internAndSales() {
+    public static ArrayList<String> internAndSales() {
         return new ArrayList<>(Arrays.asList("Intern", "SalesRepresentative"));
     }
 
-    protected static ArrayList<String> internAndReceptionist() {
+    public static ArrayList<String> internAndReceptionist() {
         return new ArrayList<>(Arrays.asList("Intern", "Receptionist"));
     }
 
-    protected static ArrayList<String> salesAndReceptionist() {
+    public static ArrayList<String> salesAndReceptionist() {
         return new ArrayList<>(Arrays.asList("SalesRepresentative", "Receptionist"));
     }
-
 }

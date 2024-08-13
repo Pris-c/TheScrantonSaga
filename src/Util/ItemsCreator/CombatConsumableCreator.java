@@ -1,9 +1,6 @@
-package Test.TestHelper;
+package Util.ItemsCreator;
 
 import Items.CombatConsumable;
-
-import java.util.ArrayList;
-import java.util.Arrays;
 
 public class CombatConsumableCreator {
 
@@ -11,7 +8,7 @@ public class CombatConsumableCreator {
         return new CombatConsumable(
                 "Ajuda do Dwight",
                 35,
-                LimitationsCreator.internAndReceptionist(),
+                ItemsLimitationCreator.internAndReceptionist(),
                 40,
                 "Dwight alcança uma arma escondida e amedronta o inimigo."
         );
@@ -21,7 +18,7 @@ public class CombatConsumableCreator {
         return new CombatConsumable(
                 "Ajuda do Jim",
                 50,
-                LimitationsCreator.allHeroes(),
+                ItemsLimitationCreator.allHeroes(),
                 45,
                 "Jim prega uma pegadinha no inimigo, distraindo-o."
         );
@@ -31,7 +28,7 @@ public class CombatConsumableCreator {
         return new CombatConsumable(
                 "Ajuda da Pam",
                 45,
-                LimitationsCreator.salesAndReceptionist(),
+                ItemsLimitationCreator.salesAndReceptionist(),
                 43,
                 "Pam usa suas habilidades com pessoas para enganar o inimigo."
         );
@@ -40,7 +37,8 @@ public class CombatConsumableCreator {
     public static CombatConsumable createPhyllisHelp() {
         return new CombatConsumable(
                 "Ajuda da Phyllis",
-                40, LimitationsCreator.allHeroes(),
+                40,
+                ItemsLimitationCreator.allHeroes(),
                 30,
                 "Phyllis usa sua diplomacia para entediar o inimigo."
         );
@@ -49,7 +47,8 @@ public class CombatConsumableCreator {
     public static CombatConsumable createAngelaHelp() {
         return new CombatConsumable(
                 "Ajuda da Angela",
-                45, LimitationsCreator.allHeroes(),
+                45,
+                ItemsLimitationCreator.allHeroes(),
                 35,
                 "Angela convoca seus gatos para distrair o inimigo."
         );
@@ -58,7 +57,8 @@ public class CombatConsumableCreator {
     public static CombatConsumable createRyanHelp() {
         return new CombatConsumable(
                 "Ajuda do Ryan",
-                50, LimitationsCreator.internOnly(),
+                50,
+                ItemsLimitationCreator.internOnly(),
                 40,
                 "Ryan oferece ideias 'inovadoras' que confundem o inimigo."
         );
@@ -69,7 +69,7 @@ public class CombatConsumableCreator {
         return new CombatConsumable(
                 "Ajuda do Stanley",
                 50,
-                LimitationsCreator.salesAndReceptionist(),
+                ItemsLimitationCreator.salesAndReceptionist(),
                 48,
                 "Stanley usa sua paciência para cansar o inimigo."
         );
