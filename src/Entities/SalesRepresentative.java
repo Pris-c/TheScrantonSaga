@@ -1,16 +1,18 @@
 package Entities;
 
 import Items.Consumable;
-import Items.Weapon;
+import Util.ItemsCreator.CombatConsumableCreator;
+import Util.ItemsCreator.PotionCreator;
+import Util.ItemsCreator.WeaponCreator;
 import Util.Util;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class SalesRepresentative extends Hero {
 
     public SalesRepresentative(String name, int maxHp, int strenght, int gold) {
-        // TODO: Define main Weapon and initial inventory
-        super(name, maxHp, strenght, gold, null, new ArrayList<>());
+        super(name, maxHp, strenght, gold, WeaponCreator.createCEOFriendship(), new ArrayList<Consumable>(List.of(PotionCreator.coffee(), CombatConsumableCreator.createPamHelp())));
     }
 
     @Override
@@ -36,14 +38,14 @@ public class SalesRepresentative extends Hero {
 
             // Enemy Attack
             enemyStrength = (int) Math.round(enemy.strength * 0.8);
-            if (this.decrementHp(enemyStrength) <= 0){
+            if (this.decrementHp(enemyStrength) <= 0) {
                 System.out.println("Opss, o inimigo acabou com você!");
                 return false;
             }
             System.out.println("Ouch! Você foi atingido! Agora só te restam " + this.getHp() + " HP");
 
             //Hero Attack
-            do{
+            do {
 
                 next = true;
                 if (specialAttack) {
@@ -57,7 +59,7 @@ public class SalesRepresentative extends Hero {
                 switch (option) {
                     case 1:
                         int instantAttack = super.instantAttack();
-                        if (instantAttack != -1){
+                        if (instantAttack != -1) {
                             decrement = instantAttack;
                         } else {
                             next = false;
@@ -74,7 +76,7 @@ public class SalesRepresentative extends Hero {
             } while (!next);
 
             // Decrement enemy HP
-            if (enemy.decrementHp(decrement) <= 0){
+            if (enemy.decrementHp(decrement) <= 0) {
                 System.out.println("Yeah! Você derrotou o inimigo!");
                 return true;
             }

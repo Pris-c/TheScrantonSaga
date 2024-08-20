@@ -1,18 +1,18 @@
 package Entities;
 
-import Items.CombatConsumable;
 import Items.Consumable;
-import Items.Weapon;
+import Util.ItemsCreator.CombatConsumableCreator;
+import Util.ItemsCreator.PotionCreator;
+import Util.ItemsCreator.WeaponCreator;
 import Util.Util;
 
 import java.util.ArrayList;
-
-import static Util.Util.readAndValidateInput;
+import java.util.List;
 
 public class Receptionist extends Hero {
 
-    public Receptionist(String name, int maxHp, int strenght, int gold, Weapon mainWeapon, ArrayList<Consumable> inventory) {
-        super(name, maxHp, strenght, gold, mainWeapon, inventory);
+    public Receptionist(String name, int maxHp, int strenght, int gold) {
+        super(name, maxHp, strenght, gold, WeaponCreator.createClientRecommendation(), new ArrayList<Consumable>(List.of(PotionCreator.coffee(), CombatConsumableCreator.createDwightHelp())));
     }
 
     @Override
@@ -38,7 +38,7 @@ public class Receptionist extends Hero {
             int option;
 
             //Hero Attack
-            do{
+            do {
                 next = true;
                 if (specialAttack) {
                     String message = "Escolha o tipo de ataque:\n1 - Utilizar um Consumível de Combate\n2 - Ataque comum \n3 - Ataque Especial";
@@ -51,7 +51,7 @@ public class Receptionist extends Hero {
                 switch (option) {
                     case 1:
                         int instantAttack = super.instantAttack();
-                        if (instantAttack != -1){
+                        if (instantAttack != -1) {
                             decrement = instantAttack;
                         } else {
                             next = false;
@@ -68,14 +68,14 @@ public class Receptionist extends Hero {
             } while (!next);
 
             // Decrement enemy HP
-            if (enemy.decrementHp(decrement) <= 0){
+            if (enemy.decrementHp(decrement) <= 0) {
                 System.out.println("Yeah! Você derrotou o inimigo!");
                 return true;
             }
             System.out.println("Boa! Você acertou o inimigo! Agora só restam " + enemy.getHp() + " HP");
 
             // Enemy Attack
-            if (this.decrementHp(enemy.strength) <= 0){
+            if (this.decrementHp(enemy.strength) <= 0) {
                 System.out.println("Opss, o inimigo acabou com você!");
                 return false;
             }
