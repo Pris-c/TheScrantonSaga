@@ -7,74 +7,74 @@ public class CombatConsumableCreator {
     public static CombatConsumable createDwightHelp() {
         // default to Recepcionist
         return new CombatConsumable(
-                "Ajuda do Dwight",
+                "Dwight",
                 35,
                 ItemsLimitationCreator.internAndReceptionist(),
                 40,
-                "Dwight alcança uma arma escondida e amedronta o inimigo."
+                "Dwight alcança uma arma escondida assustando a todos e facilitando sua esquiva da missão."
         );
     }
 
     public static CombatConsumable createJimHelp() {
         return new CombatConsumable(
-                "Ajuda do Jim",
+                "Jim",
                 50,
                 ItemsLimitationCreator.allHeroes(),
                 45,
-                "Jim prega uma pegadinha no inimigo, distraindo-o."
+                "Jim faz uma piada perfeita, distraindo todos enquanto você tenta escapar do problema."
         );
     }
 
     public static CombatConsumable createPamHelp() {
         // default to SalesRepresentative
         return new CombatConsumable(
-                "Ajuda da Pam",
+                "Pam",
                 45,
                 ItemsLimitationCreator.salesAndReceptionist(),
                 43,
-                "Pam usa suas habilidades com pessoas para enganar o inimigo."
+                "Pam chama toda gente para ver o novo quadro que pintou da Dunder Mifflin. Aproveite a distração!"
         );
     }
 
     public static CombatConsumable createPhyllisHelp() {
         return new CombatConsumable(
-                "Ajuda da Phyllis",
+                "Phyllis",
                 40,
                 ItemsLimitationCreator.allHeroes(),
                 30,
-                "Phyllis usa sua diplomacia para entediar o inimigo."
+                "Phyllis interrompe a missão para pedir dinheiro para a próxima festa. Aproveite o tempo extra."
         );
     }
 
     public static CombatConsumable createAngelaHelp() {
         return new CombatConsumable(
-                "Ajuda da Angela",
+                "Angela",
                 45,
                 ItemsLimitationCreator.allHeroes(),
                 35,
-                "Angela convoca seus gatos para distrair o inimigo."
+                "Angela usa um vídeo dos seus gatos para distrair a todos enquanto você tenta sair de fininho."
         );
     }
 
     public static CombatConsumable createRyanHelp() {
         // default to Intern
         return new CombatConsumable(
-                "Ajuda do Ryan",
+                "Ryan",
                 50,
                 ItemsLimitationCreator.internOnly(),
                 40,
-                "Ryan oferece ideias 'inovadoras' que confundem o inimigo."
+                "Ryan oferece ideias 'inovadoras' para solucionar o problema por você."
         );
 
     }
 
     public static CombatConsumable createStanleyHelp() {
         return new CombatConsumable(
-                "Ajuda do Stanley",
+                "Stanley",
                 50,
                 ItemsLimitationCreator.internAndSales(),
                 48,
-                "Stanley usa sua paciência para cansar o inimigo."
+                "Stanley simula um novo ataque cardiaco e ganha a atenção de todos, te dando tempo extra para resolver o problema"
         );
     }
 }
