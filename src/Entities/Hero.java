@@ -102,7 +102,7 @@ public abstract class Hero extends Entity {
     protected int instantAttack() {
         // Shows CombatConsumables in inventory
         if (this.inventory.isEmpty()) {
-            System.out.println("Desculpe, o seu inventário está vazio!");
+            System.out.println("Infelizmente você não tem favores a cobrar. Terá que lidar com isso sozinho!");
             return -1;
         }
 
@@ -115,24 +115,25 @@ public abstract class Hero extends Entity {
                 );
 
         if (consumables.isEmpty()) {
-            System.out.println("Desculpe, você não tem nenhum Consumível de Combate disponível!");
+            System.out.println("Você não tem sido um bom colega e ninguém te deve favor algum. Você terá que lidar com isso sozinho!");
             return -1;
         }
 
         // Show available consumables
-        System.out.println("Consumíveis disponíveis: ");
+        System.out.println("Colegas a quem você ajudou:");
         for (int i = 0; i < consumables.size(); i++) {
             System.out.println("# " + (i + 1));
-            consumables.get(i).showDetails();
+            consumables.get(i).showAttackInfo();
             System.out.println();
         }
 
         // Read and validate an option
-        int option = readAndValidateInput("Escolha o item a utilizar:", 0, consumables.size());
+        int option = readAndValidateInput("Escolha a ajuda a utilizar:", 0, consumables.size());
         if (option != 0) {
             CombatConsumable consumable = consumables.get(option - 1);
             int decrement = consumable.getInstantAttack();
             inventory.remove(consumable);
+            System.out.println(consumable.getDescription());
             return decrement;
         }
         return -1;
