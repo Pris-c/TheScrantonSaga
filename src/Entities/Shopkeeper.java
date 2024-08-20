@@ -21,20 +21,21 @@ public class Shopkeeper {
         if (!this.store.contains(item)) {
             this.store.add(item);
         }
-
     }
 
     public void showsStore(Hero hero) {
         // Shows 10 random itens from store
         Random random = new Random();
         ArrayList<ItemHero> itensToSell = new ArrayList<>();
-        ArrayList<ItemHero> heroItems = this.filterStoreToHero(hero);
+        ArrayList<ItemHero> heroItems = this.filterDistinctItemsToHero(hero);
 
         if (heroItems.size() <= 10) {
             itensToSell = heroItems;
         } else {
             while (itensToSell.size() < 10) {
-                itensToSell.add(heroItems.get(random.nextInt(this.store.size() - 1)));
+                ItemHero item = heroItems.get(random.nextInt(this.store.size() - 1));
+                itensToSell.add(item);
+                heroItems.remove(item);
             }
         }
 
@@ -73,7 +74,7 @@ public class Shopkeeper {
     }
 
 
-    private ArrayList<ItemHero> filterStoreToHero(Hero hero) {
+    private ArrayList<ItemHero> filterDistinctItemsToHero(Hero hero) {
         ArrayList<ItemHero> heroItems = new ArrayList<>();
         String heroClass = hero.getClass().getSimpleName();
         for (ItemHero item : this.store) {
@@ -81,7 +82,7 @@ public class Shopkeeper {
                 heroItems.add(item);
             }
         }
-        return heroItems;
+        return new ArrayList<>(heroItems.stream().distinct().toList());
     }
 
 
