@@ -11,7 +11,8 @@ public class WeaponCreator {
                 ItemsLimitationCreator.salesOnly(),
                 10,
                 25,
-                "Talvez você consiga ir embora mais cedo e se livrar da missão se convencer o Michael que um familiar doente precisa da sua ajuda."
+                "Você tentou convencer o Michael que precisa ir embora para ajudar um familiar doente.",
+                "Você tentou convencer o Michael de que sua avó acabou de morrer e que você precisa ir para o funeral."
         );
     }
 
@@ -22,7 +23,8 @@ public class WeaponCreator {
                 ItemsLimitationCreator.receptionistOnly(),
                 12,
                 28,
-                "Você pode tentar escapar de uma missão ameaçando expor os segredos dos colegas envolvidos."
+                "Você ameaçou expor um grande segredo sobre alguém do departamento se não for liberado da missão.",
+                "Você ameaçou mencionar uma história do Michael para a Jan se não for liberado da missão."
         );
 
     }
@@ -34,7 +36,8 @@ public class WeaponCreator {
                 ItemsLimitationCreator.internOnly(),
                 8,
                 20,
-                "Ter uma amizade com o CEO pode te deixar livre das piores tarefas."
+                "Você lembra a todos sobre sua amizade com o CEO da Dunder Mifflin.",
+                "Você lembra a todos que é sobrinho do CEO da Dunder Mifflin."
         );
     }
 
@@ -46,7 +49,8 @@ public class WeaponCreator {
                 ItemsLimitationCreator.allHeroes(),
                 20,
                 30,
-                "Tente trocar a recomendação de um cliente importante pela execução da tarefa."
+                "Você ofereceu o contacto de um possível grande cliente em troca de não precisar cumprir a missão.",
+                "Você ofereceu o contacto do maior cliene da empresa concorrente em troca de não precisar cumprir a missão."
         );
     }
 
