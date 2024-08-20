@@ -1,28 +1,53 @@
-package Test.TestHelper;
+package Util.ItemsCreator;
 
 import Items.Weapon;
-import Util.ItemsCreator.ItemsLimitationCreator;
 
 public class WeaponCreator {
 
     public static Weapon createSickRelativeExcuse() {
-        return new Weapon("Fingir que tem um familiar doente e usar como desculpa para sair a qualquer momento", 0, ItemsLimitationCreator.internAndSales(), 0, 0);
+        return new Weapon(
+                "Arma do Falso Familiar Doente",
+                30,
+                ItemsLimitationCreator.salesOnly(),
+                10,
+                25,
+                "Talvez você consiga ir embora mais cedo e se livrar da missão se convencer o Michael que um familiar doente precisa da sua ajuda."
+        );
     }
 
     public static Weapon createSecretThreat() {
-        return new Weapon("Conhecer um segredo dos colegas e ameaçar contá-lo", 0, ItemsLimitationCreator.receptionistOnly(), 0, 0);
+        return new Weapon(
+                "Conhecer um Segredo dos Colegas",
+                35,
+                ItemsLimitationCreator.receptionistOnly(),
+                12,
+                28,
+                "Você pode tentar escapar de uma missão ameaçando expor os segredos dos colegas envolvidos."
+        );
+
     }
 
-    public static Weapon createCEOFriend() {
-        return new Weapon("Ser amigo do CEO", 0, ItemsLimitationCreator.salesAndReceptionist(), 0, 0);
+    public static Weapon createCEOFriendship() {
+        return new Weapon(
+                "Poder do CEO",
+                25,
+                ItemsLimitationCreator.internOnly(),
+                8,
+                20,
+                "Ter uma amizade com o CEO pode te deixar livre das piores tarefas."
+        );
     }
 
     public static Weapon createClientRecommendation() {
-        return new Weapon("Ter uma recomendação pessoal de um cliente importante", 0, ItemsLimitationCreator.allHeroes(), 10, 20);
-    }
 
-    public static Weapon createUnpayableWeapon() {
-        return new Weapon("Muito caro para um herói", 10000000, ItemsLimitationCreator.allHeroes(), 10, 20);
+        return new Weapon(
+                "Recomendação do Cliente",
+                50,
+                ItemsLimitationCreator.allHeroes(),
+                20,
+                30,
+                "Tente trocar a recomendação de um cliente importante pela execução da tarefa."
+        );
     }
 
 }
