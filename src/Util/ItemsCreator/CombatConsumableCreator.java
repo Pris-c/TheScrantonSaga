@@ -5,6 +5,7 @@ import Items.CombatConsumable;
 public class CombatConsumableCreator {
 
     public static CombatConsumable createDwightHelp() {
+        // default to Recepcionist
         return new CombatConsumable(
                 "Ajuda do Dwight",
                 35,
@@ -25,6 +26,7 @@ public class CombatConsumableCreator {
     }
 
     public static CombatConsumable createPamHelp() {
+        // default to SalesRepresentative
         return new CombatConsumable(
                 "Ajuda da Pam",
                 45,
@@ -55,6 +57,7 @@ public class CombatConsumableCreator {
     }
 
     public static CombatConsumable createRyanHelp() {
+        // default to Intern
         return new CombatConsumable(
                 "Ajuda do Ryan",
                 50,
@@ -65,11 +68,11 @@ public class CombatConsumableCreator {
 
     }
 
-    public static CombatConsumable createStanleyHudsonHelp() {
+    public static CombatConsumable createStanleyHelp() {
         return new CombatConsumable(
                 "Ajuda do Stanley",
                 50,
-                ItemsLimitationCreator.salesAndReceptionist(),
+                ItemsLimitationCreator.internAndSales(),
                 48,
                 "Stanley usa sua paciência para cansar o inimigo."
         );
