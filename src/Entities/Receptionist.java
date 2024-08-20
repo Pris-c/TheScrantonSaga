@@ -18,6 +18,7 @@ public class Receptionist extends Hero {
     @Override
     public void showDetails() {
         System.out.println("\n** Herói: Recepcionista **");
+        System.out.println("Nome: " + super.name);
         super.showDetails();
     }
 

@@ -1,5 +1,28 @@
-package Util.ItemsCreator;
+package Test.TestHelper;
+
+import Items.Weapon;
+import Util.ItemsCreator.ItemsLimitationCreator;
 
 public class WeaponCreator {
+
+    public static Weapon createSickRelativeExcuse() {
+        return new Weapon("Fingir que tem um familiar doente e usar como desculpa para sair a qualquer momento", 0, ItemsLimitationCreator.internAndSales(), 0, 0);
+    }
+
+    public static Weapon createSecretThreat() {
+        return new Weapon("Conhecer um segredo dos colegas e ameaçar contá-lo", 0, ItemsLimitationCreator.receptionistOnly(), 0, 0);
+    }
+
+    public static Weapon createCEOFriend() {
+        return new Weapon("Ser amigo do CEO", 0, ItemsLimitationCreator.salesAndReceptionist(), 0, 0);
+    }
+
+    public static Weapon createClientRecommendation() {
+        return new Weapon("Ter uma recomendação pessoal de um cliente importante", 0, ItemsLimitationCreator.allHeroes(), 10, 20);
+    }
+
+    public static Weapon createUnpayableWeapon() {
+        return new Weapon("Muito caro para um herói", 10000000, ItemsLimitationCreator.allHeroes(), 10, 20);
+    }
 
 }

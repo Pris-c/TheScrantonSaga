@@ -1,23 +1,22 @@
 package Entities;
 
-import Items.CombatConsumable;
 import Items.Consumable;
 import Items.Weapon;
 import Util.Util;
 
 import java.util.ArrayList;
 
-import static Util.Util.readAndValidateInput;
+public class SalesRepresentative extends Hero {
 
-public class SalesRepresentative extends Hero{
-
-    public SalesRepresentative(String name, int maxHp, int strenght, int gold, Weapon mainWeapon, ArrayList<Consumable> inventory) {
-        super(name, maxHp, strenght, gold, mainWeapon, inventory);
+    public SalesRepresentative(String name, int maxHp, int strenght, int gold) {
+        // TODO: Define main Weapon and initial inventory
+        super(name, maxHp, strenght, gold, null, new ArrayList<>());
     }
 
     @Override
     public void showDetails() {
-        System.out.println("\n** Herói: Vendedor **");
+        System.out.println("\n** Herói: Representante de vendas **");
+        System.out.println("Nome: " + super.name);
         super.showDetails();
     }
 
@@ -33,7 +32,7 @@ public class SalesRepresentative extends Hero{
         int enemyStrength;
         specialAttack = true;
 
-        do{
+        do {
 
             // Enemy Attack
             enemyStrength = (int) Math.round(enemy.strength * 0.8);
