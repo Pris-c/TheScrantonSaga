@@ -2,6 +2,9 @@ package Util.ItemsCreator;
 
 import Items.Weapon;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class WeaponCreator {
 
     public static Weapon createSickRelativeExcuse() {
@@ -54,4 +57,7 @@ public class WeaponCreator {
         );
     }
 
+    public static ArrayList<Weapon> initWeapons() {
+        return new ArrayList<>(Arrays.asList(createSickRelativeExcuse(), createSecretThreat(), createCEOFriendship(), createClientRecommendation()));
+    }
 }

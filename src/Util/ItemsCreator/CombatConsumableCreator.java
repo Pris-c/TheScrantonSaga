@@ -2,6 +2,9 @@ package Util.ItemsCreator;
 
 import Items.CombatConsumable;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class CombatConsumableCreator {
 
     public static CombatConsumable createDwightHelp() {
@@ -76,5 +79,9 @@ public class CombatConsumableCreator {
                 48,
                 "Stanley simula um novo ataque cardiaco e ganha a atenção de todos, te dando tempo extra para resolver o problema"
         );
+    }
+
+    public static ArrayList<CombatConsumable> initCombatConsumables() {
+        return new ArrayList<>(Arrays.asList(createPamHelp(), createAngelaHelp(), createDwightHelp(), createJimHelp(), createRyanHelp(), createPhyllisHelp()));
     }
 }

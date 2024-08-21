@@ -2,9 +2,13 @@ package Util.ItemsCreator;
 
 import Items.Potion;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class PotionCreator {
 
     public static Potion coffee() {
+        // common to all heroes
         return new Potion("Café", 25, ItemsLimitationCreator.allHeroes(), 25, 2);
     }
 
@@ -34,6 +38,10 @@ public class PotionCreator {
 
     public static Potion fullMeal() {
         return new Potion("Refeição Completa", 40, ItemsLimitationCreator.allHeroes(), 25, 4);
+    }
+
+    public static ArrayList<Potion> initPotions() {
+        return new ArrayList<>(Arrays.asList(coffee(), cerealBar(), eggSalad(), tunaSandwich(), soda(), chocolateBar(), croissant(), fullMeal()));
     }
 
 }
