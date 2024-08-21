@@ -34,4 +34,14 @@ public class Util {
 
         return option;
     }
+
+    public static void readContinue(){
+        Scanner input = new Scanner(System.in);
+        System.out.println("\n\n\033[3mPressione enter para continuar\033[0m");
+        input.nextLine();
+    }
+
+    public static void cleanSrecreen(){
+        System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+    }
 }
