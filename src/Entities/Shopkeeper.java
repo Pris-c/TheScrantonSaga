@@ -12,8 +12,8 @@ public class Shopkeeper {
 
     private ArrayList<ItemHero> store;
 
-    public Shopkeeper() {
-        this.store = new ArrayList<>();
+    public Shopkeeper(ArrayList<ItemHero> store) {
+        this.store = store;
     }
 
 
@@ -25,6 +25,7 @@ public class Shopkeeper {
 
     public void showsStore(Hero hero) {
         // Shows 10 random itens from store
+
         Random random = new Random();
         ArrayList<ItemHero> itensToSell = new ArrayList<>();
         ArrayList<ItemHero> heroItems = this.filterDistinctItemsToHero(hero);
@@ -33,7 +34,7 @@ public class Shopkeeper {
             itensToSell = heroItems;
         } else {
             while (itensToSell.size() < 10) {
-                ItemHero item = heroItems.get(random.nextInt(this.store.size() - 1));
+                ItemHero item = heroItems.get(random.nextInt(heroItems.size() - 1));
                 itensToSell.add(item);
                 heroItems.remove(item);
             }
