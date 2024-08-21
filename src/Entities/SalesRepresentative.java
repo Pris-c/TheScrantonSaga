@@ -39,7 +39,6 @@ public class SalesRepresentative extends Hero {
             // Enemy Attack
             enemyStrength = (int) Math.round(enemy.strength * 0.8);
             if (this.decrementHp(enemyStrength) <= 0) {
-                System.out.println("Opss, Michael não gostou da sua abordagem diante do problema e te demitiu.");
                 return false;
             }
             System.out.println("Michal acha que você ainda não se esforçou o suficiente! Agora só te restam " + this.getHp() + " HP");
@@ -79,7 +78,6 @@ public class SalesRepresentative extends Hero {
 
             // Decrement enemy HP
             if (enemy.decrementHp(decrement) <= 0) {
-                System.out.println("Yeah! Você conseguiu passar pela missão!");
                 return true;
             }
             System.out.println("Boa! Você tornou as coisas mais fáceis! Faltam " + enemy.getHp() + " pontos para concluir a missão");

@@ -40,10 +40,10 @@ public class Receptionist extends Hero {
             do {
                 next = true;
                 if (specialAttack) {
-                    String message = "Escolha como lidar com essa situação::\n1 - Utilizar ajuda de um colega que te deve um favor.\n2 - Utilizar seus próprios meios para cumprir a missão \n3 - Utilizar seus próprios meios com energia extra";
+                    String message = "Escolha como lidar com essa situação:\n1 - Utilizar ajuda de um colega que te deve um favor.\n2 - Utilizar seus próprios meios para cumprir a missão \n3 - Utilizar seus próprios meios com energia extra";
                     option = Util.readAndValidateInput(message, 1, 3);
                 } else {
-                    String message = "Escolha como lidar com essa situação::\n1 - Utilizar ajuda de um colega que te deve um favor.\n2 - Utilizar seus próprios meios para cumprir a missão";
+                    String message = "Escolha como lidar com essa situação:\n1 - Utilizar ajuda de um colega que te deve um favor.\n2 - Utilizar seus próprios meios para cumprir a missão";
                     option = Util.readAndValidateInput(message, 1, 2);
                 }
 
@@ -70,14 +70,12 @@ public class Receptionist extends Hero {
 
             // Decrement enemy HP
             if (enemy.decrementHp(decrement) <= 0) {
-                System.out.println("Yeah! Você conseguiu passar pela missão!");
                 return true;
             }
             System.out.println("Boa! Você tornou as coisas mais fáceis! Faltam " + enemy.getHp() + " pontos para concluir a missão");
 
             // Enemy Attack
             if (this.decrementHp(enemy.strength) <= 0) {
-                System.out.println("Opss, Michael não gostou da sua abordagem diante do problema e te demitiu.");
                 return false;
             }
             System.out.println("Michal acha que você ainda não se esforçou o suficiente! Agora só te restam " + this.getHp() + " HP");
