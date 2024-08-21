@@ -43,14 +43,19 @@ public abstract class Hero extends Entity {
     @Override
     public void showDetails() {
         super.showDetails();
-        System.out.println("Nível: " + this.level);
-        System.out.println("Arma Principal: " + this.mainWeapon);
-        System.out.println("Consumíveis: \n[");
-        for (Consumable c : inventory) {
-            // TODO: change to: inventory.forEach(c -> System.out.println(c.getName()));
-            System.out.println("\t" + c.getName());
+        System.out.println("| Nível           : " + this.level);
+        System.out.println("| Arma Principal  : " + this.mainWeapon.getName());
+        System.out.println("+---------------------------------------------------------+");
+        System.out.println("|       Consumíveis                                       |");
+        System.out.println("+---------------------------------------------------------+");
+        if (inventory.isEmpty()) {
+            System.out.println("| Nenhum consumível disponível          |");
+        } else {
+            for (Consumable c : inventory) {
+                System.out.println("| " + c.getName());
+            }
         }
-        System.out.println("]");
+        System.out.println("+---------------------------------------------------------+");
     }
 
     public void usePotion() {

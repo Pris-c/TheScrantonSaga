@@ -17,10 +17,10 @@ public abstract class Entity {
     }
 
     protected void showDetails(){
-        System.out.println("Hp máximo: " + this.maxHp);
-        System.out.println("Hp atual: " + this.hp);
-        System.out.println("Força: " + this.strength);
-        System.out.println("Moedas: " + this.gold);
+        System.out.println("| Hp máximo       : " + this.maxHp);
+        System.out.println("| Hp atual        : " + this.hp);
+        System.out.println("| Força           : " + this.strength);
+        System.out.println("| Moedas          : " + this.gold);
     }
 
     public void addHp(int hp){

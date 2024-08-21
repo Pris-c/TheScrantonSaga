@@ -17,8 +17,10 @@ public class Intern extends Hero {
 
     @Override
     public void showDetails() {
-        System.out.println("\n** Herói: Estagiário **");
-        System.out.println("Nome: " + super.name);
+        System.out.println("+---------------------------------------------------------+");
+        System.out.println("|                Detalhes Estágiário                      |");
+        System.out.println("+---------------------------------------------------------+");
+        System.out.println("| Nome            : " + this.name);
         super.showDetails();
     }
 

@@ -17,8 +17,10 @@ public class SalesRepresentative extends Hero {
 
     @Override
     public void showDetails() {
-        System.out.println("\n** Herói: Representante de vendas **");
-        System.out.println("Nome: " + super.name);
+        System.out.println("+---------------------------------------------------------+");
+        System.out.println("|                Detalhes Rep. de Vendas                  |");
+        System.out.println("+---------------------------------------------------------+");
+        System.out.println("| Nome            : " + this.name);
         super.showDetails();
     }
 
