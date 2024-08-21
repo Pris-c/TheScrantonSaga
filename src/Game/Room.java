@@ -97,7 +97,7 @@ public class Room {
         return heroWin;
     }
 
-    public static boolean RhMeeting(Hero hero) {
+    public static boolean rhMeeting(Hero hero) {
         System.out.println("Toby convocou mais uma reunião." +
                         "\nVocê precisará de toda a sua paciência e diplomacia para atravessar esta sessão de monotonia." +
                         "\nConseguirá você sobreviver a essa maratona de formalidades e desentendimentos?");
