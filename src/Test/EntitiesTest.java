@@ -7,7 +7,7 @@ import Entities.SalesRepresentative;
 import Test.TestHelper.HeroCreator;
 import Util.ItemsCreator.NpcCreator;
 
-public class HeroTest {
+public class EntitiesTest {
 
     public static void main(String[] args) {
 
