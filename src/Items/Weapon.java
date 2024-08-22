@@ -19,11 +19,17 @@ public class Weapon extends ItemHero {
 
     @Override
     public void showDetails() {
-        System.out.println("** Arma: " + super.name + " **");
-        System.out.println("Descrição: " + this.standarAttackddescription);
-        System.out.println("Ataque comum: " + this.standardAttack);
-        System.out.println("Ataque especial: " + this.specialAttack);
-        super.showDetails();
+        String format = "| %-20s %-10s |\n";
+        String headerFormat = "| %-31s |\n";
+
+        System.out.println("+---------------------------------+");
+        System.out.printf(headerFormat, super.name.toUpperCase());
+        System.out.println("+---------------------------------+");
+
+        System.out.printf(format, "Ataque comum:", this.standardAttack);
+        System.out.printf(format, "Ataque especial:", this.specialAttack);
+        System.out.printf(format, "Preço:", this.price);
+        System.out.println("+---------------------------------+\n");
     }
 
     public String getStandarAttackddescription() {

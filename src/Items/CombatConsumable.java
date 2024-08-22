@@ -19,10 +19,17 @@ public class CombatConsumable extends Consumable {
 
     @Override
     public void showDetails() {
-        System.out.println("** Consumível de Combate " + super.name + " **");
-        System.out.println("Descrição: " + this.description);
-        System.out.println("Ataque instantâneo: " + this.instantAttack);
-        super.showDetails();
+        String format = "| %-20s %-10s |\n";
+        String headerFormat = "| %-31s |\n";
+
+        System.out.println("+---------------------------------+");
+        System.out.printf(headerFormat, "AJUDA DA " + super.name.toUpperCase());
+        System.out.println("+---------------------------------+");
+
+        System.out.printf(format, "Ataque Instântaneo:", this.instantAttack);
+        System.out.printf(format, "Preço:", this.price);
+        System.out.println("+---------------------------------+\n");
+
     }
 
     public void showAttackInfo() {

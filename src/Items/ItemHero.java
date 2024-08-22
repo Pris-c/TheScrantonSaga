@@ -26,14 +26,5 @@ public abstract class ItemHero {
         return allowedTo;
     }
 
-    public void showDetails(){
-        System.out.println("Preço: " + this.price);
-        System.out.println("Disponível para: [");
-        for (String heroi : allowedTo){
-            // TODO: change to: allowedTo.forEach(h -> System.out.println("\t" + h));
-            System.out.println("\t" + heroi);
-        }
-        System.out.println("]");
-
-    }
+    public abstract void showDetails();
 }
