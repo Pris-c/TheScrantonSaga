@@ -23,7 +23,7 @@ public class CombatConsumable extends Consumable {
         String headerFormat = "| %-31s |\n";
 
         System.out.println("+---------------------------------+");
-        System.out.printf(headerFormat, "AJUDA DA " + super.name.toUpperCase());
+        System.out.printf(headerFormat, shortDescription().toUpperCase());
         System.out.println("+---------------------------------+");
 
         System.out.printf(format, "Ataque Instântaneo:", this.instantAttack);
@@ -39,5 +39,10 @@ public class CombatConsumable extends Consumable {
 
     public int getInstantAttack() {
         return instantAttack;
+    }
+
+    @Override
+    public String shortDescription() {
+        return "Ajuda extra: " + super.name;
     }
 }

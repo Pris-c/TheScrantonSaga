@@ -35,4 +35,9 @@ public class Potion extends Consumable {
     public int getStrengthIncrement() {
         return strengthIncrement;
     }
+
+    @Override
+    public String shortDescription() {
+        return "Lanche: " + super.name;
+    }
 }

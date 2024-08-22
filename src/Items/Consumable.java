@@ -8,4 +8,5 @@ public abstract class Consumable extends ItemHero {
         super(name, price, allowedTo);
     }
 
+    public abstract String shortDescription();
 }
