@@ -1,13 +1,22 @@
 package Game;
 
-import Entities.Hero;
-import Entities.Intern;
-import Entities.Receptionist;
-import Entities.SalesRepresentative;
+import Entities.*;
+import Items.CombatConsumable;
+import Items.ItemHero;
+import Items.Potion;
+import Items.Weapon;
+import Util.ItemsCreator.CombatConsumableCreator;
+import Util.ItemsCreator.PotionCreator;
+import Util.ItemsCreator.WeaponCreator;
 import Util.Util;
 
+import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
+
+import static Util.Text.Text.*;
+import static Util.Util.cleanScreen;
+import static Util.Util.readContinue;
 
 public class Game {
 
@@ -18,7 +27,10 @@ public class Game {
 
         String message = ("Escolha o seu personagem:\n1 - Representante de vendas\n2 - Recepcionista\n3 - Estagiário");
         int hero = Util.readAndValidateInput(message, 1, 3);
+        cleanScreen();
+
         String name = this.readValidUserName();
+        cleanScreen();
 
         int difficult = Util.readAndValidateInput("Escolha o modo de jogo:\n1 - Fácil\n2 - Difícil", 1, 2);
         if (difficult == 1) {
@@ -32,19 +44,15 @@ public class Game {
         int strength = 1;
         int hp = 20;
 
+        cleanScreen();
         while (creationPoints > 0) {
-            System.out.println("Você possui " + creationPoints + " moedas disponíveis para preparar o seu personagem.");
-            System.out.println("1 ponto de força = 5 moedas");
-            System.out.println("1 ponto de vida = 1 moeda");
+            printCreationPointsTable();
+            printHeroCreationInfo(creationPoints, strength, hp);
 
-            System.out.println("** Estado atual:");
-            System.out.println("\tFORÇA = " + strength);
-            System.out.println("\tHP = " + hp);
+            int option = Util.readAndValidateInput("O que deseja adicionar?\n1 - Pontos de força\n2 - Pontos de vida", 1, 2);
 
-            message = "O que deseja adicionar?\n1 - Pontos de força\n2 - Pontos de vida";
-            int option = Util.readAndValidateInput(message, 1, 2);
             int value;
-
+            System.out.println();
             switch (option) {
                 case 1:
                     System.out.print("Quantidade de pontos de força a adicionar: ");
@@ -54,7 +62,7 @@ public class Game {
                             strength += value;
                             creationPoints -= value * 5;
                         } else {
-                            System.out.println("Você não tem moedas suficientes para adicionar " + value + " pontos de força.");
+                            System.out.println("\nVocê não tem moedas suficientes para adicionar " + value + " pontos de força.\n");
                         }
                     }
                     break;
@@ -68,12 +76,13 @@ public class Game {
                             creationPoints -= value;
 
                         } else {
-                            System.out.println("Você não tem moedas suficientes para adicionar " + value + " hp.");
+                            System.out.println("\nVocê não tem moedas suficientes para adicionar " + value + " hp.\n");
                         }
                     }
                     break;
             }
         }
+        cleanScreen();
 
         switch (hero) {
             case 1:
@@ -85,6 +94,64 @@ public class Game {
             default:
                 return null;
         }
+    }
+
+
+    public void theScrantonSaga() {
+        Shopkeeper shopkeeper = initShopkeeper();
+        Hero hero;
+
+        // TODO: show logo
+        // TODO: music
+
+        // Explain the adventure to the player
+        printInitMessage();
+        readContinue();
+        cleanScreen();
+
+        hero = createHero();
+        // TODO: add pause
+
+        System.out.println("Prontinho! Confira as características do seu personagem:");
+        hero.showDetails();
+        readContinue();
+        cleanScreen();
+
+
+        // Find the shopkeeper
+        printFirstShopkeeperMessage();
+        readContinue("Pressione enter para ver os itens disponíveis..");
+        System.out.println();
+        cleanScreen();
+        shopkeeper.showsStore(hero);
+
+        // Start the labyrinth
+        // Minimun 6 rooms
+        // Minimum 3 chosen situations
+        // After each room, the hero can use one potion or advance:
+        // Print all potion inventory and ask if he wants to use
+        // If some part of cure would not be used, the player must be advised and confirm the usage
+
+
+        // When the player died, it must be shown an option menu:
+        // Play again
+        // Restart game with another Hero
+        // Finish program
+
+
+    }
+
+    private Shopkeeper initShopkeeper() {
+        ArrayList<Weapon> weapons = WeaponCreator.initWeapons();
+        ArrayList<CombatConsumable> combatConsumables = CombatConsumableCreator.initCombatConsumables();
+        ArrayList<Potion> potions = PotionCreator.initPotions();
+
+        ArrayList<ItemHero> shop = new ArrayList<>();
+        shop.addAll(weapons);
+        shop.addAll(combatConsumables);
+        shop.addAll(potions);
+
+        return new Shopkeeper(shop);
     }
 
     private int readUserInput() {
@@ -117,7 +184,7 @@ public class Game {
         do {
             validName = true;
             System.out.println("Que nome deseja usar?");
-            System.out.println(">> ");
+            System.out.print(">> ");
             name = input.nextLine();
 
             if (name.isEmpty() || name.isBlank()) {
