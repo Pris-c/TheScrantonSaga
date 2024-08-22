@@ -58,7 +58,7 @@ public class Shopkeeper {
                         itensToSell.remove(item);
                         hero.showDetails();
                     }
-                    readContinue("Pressione enter para retornar à loja..");
+                    readContinue("\n\n\033[3mPressione enter para retornar à loja..\033[0m");
                     cleanScreen();
                 }
             }
