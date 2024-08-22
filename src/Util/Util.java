@@ -5,7 +5,10 @@ import java.util.Scanner;
 
 public class Util {
 
-    public static int readAndValidateInput(String message, int min, int max){
+    public static String singleTextFormat = "| %-75s |\n";
+    public static String detailFormat = "| %-25s : %-47s |\n";
+
+    public static int readAndValidateInput(String message, int min, int max) {
         Scanner input = new Scanner(System.in);
         int option;
         boolean validInput;
@@ -18,30 +21,36 @@ public class Util {
             }
             System.out.print(">> ");
 
-            try{
+            try {
                 option = input.nextInt();
-            } catch (InputMismatchException e){
+            } catch (InputMismatchException e) {
                 option = -1;
             }
 
-            if (option < min || option > max){
+            if (option < min || option > max) {
                 validInput = false;
                 System.out.println("\n-- Opção Inválida! Por favor, tente novamente. --");
             }
             input.nextLine();
 
-        } while(!validInput);
+        } while (!validInput);
 
         return option;
     }
 
-    public static void readContinue(){
+    public static void readContinue() {
         Scanner input = new Scanner(System.in);
         System.out.println("\n\n\033[3mPressione enter para continuar\033[0m");
         input.nextLine();
     }
 
-    public static void cleanSrecreen(){
+    public static void readContinue(String message) {
+        Scanner input = new Scanner(System.in);
+        System.out.println("\n\n\033[3m" + message + "\033[0m");
+        input.nextLine();
+    }
+
+    public static void cleanScreen() {
         System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
     }
 }
