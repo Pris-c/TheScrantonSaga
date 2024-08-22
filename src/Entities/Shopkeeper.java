@@ -19,12 +19,6 @@ public class Shopkeeper {
         this.store = store;
     }
 
-    public void addItemToStore(ItemHero item) {
-        if (!this.store.contains(item)) {
-            this.store.add(item);
-        }
-    }
-
     public void showsStore(Hero hero) {
         Random random = new Random();
         ArrayList<ItemHero> itensToSell = new ArrayList<>();
@@ -40,7 +34,7 @@ public class Shopkeeper {
             }
         }
 
-        int option = -1;
+        int option;
         int nItem = -1;
 
         while (nItem != 0) {
@@ -104,7 +98,6 @@ public class Shopkeeper {
     }
 
     public void printItemsToSell(ArrayList<ItemHero> itensToSell) {
-        //String format = "| %-3s | %-16s | %-17s | %-7s |\n";
         String format = "| %-3s | %-20s | %-30s | %-7s |\n";
 
         System.out.println("+-----------------------------------------------------------------------+");
@@ -112,6 +105,7 @@ public class Shopkeeper {
         System.out.println("+-----+------------------+-------------------+--------------------------+");
         System.out.println("| Nº  | Tipo                 | Nome                           | Preço   |");
         System.out.println("+-----+------------------+-------------------+--------------------------+");
+
         int count = 1;
         String type = " ";
         for (ItemHero i : itensToSell) {
@@ -126,7 +120,6 @@ public class Shopkeeper {
                     type = "Ajuda Extra";
                     break;
             }
-
             System.out.printf(format, String.format("%02d", count), type, i.getName(), "$ " + i.getPrice());
             count++;
         }
