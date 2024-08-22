@@ -1,9 +1,6 @@
 package Test;
 
 import Game.Game;
-import Test.TestHelper.HeroCreator;
-
-import static Game.Room.*;
 
 public class GameTest {
 
@@ -11,7 +8,9 @@ public class GameTest {
 
         Game game = new Game();
 
-        //game.createHero().showDetails();
+        System.out.println(" ---- TEST TO CREATE HERO ------\n");
+        game.createHero().showDetails();
+
 
         //lunchChallenge(HeroCreator.createIntern());
         //printerChallenge(HeroCreator.createReceptionist());
@@ -19,7 +18,41 @@ public class GameTest {
         //parkourChallenge(HeroCreator.createSalesRepresentative());
         //rhMeetingting(HeroCreator.createReceptionist());
         //basketGame(HeroCreator.createReceptionist());
-        christmasParty(HeroCreator.createIntern());
+        //christmasParty(HeroCreator.createIntern());
+        //printFirstShopkeeperMessage();
+
+
+        // --------  Test to Weapon Creation
+/*      WeaponCreator.createSickRelativeExcuse().showDetails();
+        WeaponCreator.createSecretThreat().showDetails();
+        WeaponCreator.createCEOFriendship().showDetails();
+        WeaponCreator.createClientRecommendation().showDetails()*/
+        ;
+
+        // --------  Test to CombatConsumable Creation
+/*        CombatConsumableCreator.createPhyllisHelp().showDetails();
+        CombatConsumableCreator.createRyanHelp().showDetails();
+        CombatConsumableCreator.createJimHelp().showDetails();
+        CombatConsumableCreator.createDwightHelp().showDetails();
+        CombatConsumableCreator.createAngelaHelp().showDetails();
+        CombatConsumableCreator.createPamHelp().showDetails();
+        CombatConsumableCreator.createStanleyHelp().showDetails();*/
+
+        // -------- Test to Potion Creation
+/*      PotionCreator.coffee().showDetails();
+        PotionCreator.cerealBar().showDetails();
+        PotionCreator.chocolateBar().showDetails();
+        PotionCreator.croissant().showDetails();
+        PotionCreator.eggSalad().showDetails();
+        PotionCreator.fullMeal().showDetails();
+        PotionCreator.soda().showDetails();
+        PotionCreator.tunaSandwich().showDetails();*/
+
+
+        //game.theScrantonSaga();
 
     }
+
+
 }
+
