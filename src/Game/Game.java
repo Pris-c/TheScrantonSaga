@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-import static Util.Text.Text.*;
+import static Util.Printer.Printer.*;
 import static Util.Util.cleanScreen;
 import static Util.Util.readContinue;
 
@@ -44,23 +44,26 @@ public class Game {
         int strength = 1;
         int hp = 20;
 
+        // TODO: Refactor to another method
         cleanScreen();
         while (creationPoints > 0) {
             printCreationPointsTable();
-            printHeroCreationInfo(creationPoints, strength, hp);
+            printHeroCreationInfo(name, creationPoints, strength, hp);
 
             int option = Util.readAndValidateInput("O que deseja adicionar?\n1 - Pontos de força\n2 - Pontos de vida", 1, 2);
 
             int value;
-            System.out.println();
             switch (option) {
                 case 1:
-                    System.out.print("Quantidade de pontos de força a adicionar: ");
+                    System.out.print("\nQuantidade de pontos de força a adicionar: ");
                     value = this.readUserInput();
+
+                    cleanScreen();
                     if (value > 0) {
                         if (creationPoints >= (value * 5)) {
                             strength += value;
                             creationPoints -= value * 5;
+                            System.out.println("\t\tPontos de força adicionados com sucesso!\n");
                         } else {
                             System.out.println("\nVocê não tem moedas suficientes para adicionar " + value + " pontos de força.\n");
                         }
@@ -68,12 +71,15 @@ public class Game {
                     break;
 
                 case 2:
-                    System.out.print("Quantidade de hp a adicionar: ");
+                    System.out.print("\nQuantidade de hp a adicionar: ");
                     value = this.readUserInput();
+
+                    cleanScreen();
                     if (value > 0) {
                         if (creationPoints >= value) {
                             hp += value;
                             creationPoints -= value;
+                            System.out.println("\t\tPontos de vida adicionados com sucesso!\n");
 
                         } else {
                             System.out.println("\nVocê não tem moedas suficientes para adicionar " + value + " hp.\n");
@@ -83,6 +89,7 @@ public class Game {
             }
         }
         cleanScreen();
+        System.out.println("\nPersonagem criado com sucesso!\n");
 
         switch (hero) {
             case 1:
