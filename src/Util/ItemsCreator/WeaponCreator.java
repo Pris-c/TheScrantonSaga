@@ -9,7 +9,7 @@ public class WeaponCreator {
 
     public static Weapon createSickRelativeExcuse() {
         return new Weapon(
-                "Arma do Falso Familiar Doente",
+                "Familiar Doente",
                 30,
                 ItemsLimitationCreator.salesOnly(),
                 10,
@@ -21,7 +21,7 @@ public class WeaponCreator {
 
     public static Weapon createSecretThreat() {
         return new Weapon(
-                "Conhecer um Segredo dos Colegas",
+                "Conhecer Segredo dos Colegas",
                 35,
                 ItemsLimitationCreator.receptionistOnly(),
                 12,
@@ -34,7 +34,7 @@ public class WeaponCreator {
 
     public static Weapon createCEOFriendship() {
         return new Weapon(
-                "Poder do CEO",
+                "Amizade do CEO",
                 25,
                 ItemsLimitationCreator.internOnly(),
                 8,
@@ -47,7 +47,7 @@ public class WeaponCreator {
     public static Weapon createClientRecommendation() {
 
         return new Weapon(
-                "Recomendação do Cliente",
+                "Recomendação de um Cliente",
                 50,
                 ItemsLimitationCreator.allHeroes(),
                 20,
