@@ -1,5 +1,8 @@
 package Entities;
 
+import static Util.Util.detailFormat;
+import static Util.Util.singleTextFormat;
+
 public class Npc extends Entity {
 
 
@@ -9,7 +12,11 @@ public class Npc extends Entity {
 
     @Override
     public void showDetails() {
-        System.out.println("\n ** Desafio: " + super.name + " **");
+        System.out.println("+-----------------------------------------------------------------------------+");
+        System.out.printf(singleTextFormat, "                               DETALHES DESAFIO");
+        System.out.println("+-----------------------------------------------------------------------------+");
+        System.out.printf(detailFormat, "Nome", super.name);
         super.showDetails();
+        System.out.println("+-----------------------------------------------------------------------------+\n");
     }
 }

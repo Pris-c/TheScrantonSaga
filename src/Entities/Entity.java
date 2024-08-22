@@ -1,5 +1,7 @@
 package Entities;
 
+import static Util.Util.detailFormat;
+
 public abstract class Entity {
 
     protected String name;
@@ -16,19 +18,19 @@ public abstract class Entity {
         this.gold = gold;
     }
 
-    protected void showDetails(){
-        System.out.println("| Hp máximo       : " + this.maxHp);
-        System.out.println("| Hp atual        : " + this.hp);
-        System.out.println("| Força           : " + this.strength);
-        System.out.println("| Moedas          : " + this.gold);
+    protected void showDetails() {
+        System.out.printf(detailFormat, "Hp máximo", this.maxHp);
+        System.out.printf(detailFormat, "Hp atual", this.hp);
+        System.out.printf(detailFormat, "Força", this.strength);
+        System.out.printf(detailFormat, "Moedas", this.gold);
     }
 
-    public void addHp(int hp){
+    public void addHp(int hp) {
         int newHp = this.hp + hp;
         this.hp = Math.min(newHp, this.maxHp);
     }
 
-    public int decrementHp(int hp){
+    public int decrementHp(int hp) {
         int newHp = this.hp - hp;
         this.hp = Math.max(0, newHp);
         return this.hp;

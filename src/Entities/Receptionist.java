@@ -1,6 +1,5 @@
 package Entities;
 
-import Items.Consumable;
 import Util.ItemsCreator.CombatConsumableCreator;
 import Util.ItemsCreator.PotionCreator;
 import Util.ItemsCreator.WeaponCreator;
@@ -9,18 +8,21 @@ import Util.Util;
 import java.util.ArrayList;
 import java.util.List;
 
+import static Util.Util.detailFormat;
+import static Util.Util.singleTextFormat;
+
 public class Receptionist extends Hero {
 
     public Receptionist(String name, int maxHp, int strenght, int gold) {
-        super(name, maxHp, strenght, gold, WeaponCreator.createClientRecommendation(), new ArrayList<Consumable>(List.of(PotionCreator.coffee(), CombatConsumableCreator.createDwightHelp())));
+        super(name, maxHp, strenght, gold, WeaponCreator.createClientRecommendation(), new ArrayList<>(List.of(PotionCreator.coffee(), CombatConsumableCreator.createDwightHelp())));
     }
 
     @Override
     public void showDetails() {
-        System.out.println("+---------------------------------------------------------+");
-        System.out.println("|                Detalhes Recepcionista                   |");
-        System.out.println("+---------------------------------------------------------+");
-        System.out.println("| Nome            : " + this.name);
+        System.out.println("+-----------------------------------------------------------------------------+");
+        System.out.printf(singleTextFormat, "                        DETALHES RECEPCIONISTA");
+        System.out.println("+-----------------------------------------------------------------------------+");
+        System.out.printf(detailFormat, "Nome", super.name);
         super.showDetails();
     }
 

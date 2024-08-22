@@ -7,7 +7,7 @@ import Items.Weapon;
 
 import java.util.ArrayList;
 
-import static Util.Util.readAndValidateInput;
+import static Util.Util.*;
 
 public abstract class Hero extends Entity {
 
@@ -42,20 +42,21 @@ public abstract class Hero extends Entity {
 
     @Override
     public void showDetails() {
-        super.showDetails();
-        System.out.println("| Nível           : " + this.level);
-        System.out.println("| Arma Principal  : " + this.mainWeapon.getName());
-        System.out.println("+---------------------------------------------------------+");
-        System.out.println("|       Consumíveis                                       |");
-        System.out.println("+---------------------------------------------------------+");
+
+        System.out.printf(detailFormat, "Nível", this.level);
+        System.out.printf(detailFormat, "Arma Principal", this.mainWeapon.getName());
+
+        System.out.println("+-----------------------------------------------------------------------------+");
+        System.out.printf(singleTextFormat, " -- Consumíveis -- ");
+        System.out.println("+-----------------------------------------------------------------------------+");
         if (inventory.isEmpty()) {
-            System.out.println("| Nenhum consumível disponível          |");
+            System.out.printf(singleTextFormat, "Nenhum consumível disponível");
         } else {
             for (Consumable c : inventory) {
-                System.out.println("| " + c.getName());
+                System.out.printf(singleTextFormat, c.getName());
             }
         }
-        System.out.println("+---------------------------------------------------------+");
+        System.out.println("+-----------------------------------------------------------------------------+\n");
     }
 
     public void usePotion() {
