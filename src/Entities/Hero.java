@@ -22,6 +22,10 @@ public abstract class Hero extends Entity {
         this.inventory = inventory;
     }
 
+    public int getLevel() {
+        return level;
+    }
+
     public void setMainWeapon(Weapon mainWeapon) {
         this.mainWeapon = mainWeapon;
     }
@@ -60,7 +64,7 @@ public abstract class Hero extends Entity {
                 }
             }
         }
-        System.out.println("+-----------------------------------------------------------------------------+\n");
+        System.out.println("+-----------------------------------------------------------------------------+\n\n");
     }
 
     public void usePotion() {
@@ -84,10 +88,8 @@ public abstract class Hero extends Entity {
                 System.out.printf(headerFormat, "NENHUMA POÇÃO DISPONÍVEL");
                 System.out.println("+---------------------------------+\n");
             } else {
-
-
                 // Show potions
-                System.out.println("+---------------------------------+");
+                System.out.println("\n+---------------------------------+");
                 System.out.printf(headerFormat, "POÇÕES DISPONÍVEIS");
                 System.out.println("+---------------------------------+\n");
 
@@ -108,9 +110,17 @@ public abstract class Hero extends Entity {
                     Potion potionToUse = potions.get(option);
                     super.addHp(potionToUse.getHealing());
                     super.strength += potionToUse.getStrengthIncrement();
-
                     // Remove potion
                     inventory.remove(potionToUse);
+
+                    cleanScreen();
+                    System.out.println("Ótima escolha!\nAgora você está mais preparado para as próximas missões!\n");
+
+                    option = readAndValidateInput("Digite 1 para consultar informações da personagem\n\033[3mDigite 0 para continuar..\033[0m", 0, 1);
+                    if (option == 1){
+                        this.showDetails();
+                        readContinue();
+                    }
                 }
             }
         }
@@ -139,8 +149,6 @@ public abstract class Hero extends Entity {
             return -1;
         }
 
-        // Show available consumables
-        // Show potions
         System.out.println("+---------------------------------+");
         System.out.printf(headerFormat, "AJUDAS DISPONÍVEIS");
         System.out.println("+---------------------------------+\n");
@@ -162,6 +170,13 @@ public abstract class Hero extends Entity {
             return decrement;
         }
         return -1;
+    }
+
+    public void upgradeLevel(Npc enemy){
+        this.level += 1;
+        super.addHp(10);
+        super.strength += 1;
+        super.gold += enemy.gold;
     }
 
     public abstract boolean attack(Npc enemy);
