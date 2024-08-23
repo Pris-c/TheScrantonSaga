@@ -1,16 +1,17 @@
 package Test;
 
-import Entities.Intern;
-import Entities.Npc;
-import Entities.Receptionist;
-import Entities.SalesRepresentative;
+import Entities.*;
+import Items.CombatConsumable;
 import Test.TestHelper.HeroCreator;
+import Util.ItemsCreator.CombatConsumableCreator;
 import Util.ItemsCreator.NpcCreator;
+import Util.ItemsCreator.PotionCreator;
+import Util.ItemsCreator.WeaponCreator;
 
 public class EntitiesTest {
 
     public static void main(String[] args) {
-
+/*
         System.out.println(" ********************************************\n");
         System.out.println(" *********** TESTING SHOW DETAILS ***********\n");
         System.out.println(" ********************************************\n");
@@ -54,7 +55,46 @@ public class EntitiesTest {
         System.out.println("\nREMOVIDAS 500 HP");
         System.out.println("Recepcionist Hp: " + receptionist2.getHp());
         System.out.println("Recepcionist MaxHp: " + receptionist2.getMaxHp());
+*/
+/*
 
+        System.out.println(" ********************************************\n");
+        System.out.println(" *********** TESTING HERO METHODS ***********\n\n");
+        System.out.println(" ********************************************\n");
+
+        System.out.println(" *********** TESTING SET MAIN WEAPON ***********\n");
+        SalesRepresentative salesRepresentative2 = HeroCreator.createSalesRepresentative();
+        salesRepresentative2.showDetails();
+        System.out.println(" *********** CHANGING MAIN WEAPON  ***********\n\n");
+        salesRepresentative2.setMainWeapon(WeaponCreator.createSickRelativeExcuse());
+        salesRepresentative2.showDetails();
+*/
+
+/*
+        System.out.println(" *********** TESTING PAY ***********\n");
+        SalesRepresentative salesRepresentative3 = HeroCreator.createSalesRepresentative();
+        salesRepresentative3.showDetails();
+        System.out.println(" *********** CHANGING MAIN WEAPON  ***********\n\n");
+        System.out.println("PAGAR VALOR POSSIVEL: " + salesRepresentative3.pay(5));
+        System.out.println("PAGAR VALOR IMPOSSIVEL: " + salesRepresentative3.pay(200));
+*/
+
+/*
+        System.out.println(" *********** TESTING ADD CONSUMABLE ***********\n");
+        Intern internToTestAddConsumable = HeroCreator.createIntern();
+        internToTestAddConsumable.showDetails();
+        System.out.println(" *********** ADD ITEMS  ***********\n\n");
+        internToTestAddConsumable.addConsumableToInventory(CombatConsumableCreator.createDwightHelp());
+        internToTestAddConsumable.addConsumableToInventory(PotionCreator.cerealBar());
+        internToTestAddConsumable.showDetails();
+*/
+        System.out.println(" *********** TESTING USE POTION ***********\n");
+        Intern internToTestUsePotion = HeroCreator.createIntern();
+        internToTestUsePotion.addConsumableToInventory(PotionCreator.croissant());
+        internToTestUsePotion.showDetails();
+        System.out.println(" *********** CALLING USE POTION ***********\n\n");
+        internToTestUsePotion.usePotion();
+        internToTestUsePotion.showDetails();
 
     }
 }
