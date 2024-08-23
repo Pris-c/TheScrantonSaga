@@ -13,8 +13,7 @@ public class CombatConsumableCreator {
                 "Dwight",
                 35,
                 ItemsLimitationCreator.internAndReceptionist(),
-                40,
-                "Dwight alcança uma arma escondida assustando a todos e facilitando sua esquiva da missão."
+                40
         );
     }
 
@@ -23,8 +22,7 @@ public class CombatConsumableCreator {
                 "Jim",
                 50,
                 ItemsLimitationCreator.allHeroes(),
-                45,
-                "Jim faz uma piada perfeita, distraindo todos enquanto você tenta escapar do problema."
+                45
         );
     }
 
@@ -34,8 +32,7 @@ public class CombatConsumableCreator {
                 "Pam",
                 45,
                 ItemsLimitationCreator.salesAndReceptionist(),
-                43,
-                "Pam chama toda gente para ver o novo quadro que pintou da Dunder Mifflin. Aproveite a distração!"
+                43
         );
     }
 
@@ -44,8 +41,7 @@ public class CombatConsumableCreator {
                 "Phyllis",
                 40,
                 ItemsLimitationCreator.allHeroes(),
-                30,
-                "Phyllis interrompe a missão para pedir dinheiro para a próxima festa. Aproveite o tempo extra."
+                30
         );
     }
 
@@ -54,8 +50,7 @@ public class CombatConsumableCreator {
                 "Angela",
                 45,
                 ItemsLimitationCreator.allHeroes(),
-                35,
-                "Angela usa um vídeo dos seus gatos para distrair a todos enquanto você tenta sair de fininho."
+                35
         );
     }
 
@@ -65,8 +60,7 @@ public class CombatConsumableCreator {
                 "Ryan",
                 50,
                 ItemsLimitationCreator.internOnly(),
-                40,
-                "Ryan oferece ideias 'inovadoras' para solucionar o problema por você."
+                40
         );
 
     }
@@ -76,8 +70,7 @@ public class CombatConsumableCreator {
                 "Stanley",
                 50,
                 ItemsLimitationCreator.internAndSales(),
-                48,
-                "Stanley simula um novo ataque cardiaco e ganha a atenção de todos, te dando tempo extra para resolver o problema"
+                48
         );
     }
 
