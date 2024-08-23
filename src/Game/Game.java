@@ -1,6 +1,9 @@
 package Game;
 
 import Entities.*;
+import Game.Helper.ChallengeCreator;
+import Game.Helper.NodeCreator;
+import Game.Helper.RoomCreator;
 import Items.CombatConsumable;
 import Items.ItemHero;
 import Items.Potion;
@@ -8,31 +11,45 @@ import Items.Weapon;
 import Util.ItemsCreator.CombatConsumableCreator;
 import Util.ItemsCreator.PotionCreator;
 import Util.ItemsCreator.WeaponCreator;
-import Util.Util;
 
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-import static Util.Printer.Printer.*;
-import static Util.Util.cleanScreen;
-import static Util.Util.readContinue;
+import static Util.PlotStrings.firstShopkeeperMessage;
+import static Util.PlotStrings.initMessage;
+import static Util.Printer.Printer.printCreationPointsTable;
+import static Util.Printer.Printer.printHeroCreationInfo;
+import static Util.Util.*;
 
 public class Game {
 
+    private final NodeCreator nodeCreator;
+    private final ChallengeCreator challengeCreator;
+    private final RoomCreator roomCreator;
+
+    public Game() {
+        this.nodeCreator = new NodeCreator();
+        this.challengeCreator = new ChallengeCreator();
+        this.roomCreator = new RoomCreator();
+    }
 
     public Hero createHero() {
+        cleanScreen();
+
         int creationPoints;
         int gold;
 
         String message = ("Escolha o seu personagem:\n1 - Representante de vendas\n2 - Recepcionista\n3 - Estagiário");
-        int hero = Util.readAndValidateInput(message, 1, 3);
+        int hero = readAndValidateInput(message, 1, 3);
         cleanScreen();
 
         String name = this.readValidUserName();
         cleanScreen();
 
-        int difficult = Util.readAndValidateInput("Escolha o modo de jogo:\n1 - Fácil\n2 - Difícil", 1, 2);
+        int difficult = readAndValidateInput("Escolha o modo de jogo:\n1 - Fácil\n2 - Difícil", 1, 2);
+
+
         if (difficult == 1) {
             creationPoints = 300;
             gold = 20;
@@ -44,13 +61,13 @@ public class Game {
         int strength = 1;
         int hp = 20;
 
-        // TODO: Refactor to another method
+        // TODO: Refactor to another method ?
         cleanScreen();
         while (creationPoints > 0) {
             printCreationPointsTable();
             printHeroCreationInfo(name, creationPoints, strength, hp);
 
-            int option = Util.readAndValidateInput("O que deseja adicionar?\n1 - Pontos de força\n2 - Pontos de vida", 1, 2);
+            int option = readAndValidateInput("O que deseja adicionar?\n1 - Pontos de força\n2 - Pontos de vida", 1, 2);
 
             int value;
             switch (option) {
@@ -63,7 +80,10 @@ public class Game {
                         if (creationPoints >= (value * 5)) {
                             strength += value;
                             creationPoints -= value * 5;
-                            System.out.println("\t\tPontos de força adicionados com sucesso!\n");
+
+                            if (creationPoints > 0) {
+                                System.out.println("\t\tPontos de força adicionados com sucesso!\n");
+                            }
                         } else {
                             System.out.println("\nVocê não tem moedas suficientes para adicionar " + value + " pontos de força.\n");
                         }
@@ -79,7 +99,10 @@ public class Game {
                         if (creationPoints >= value) {
                             hp += value;
                             creationPoints -= value;
-                            System.out.println("\t\tPontos de vida adicionados com sucesso!\n");
+
+                            if (creationPoints > 0) {
+                                System.out.println("\t\tPontos de vida adicionados com sucesso!\n");
+                            }
 
                         } else {
                             System.out.println("\nVocê não tem moedas suficientes para adicionar " + value + " hp.\n");
@@ -89,50 +112,44 @@ public class Game {
             }
         }
         cleanScreen();
-        System.out.println("\nPersonagem criado com sucesso!\n");
+
+        Hero player = null;
 
         switch (hero) {
             case 1:
-                return new SalesRepresentative(name, hp, strength, gold);
+                player = new SalesRepresentative(name, hp, strength, gold);
+                break;
             case 2:
-                return new Receptionist(name, hp, strength, gold);
+                player = new Receptionist(name, hp, strength, gold);
+                break;
             case 3:
-                return new Intern(name, hp, strength, gold);
-            default:
-                return null;
+                player = new Intern(name, hp, strength, gold);
+                break;
         }
+
+        System.out.println("\nPersonagem criado com sucesso!\n");
+        System.out.println("Confira as características do seu personagem:");
+        player.showDetails();
+        readContinue();
+        cleanScreen();
+        return player;
     }
 
-
     public void theScrantonSaga() {
+        // TODO: show logo
+        // TODO: music
         Shopkeeper shopkeeper = initShopkeeper();
         Hero hero;
 
-        // TODO: show logo
-        // TODO: music
-
         // Explain the adventure to the player
-        printInitMessage();
-        readContinue();
         cleanScreen();
+        System.out.println(initMessage);
+        readContinue();
 
         hero = createHero();
-        // TODO: add pause
-
-        System.out.println("Prontinho! Confira as características do seu personagem:");
-        hero.showDetails();
-        readContinue();
-        cleanScreen();
+        labyrinth(hero, shopkeeper);
 
 
-        // Find the shopkeeper
-        printFirstShopkeeperMessage();
-        readContinue("Pressione enter para ver os itens disponíveis..");
-        System.out.println();
-        cleanScreen();
-        shopkeeper.showsStore(hero);
-
-        // Start the labyrinth
         // Minimun 6 rooms
         // Minimum 3 chosen situations
         // After each room, the hero can use one potion or advance:
@@ -144,11 +161,64 @@ public class Game {
         // Play again
         // Restart game with another Hero
         // Finish program
-
-
     }
 
-    private Shopkeeper initShopkeeper() {
+    // TODO: Make private
+    public boolean labyrinth(Hero hero, Shopkeeper shopkeeper) {
+
+        // Find the shopkeeper
+        cleanScreen();
+        System.out.println(firstShopkeeperMessage);
+
+        readContinue("\n\n\033[3mPressione enter para ver os itens disponíveis..\033[0m");
+        cleanScreen();
+        shopkeeper.showsStore(hero);
+
+        // GameNode 1
+        GameNode node1 = this.nodeCreator.createNode1();
+        cleanScreen();
+        if (node1.run() == 1) {
+            // Go to challenge 1
+            cleanScreen();
+            Challenge challenge1 = this.challengeCreator.createChallenge1();
+            if (!challenge1.run(hero)) {
+                return false;
+            }
+            cleanScreen();
+            this.offerPotion(hero);
+             System.out.println("FIM DESAFIO 1");
+
+            // TODO: Offer potion
+            // TODO: Node 2
+        } else {
+            // Go to challenge 2
+            cleanScreen();
+            Challenge challenge2 = this.challengeCreator.createChallenge2();
+            if (!challenge2.run(hero)) {
+                return false;
+            }
+            cleanScreen();
+            this.offerPotion(hero);
+            System.out.println("FIM DESAFIO 2");
+
+
+            // TODO: Challenge 3
+        }
+
+        return false;
+    }
+
+    private void offerPotion(Hero hero){
+        System.out.println("Antes de seguir em frente, que tal recarregar suas energias com um lanchinho?");
+        if (readAndValidateInput("Digite 1 para escolher um lanche.\n\033[3mPara continuar, digite 0. \033[0m", 0, 1) == 1) {
+            cleanScreen();
+            hero.usePotion();
+        }
+    }
+
+
+    // TODO: Make private
+    public Shopkeeper initShopkeeper() {
         ArrayList<Weapon> weapons = WeaponCreator.initWeapons();
         ArrayList<CombatConsumable> combatConsumables = CombatConsumableCreator.initCombatConsumables();
         ArrayList<Potion> potions = PotionCreator.initPotions();
@@ -205,4 +275,5 @@ public class Game {
         } while (!validName);
         return name;
     }
+
 }
