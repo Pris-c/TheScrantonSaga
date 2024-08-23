@@ -1,6 +1,6 @@
 package Entities;
 
-import static Util.Util.detailFormat;
+import static Util.Util.largeDetailFormat;
 
 public abstract class Entity {
 
@@ -19,10 +19,10 @@ public abstract class Entity {
     }
 
     protected void showDetails() {
-        System.out.printf(detailFormat, "Hp máximo", this.maxHp);
-        System.out.printf(detailFormat, "Hp atual", this.hp);
-        System.out.printf(detailFormat, "Força", this.strength);
-        System.out.printf(detailFormat, "Moedas", this.gold);
+        System.out.printf(largeDetailFormat, "Hp máximo", this.maxHp);
+        System.out.printf(largeDetailFormat, "Hp atual", this.hp);
+        System.out.printf(largeDetailFormat, "Força", this.strength);
+        System.out.printf(largeDetailFormat, "Moedas", this.gold);
     }
 
     public void addHp(int hp) {
