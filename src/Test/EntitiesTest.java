@@ -16,12 +16,9 @@ public class EntitiesTest {
         System.out.println(" *********** TESTING SHOW DETAILS ***********\n");
         System.out.println(" ********************************************\n");
         System.out.println(" *********** HEROES CLASSES ***********\n\n");
-        Receptionist receptionist = HeroCreator.createReceptionist();
         SalesRepresentative salesRepresentative = HeroCreator.createSalesRepresentative();
-
-        receptionist.showDetails();
         salesRepresentative.showDetails();
-        intern.showDetails();
+
         System.out.println(" *********** CHALLENGES ***********\n\n");
         Npc basketGame = NpcCreator.createBasketGame();
         Npc christmasParty = NpcCreator.createChristmasParty();
@@ -108,6 +105,7 @@ public class EntitiesTest {
 
 */
 
+/*
 
         System.out.println(" **********************************************");
         System.out.println(" *********** TESTING INTERN METHODS ***********");
@@ -120,6 +118,18 @@ public class EntitiesTest {
         System.out.println(" *********** TESTING ATTACK ***********");
         System.out.println("Attack result: " + intern.attack(NpcCreator.createChristmasParty()));
 
+*/
+
+        System.out.println(" ****************************************************");
+        System.out.println(" *********** TESTING RECEPCIONIST METHODS ***********");
+        System.out.println(" ****************************************************\n");
+
+        System.out.println(" *********** TESTING SHOW DETAILS ***********");
+        Receptionist recepcionist = HeroCreator.createReceptionist();
+        recepcionist.showDetails();
+
+        System.out.println(" *********** TESTING ATTACK ***********");
+        System.out.println("Attack result: " + recepcionist.attack(NpcCreator.createChristmasParty()));
 
 
 
