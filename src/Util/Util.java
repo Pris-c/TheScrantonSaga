@@ -5,8 +5,9 @@ import java.util.Scanner;
 
 public class Util {
 
-    public static String singleTextFormat = "| %-75s |\n";
-    public static String detailFormat = "| %-25s : %-47s |\n";
+    public static String largeTextFormat = "| %-75s |\n";
+    public static String largeDetailFormat = "| %-25s : %-47s |\n";
+    public static String singleTextFormat = "\t\t| %-35s |\n";
 
     public static int readAndValidateInput(String message, int min, int max) {
         Scanner input = new Scanner(System.in);
@@ -16,9 +17,6 @@ public class Util {
         do {
             validInput = true;
             System.out.println(message);
-            if (min == 0) {
-                System.out.println("\033[3mPara voltar, digite 0. \033[0m");
-            }
             System.out.print(">> ");
 
             try {
