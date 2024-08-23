@@ -42,27 +42,34 @@ public abstract class Hero extends Entity {
 
     @Override
     public void showDetails() {
-
-        System.out.printf(detailFormat, "Nível", this.level);
-        System.out.printf(detailFormat, "Arma Principal", this.mainWeapon.getName());
+        super.showDetails();
+        System.out.printf(largeDetailFormat, "Nível", this.level);
+        System.out.printf(largeDetailFormat, "Arma Principal", this.mainWeapon.getName());
 
         System.out.println("+-----------------------------------------------------------------------------+");
-        System.out.printf(singleTextFormat, " -- Consumíveis -- ");
+        System.out.printf(largeTextFormat, " -- Consumíveis -- ");
         System.out.println("+-----------------------------------------------------------------------------+");
         if (inventory.isEmpty()) {
-            System.out.printf(singleTextFormat, "Nenhum consumível disponível");
+            System.out.printf(largeTextFormat, "Nenhum consumível disponível");
         } else {
             for (Consumable c : inventory) {
-                System.out.printf(singleTextFormat, c.getName());
+                if (c instanceof CombatConsumable){
+                    System.out.printf(largeTextFormat, "Ajuda: " + c.getName());
+                } else {
+                    System.out.printf(largeTextFormat, c.shortDescription());
+                }
             }
         }
         System.out.println("+-----------------------------------------------------------------------------+\n");
     }
 
     public void usePotion() {
-        if (this.inventory.isEmpty()) {
-            System.out.println("Desculpe, o seu inventário está vazio!");
+        String headerFormat = " %-31s \n";
 
+        if (this.inventory.isEmpty()) {
+            System.out.println("+---------------------------------+");
+            System.out.printf(headerFormat, "INVENTÁRIO VAZIO");
+            System.out.println("+---------------------------------+\n");
         } else {
             // Filter potions in inventory
             ArrayList<Potion> potions =
@@ -73,22 +80,26 @@ public abstract class Hero extends Entity {
                     );
 
             if (potions.isEmpty()) {
-                System.out.println("Desculpe, você não tem nenhuma Poção disponível!");
-
+                System.out.println("+---------------------------------+");
+                System.out.printf(headerFormat, "NENHUMA POÇÃO DISPONÍVEL");
+                System.out.println("+---------------------------------+\n");
             } else {
 
+
                 // Show potions
-                System.out.println("******** Poções disponíveis: ");
+                System.out.println("+---------------------------------+");
+                System.out.printf(headerFormat, "POÇÕES DISPONÍVEIS");
+                System.out.println("+---------------------------------+\n");
+
                 for (int i = 0; i < potions.size(); i++) {
-                    System.out.println("## " + (i + 1));
+                    System.out.printf(headerFormat, "# " + (i + 1));
                     potions.get(i).showDetails();
-                    System.out.println();
                 }
-                System.out.println("******** Fim das Poções");
+                System.out.println();
 
 
                 // Read and validate an option
-                int option = readAndValidateInput("Escolha a poção a utilizar:", 0, potions.size());
+                int option = readAndValidateInput("Escolha a poção a utilizar:\n\033[3mPara voltar, digite 0. \033[0m", 0, potions.size());
 
                 if (option != 0) {
                     option--;
@@ -134,12 +145,12 @@ public abstract class Hero extends Entity {
         }
 
         // Read and validate an option
-        int option = readAndValidateInput("Escolha a ajuda a utilizar:", 0, consumables.size());
+        int option = readAndValidateInput("Escolha a ajuda a utilizar:\n\033[3mPara voltar, digite 0.\033[0m", 0, consumables.size());
         if (option != 0) {
             CombatConsumable consumable = consumables.get(option - 1);
             int decrement = consumable.getInstantAttack();
             inventory.remove(consumable);
-            System.out.println(consumable.getDescription());
+            // System.out.println(consumable.getDescription());
             return decrement;
         }
         return -1;
