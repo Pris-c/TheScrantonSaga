@@ -53,7 +53,7 @@ public abstract class Hero extends Entity {
             System.out.printf(largeTextFormat, "Nenhum consumível disponível");
         } else {
             for (Consumable c : inventory) {
-                if (c instanceof CombatConsumable){
+                if (c instanceof CombatConsumable) {
                     System.out.printf(largeTextFormat, "Ajuda: " + c.getName());
                 } else {
                     System.out.printf(largeTextFormat, c.shortDescription());
@@ -116,7 +116,10 @@ public abstract class Hero extends Entity {
         }
     }
 
-    protected int instantAttack() {
+
+    //protected int instantAttack() {
+    public int instantAttack() {
+        String headerFormat = "| %-31s |\n";
         // Shows CombatConsumables in inventory
         if (this.inventory.isEmpty()) {
             System.out.println("Infelizmente você não tem favores a cobrar. Terá que lidar com isso sozinho!");
@@ -137,10 +140,15 @@ public abstract class Hero extends Entity {
         }
 
         // Show available consumables
-        System.out.println("Colegas a quem você ajudou:");
+        // Show potions
+        System.out.println("+---------------------------------+");
+        System.out.printf(headerFormat, "AJUDAS DISPONÍVEIS");
+        System.out.println("+---------------------------------+\n");
         for (int i = 0; i < consumables.size(); i++) {
-            System.out.println("# " + (i + 1));
+            System.out.println("+---------------------------------+");
+            System.out.println("   # " + (i + 1));
             consumables.get(i).showAttackInfo();
+            System.out.println("+---------------------------------+\n");
             System.out.println();
         }
 
