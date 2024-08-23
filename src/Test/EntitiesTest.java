@@ -88,6 +88,7 @@ public class EntitiesTest {
         internToTestAddConsumable.addConsumableToInventory(PotionCreator.cerealBar());
         internToTestAddConsumable.showDetails();
 */
+/*
         System.out.println(" *********** TESTING USE POTION ***********\n");
         Intern internToTestUsePotion = HeroCreator.createIntern();
         internToTestUsePotion.addConsumableToInventory(PotionCreator.croissant());
@@ -95,6 +96,14 @@ public class EntitiesTest {
         System.out.println(" *********** CALLING USE POTION ***********\n\n");
         internToTestUsePotion.usePotion();
         internToTestUsePotion.showDetails();
+*/
+
+        System.out.println(" *********** TESTING INSTANT ATTACK ***********\n");
+        Intern internToInstantAttack = HeroCreator.createIntern();
+        internToInstantAttack.showDetails();
+        System.out.println(" *********** USING ATTACK ***********\n\n");
+        System.out.println("Intant attack: " + internToInstantAttack.instantAttack());
+
 
     }
 }
