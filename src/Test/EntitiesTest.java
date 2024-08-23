@@ -11,15 +11,17 @@ public class EntitiesTest {
 
     public static void main(String[] args) {
 
-        System.out.println(" ----------- TESTING SHOW DETAILS -----------\n");
-        System.out.println(" ----------- HEROES CLASSES -----------\n");
+        System.out.println(" ********************************************\n");
+        System.out.println(" *********** TESTING SHOW DETAILS ***********\n");
+        System.out.println(" ********************************************\n");
+        System.out.println(" *********** HEROES CLASSES ***********\n\n");
         Receptionist receptionist = HeroCreator.createReceptionist();
         SalesRepresentative salesRepresentative = HeroCreator.createSalesRepresentative();
         Intern intern = HeroCreator.createIntern();
         receptionist.showDetails();
         salesRepresentative.showDetails();
         intern.showDetails();
-        System.out.println(" ----------- CHALLENGES -----------\n");
+        System.out.println(" *********** CHALLENGES ***********\n\n");
         Npc basketGame = NpcCreator.createBasketGame();
         Npc christmasParty = NpcCreator.createChristmasParty();
         Npc rhMeeting = NpcCreator.createRhMeeting();
@@ -36,31 +38,23 @@ public class EntitiesTest {
         recoveringCustomer.showDetails();
 
 
-/*
+        System.out.println(" ****************************************************\n");
+        System.out.println(" *********** TESTING ADD AND DECREMENT HP ***********\n");
+        System.out.println(" ****************************************************\n");
+        Receptionist receptionist2 = HeroCreator.createReceptionist();
 
-        System.out.println(receptionist.getClass().getSimpleName());
-        receptionist.showDetails();
-        receptionist.attack(NpcCreator.createMichaelLunch());
+        System.out.println("INICIAL");
+        System.out.println("Recepcionist Hp: " + receptionist2.getHp());
+        System.out.println("Recepcionist MaxHp: " + receptionist2.getMaxHp());
+        receptionist.addHp(500);
+        System.out.println("\nADICIONADAS 500 HP");
+        System.out.println("Recepcionist Hp: " + receptionist2.getHp());
+        System.out.println("Recepcionist MaxHp: " + receptionist2.getMaxHp());
+        receptionist2.decrementHp(500);
+        System.out.println("\nREMOVIDAS 500 HP");
+        System.out.println("Recepcionist Hp: " + receptionist2.getHp());
+        System.out.println("Recepcionist MaxHp: " + receptionist2.getMaxHp());
 
-
-        salesRepresentative.showDetails();
-        salesRepresentative.attack(NpcCreator.createMichaelLunch());
-
-
-        intern.showDetails();
-        System.out.println();
-        if (intern.attack(NpcCreator.createMichaelLunch())){
-            System.out.println("Parabens, voce venceu");
-        } else{
-            System.out.println("Fim de jogo");
-        }
-
-        Npc npc = NpcCreator.createBasketGame();
-        npc.showDetails();
-
-
-        Weapon weapon = WeaponCreator.createSecretThreat();
-        weapon.showDetails();*/
 
     }
 }
