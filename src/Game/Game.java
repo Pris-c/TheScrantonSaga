@@ -1,25 +1,22 @@
 package Game;
 
 import Entities.*;
-import Game.Helper.ChallengeCreator;
-import Game.Helper.NodeCreator;
-import Game.Helper.RoomCreator;
+import Util.Creator.LabyrinthCreator.ChallengeCreator;
+import Util.Creator.LabyrinthCreator.NodeCreator;
+import Util.Creator.LabyrinthCreator.RoomCreator;
 import Items.CombatConsumable;
 import Items.ItemHero;
 import Items.Potion;
 import Items.Weapon;
-import Util.ItemsCreator.CombatConsumableCreator;
-import Util.ItemsCreator.PotionCreator;
-import Util.ItemsCreator.WeaponCreator;
+import Util.Creator.ItemsCreator.CombatConsumableCreator;
+import Util.Creator.ItemsCreator.PotionCreator;
+import Util.Creator.ItemsCreator.WeaponCreator;
 
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-import static Util.PlotStrings.firstShopkeeperMessage;
-import static Util.PlotStrings.initMessage;
-import static Util.Printer.Printer.printCreationPointsTable;
-import static Util.Printer.Printer.printHeroCreationInfo;
+import static Util.Strings.PlotStrings.*;
 import static Util.Util.*;
 
 public class Game {
@@ -64,7 +61,7 @@ public class Game {
         // TODO: Refactor to another method ?
         cleanScreen();
         while (creationPoints > 0) {
-            printCreationPointsTable();
+            System.out.println(creationPointsTable);
             printHeroCreationInfo(name, creationPoints, strength, hp);
 
             int option = readAndValidateInput("O que deseja adicionar?\n1 - Pontos de força\n2 - Pontos de vida", 1, 2);
@@ -186,7 +183,7 @@ public class Game {
             }
             cleanScreen();
             this.offerPotion(hero);
-             System.out.println("FIM DESAFIO 1");
+            System.out.println("FIM DESAFIO 1");
 
             // TODO: Offer potion
             // TODO: Node 2
@@ -208,7 +205,7 @@ public class Game {
         return false;
     }
 
-    private void offerPotion(Hero hero){
+    private void offerPotion(Hero hero) {
         System.out.println("Antes de seguir em frente, que tal recarregar suas energias com um lanchinho?");
         if (readAndValidateInput("Digite 1 para escolher um lanche.\n\033[3mPara continuar, digite 0. \033[0m", 0, 1) == 1) {
             cleanScreen();
@@ -274,6 +271,16 @@ public class Game {
 
         } while (!validName);
         return name;
+    }
+
+    private void printHeroCreationInfo(String name, int creationPoints, int strength, int hp) {
+        System.out.println("Você possui " + creationPoints + " moedas disponíveis para preparar o seu personagem.");
+        System.out.println("\t\t+-------------------------------------+");
+        System.out.printf(singleTextFormat, "  Jogador: " + name.toUpperCase());
+        System.out.println("\t\t+-------------------------------------+");
+        System.out.printf(singleTextFormat, "   FORÇA : " + strength);
+        System.out.printf(singleTextFormat, "   HP    : " + hp);
+        System.out.println("\t\t+-------------------------------------+\n");
     }
 
 }
