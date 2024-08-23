@@ -122,7 +122,7 @@ public abstract class Hero extends Entity {
         String headerFormat = "| %-31s |\n";
         // Shows CombatConsumables in inventory
         if (this.inventory.isEmpty()) {
-            System.out.println("Infelizmente você não tem favores a cobrar. Terá que lidar com isso sozinho!");
+            System.out.println("Infelizmente você não tem favores a cobrar. Terá que lidar com isso sozinho!\n\n");
             return -1;
         }
 
@@ -135,7 +135,7 @@ public abstract class Hero extends Entity {
                 );
 
         if (consumables.isEmpty()) {
-            System.out.println("Você não tem sido um bom colega e ninguém te deve favor algum. Você terá que lidar com isso sozinho!");
+            System.out.println("Você não tem sido um bom colega e ninguém te deve favor algum.\nVocê terá que lidar com isso sozinho!\n\n");
             return -1;
         }
 
