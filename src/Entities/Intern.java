@@ -1,8 +1,8 @@
 package Entities;
 
-import Util.ItemsCreator.CombatConsumableCreator;
-import Util.ItemsCreator.PotionCreator;
-import Util.ItemsCreator.WeaponCreator;
+import Util.Creator.ItemsCreator.CombatConsumableCreator;
+import Util.Creator.ItemsCreator.PotionCreator;
+import Util.Creator.ItemsCreator.WeaponCreator;
 import Util.Util;
 
 import java.util.ArrayList;

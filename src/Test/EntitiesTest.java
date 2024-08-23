@@ -1,12 +1,8 @@
 package Test;
 
 import Entities.*;
-import Items.CombatConsumable;
 import Test.TestHelper.HeroCreator;
-import Util.ItemsCreator.CombatConsumableCreator;
-import Util.ItemsCreator.NpcCreator;
-import Util.ItemsCreator.PotionCreator;
-import Util.ItemsCreator.WeaponCreator;
+import Util.Creator.ItemsCreator.PotionCreator;
 
 public class EntitiesTest {
 
@@ -84,15 +80,12 @@ public class EntitiesTest {
         internToTestAddConsumable.addConsumableToInventory(PotionCreator.cerealBar());
         internToTestAddConsumable.showDetails();
 */
-/*
         System.out.println(" *********** TESTING USE POTION ***********\n");
         Intern internToTestUsePotion = HeroCreator.createIntern();
         internToTestUsePotion.addConsumableToInventory(PotionCreator.croissant());
         internToTestUsePotion.showDetails();
         System.out.println(" *********** CALLING USE POTION ***********\n\n");
         internToTestUsePotion.usePotion();
-        internToTestUsePotion.showDetails();
-*/
 
 /*
 
@@ -132,6 +125,7 @@ public class EntitiesTest {
         System.out.println("Attack result: " + recepcionist.attack(NpcCreator.createChristmasParty()));
 
 */
+/*
 
         System.out.println(" *******************************************");
         System.out.println(" *********** TESTING SALES REPR. ***********");
@@ -143,6 +137,7 @@ public class EntitiesTest {
 
         System.out.println(" *********** TESTING ATTACK ***********\n");
         System.out.println("Attack result: " + salesRepresentative.attack(NpcCreator.createChristmasParty()));
+*/
 
     }
 }

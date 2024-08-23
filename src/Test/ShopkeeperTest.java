@@ -6,9 +6,9 @@ import Items.ItemHero;
 import Items.Potion;
 import Items.Weapon;
 import Test.TestHelper.HeroCreator;
-import Util.ItemsCreator.CombatConsumableCreator;
-import Util.ItemsCreator.PotionCreator;
-import Util.ItemsCreator.WeaponCreator;
+import Util.Creator.ItemsCreator.CombatConsumableCreator;
+import Util.Creator.ItemsCreator.PotionCreator;
+import Util.Creator.ItemsCreator.WeaponCreator;
 
 import java.util.ArrayList;
 

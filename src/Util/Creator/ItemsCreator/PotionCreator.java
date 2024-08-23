@@ -1,4 +1,4 @@
-package Util.ItemsCreator;
+package Util.Creator.ItemsCreator;
 
 import Items.Potion;
 
