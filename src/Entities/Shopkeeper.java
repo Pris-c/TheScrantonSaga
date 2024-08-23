@@ -20,6 +20,7 @@ public class Shopkeeper {
     }
 
     public void showsStore(Hero hero) {
+        cleanScreen();
         Random random = new Random();
         ArrayList<ItemHero> itensToSell = new ArrayList<>();
         ArrayList<ItemHero> heroItems = this.filterDistinctItemsToHero(hero);
@@ -39,19 +40,21 @@ public class Shopkeeper {
 
         while (nItem != 0) {
 
+            cleanScreen();
             printItemsToSell(itensToSell);
             System.out.println("Você tem " + hero.getGold() + " moedas.");
-            nItem = Util.readAndValidateInput("Informe o número do item para ver os detalhes:", 0, itensToSell.size());
+            nItem = Util.readAndValidateInput("Informe o número do item para ver os detalhes:\n\033[3mPara sair, digite 0. \033[0m", 0, itensToSell.size());
 
             if (nItem > 0) {
+
+                cleanScreen();
                 nItem--;
                 ItemHero item = itensToSell.get(nItem);
                 nItem++;
-
-                cleanScreen();
                 item.showDetails();
 
-                option = Util.readAndValidateInput("Digite 1 para comprar o item.", 0, 1);
+                option = Util.readAndValidateInput("Digite 1 para comprar o item.\n\033[3mPara voltar, digite 0. \033[0m", 0, 1);
+
                 cleanScreen();
                 if (option == 1) {
                     if (this.sell(hero, item)) {
@@ -59,7 +62,6 @@ public class Shopkeeper {
                         hero.showDetails();
                     }
                     readContinue("\n\n\033[3mPressione enter para retornar à loja..\033[0m");
-                    cleanScreen();
                 }
             }
         }
