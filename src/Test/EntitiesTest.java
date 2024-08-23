@@ -18,7 +18,7 @@ public class EntitiesTest {
         System.out.println(" *********** HEROES CLASSES ***********\n\n");
         Receptionist receptionist = HeroCreator.createReceptionist();
         SalesRepresentative salesRepresentative = HeroCreator.createSalesRepresentative();
-        Intern intern = HeroCreator.createIntern();
+
         receptionist.showDetails();
         salesRepresentative.showDetails();
         intern.showDetails();
@@ -98,11 +98,32 @@ public class EntitiesTest {
         internToTestUsePotion.showDetails();
 */
 
+/*
+
         System.out.println(" *********** TESTING INSTANT ATTACK ***********\n");
         Intern internToInstantAttack = HeroCreator.createIntern();
         internToInstantAttack.showDetails();
         System.out.println(" *********** USING ATTACK ***********\n\n");
         System.out.println("Intant attack: " + internToInstantAttack.instantAttack());
+
+*/
+
+
+        System.out.println(" **********************************************");
+        System.out.println(" *********** TESTING INTERN METHODS ***********");
+        System.out.println(" **********************************************\n");
+
+        System.out.println(" *********** TESTING SHOW DETAILS ***********");
+        Intern intern = HeroCreator.createIntern();
+        intern.showDetails();
+
+        System.out.println(" *********** TESTING ATTACK ***********");
+        System.out.println("Attack result: " + intern.attack(NpcCreator.createChristmasParty()));
+
+
+
+
+
 
 
     }
