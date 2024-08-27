@@ -19,7 +19,7 @@ public class RoomStrings {
 
 
     public static String optRoom1 =
-            "Escolha uma opção:\n1 - Para tentar a sorte\n\033[3mDigite 0 para seguir em frente...\033[0m";
+            "Digite 1 para tentar a sorte\n\033[3mDigite 0 para seguir em frente...\033[0m";
 
     public static String intRoom2 =
                     "   _.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._._.-.__.-.\n" +
@@ -36,10 +36,7 @@ public class RoomStrings {
                     " `._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-.._.-.._.-.-.'\n";
 
     public static String optRoom2 =
-            "Escolha uma opção:\n1 - Para consumir a marmita\n\033[3mDigite 0 para seguir em frente...\033[0m";
-
-
-
+            "Digite 1 para consumir a marmita\n\033[3mDigite 0 para seguir em frente...\033[0m";
 
     public static String intRoom3 =
                     "   _.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-.\n" +
@@ -58,6 +55,6 @@ public class RoomStrings {
                     " `._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._,.-._,.-.'\n";
 
     public static String optRoom3 =
-            "Escolha uma opção:\n1 - Para ajudar o Dwight\n\033[3mDigite 0 enter para seguir em frente...\033[0m";
+            "Digite 1 para ajudar o Dwight\n\033[3mDigite 0 enter para seguir em frente...\033[0m";
 
 }
