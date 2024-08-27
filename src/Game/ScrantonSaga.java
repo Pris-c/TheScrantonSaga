@@ -1,39 +1,60 @@
 package Game;
 
 import Entities.*;
-import Util.Creator.LabyrinthCreator.ChallengeCreator;
-import Util.Creator.LabyrinthCreator.NodeCreator;
-import Util.Creator.LabyrinthCreator.RoomCreator;
-import Items.CombatConsumable;
-import Items.ItemHero;
-import Items.Potion;
-import Items.Weapon;
-import Util.Creator.ItemsCreator.CombatConsumableCreator;
-import Util.Creator.ItemsCreator.PotionCreator;
-import Util.Creator.ItemsCreator.WeaponCreator;
+import Game.EnvironmentCreator.NodeCreator;
+import Game.EnvironmentCreator.ShopkeeperCreator;
 
-import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-import static Util.Strings.PlotStrings.*;
+import static Util.Strings.PlotStrings.creationPointsTable;
+import static Util.Strings.PlotStrings.initMessage;
 import static Util.Util.*;
+import static Util.Util.cleanScreen;
 
-public class Game {
+public class ScrantonSaga {
 
-    private final NodeCreator nodeCreator;
-    private final ChallengeCreator challengeCreator;
-    private final RoomCreator roomCreator;
+    NodeCreator nodeCreator;
 
-    public Game() {
+    public ScrantonSaga() {
         this.nodeCreator = new NodeCreator();
-        this.challengeCreator = new ChallengeCreator();
-        this.roomCreator = new RoomCreator();
+    }
+
+    public void theScrantonSaga(){
+        Hero hero;
+
+        // Explain the adventure to the player
+        cleanScreen();
+        System.out.println(initMessage);
+        readContinue();
+
+        hero = createHero();
+        //labyrinth(hero);
+
+    }
+
+
+    // TODO: Change to private
+    public void labyrinth(Hero hero){
+        ShopkeeperCreator.getShopkeeperById(1).run(hero);
+        Node node;
+
+        int newNode = 1;
+        while (newNode > 0){
+            cleanScreen();
+            node = nodeCreator.getNodeById(newNode);
+            newNode = node.run(hero);
+        }
+
+        if (newNode == -1){
+            System.out.println("VOCE PERDEU");
+        } else {
+            System.out.println("PARABENS");
+        }
     }
 
     public Hero createHero() {
         cleanScreen();
-
         int creationPoints;
         int gold;
 
@@ -70,7 +91,7 @@ public class Game {
             switch (option) {
                 case 1:
                     System.out.print("\nQuantidade de pontos de força a adicionar: ");
-                    value = this.readUserInput();
+                    value = this.readValidInputToCreationPoints();
 
                     cleanScreen();
                     if (value > 0) {
@@ -89,7 +110,7 @@ public class Game {
 
                 case 2:
                     System.out.print("\nQuantidade de hp a adicionar: ");
-                    value = this.readUserInput();
+                    value = this.readValidInputToCreationPoints();
 
                     cleanScreen();
                     if (value > 0) {
@@ -132,124 +153,6 @@ public class Game {
         return player;
     }
 
-    public void theScrantonSaga() {
-        // TODO: show logo
-        // TODO: music
-        Shopkeeper shopkeeper = initShopkeeper();
-        Hero hero;
-
-        // Explain the adventure to the player
-        cleanScreen();
-        System.out.println(initMessage);
-        readContinue();
-
-        hero = createHero();
-        labyrinth(hero, shopkeeper);
-
-
-        // Minimun 6 rooms
-        // Minimum 3 chosen situations
-        // After each room, the hero can use one potion or advance:
-        // Print all potion inventory and ask if he wants to use
-        // If some part of cure would not be used, the player must be advised and confirm the usage
-
-
-        // When the player died, it must be shown an option menu:
-        // Play again
-        // Restart game with another Hero
-        // Finish program
-    }
-
-    // TODO: Make private
-    public boolean labyrinth(Hero hero, Shopkeeper shopkeeper) {
-
-        // Find the shopkeeper
-        cleanScreen();
-        System.out.println(firstShopkeeperMessage);
-
-        readContinue("\n\n\033[3mPressione enter para ver os itens disponíveis..\033[0m");
-        cleanScreen();
-        shopkeeper.showsStore(hero);
-
-        // GameNode 1
-        GameNode node1 = this.nodeCreator.createNode1();
-        cleanScreen();
-        if (node1.run() == 1) {
-            // Go to challenge 1
-            cleanScreen();
-            Challenge challenge1 = this.challengeCreator.createChallenge1();
-            if (!challenge1.run(hero)) {
-                return false;
-            }
-            cleanScreen();
-            this.offerPotion(hero);
-            System.out.println("FIM DESAFIO 1");
-
-            // TODO: Offer potion
-            // TODO: Node 2
-        } else {
-            // Go to challenge 2
-            cleanScreen();
-            Challenge challenge2 = this.challengeCreator.createChallenge2();
-            if (!challenge2.run(hero)) {
-                return false;
-            }
-            cleanScreen();
-            this.offerPotion(hero);
-            System.out.println("FIM DESAFIO 2");
-
-
-            // TODO: Challenge 3
-        }
-
-        return false;
-    }
-
-    private void offerPotion(Hero hero) {
-        System.out.println("Antes de seguir em frente, que tal recarregar suas energias com um lanchinho?");
-        if (readAndValidateInput("Digite 1 para escolher um lanche.\n\033[3mPara continuar, digite 0. \033[0m", 0, 1) == 1) {
-            cleanScreen();
-            hero.usePotion();
-        }
-    }
-
-
-    // TODO: Make private
-    public Shopkeeper initShopkeeper() {
-        ArrayList<Weapon> weapons = WeaponCreator.initWeapons();
-        ArrayList<CombatConsumable> combatConsumables = CombatConsumableCreator.initCombatConsumables();
-        ArrayList<Potion> potions = PotionCreator.initPotions();
-
-        ArrayList<ItemHero> shop = new ArrayList<>();
-        shop.addAll(weapons);
-        shop.addAll(combatConsumables);
-        shop.addAll(potions);
-
-        return new Shopkeeper(shop);
-    }
-
-    private int readUserInput() {
-        Scanner input = new Scanner(System.in);
-        int value;
-
-        try {
-            value = input.nextInt();
-            input.nextLine();
-
-            if (value <= 0) {
-                System.out.println("Valor inválido. Tente novamente.");
-                return -1;
-            }
-            return value;
-
-
-        } catch (InputMismatchException e) {
-            System.out.println("Valor inválido. Tente novamente");
-        }
-
-        return -1;
-    }
-
     private String readValidUserName() {
         Scanner input = new Scanner(System.in);
         String name;
@@ -282,5 +185,28 @@ public class Game {
         System.out.printf(singleTextFormat, "   HP    : " + hp);
         System.out.println("\t\t+-------------------------------------+\n");
     }
+
+    private int readValidInputToCreationPoints() {
+        Scanner input = new Scanner(System.in);
+        int value;
+
+        try {
+            value = input.nextInt();
+            input.nextLine();
+
+            if (value <= 0) {
+                System.out.println("Valor inválido. Tente novamente.");
+                return -1;
+            }
+            return value;
+
+
+        } catch (InputMismatchException e) {
+            System.out.println("Valor inválido. Tente novamente");
+        }
+
+        return -1;
+    }
+
 
 }

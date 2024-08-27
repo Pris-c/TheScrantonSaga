@@ -3,43 +3,57 @@ package Game;
 import Entities.Hero;
 import Entities.Npc;
 
-import static Util.Util.*;
+import static Util.Util.cleanScreen;
+import static Util.Util.readContinue;
 
-public class Challenge {
+public class Challenge extends GameEnvironment{
 
-    private Npc enemy;
-    private String introduction;
-    private String victoryMessage;
-    private String defeatMessage;
+    private final Npc enemy;
+    private final String victoryMessage;
+    private final String defeatMessage;
 
-    public Challenge(Npc enemy, String introduction, String victoryMessage, String defeatMessage) {
+
+    public Challenge(int id, String initialMessage,  String victoryMessage, String defeatMessage, Npc enemy) {
+        super(id, initialMessage);
         this.enemy = enemy;
-        this.introduction = introduction;
         this.victoryMessage = victoryMessage;
         this.defeatMessage = defeatMessage;
     }
 
-    public boolean run(Hero hero) {
-        System.out.println(this.introduction);
+    public Challenge(int id, String initialMessage,  String victoryMessage, String defeatMessage, Npc enemy, GameEnvironment nextEnvironment) {
+        super(id, initialMessage, nextEnvironment);
+        this.enemy = enemy;
+        this.victoryMessage = victoryMessage;
+        this.defeatMessage = defeatMessage;
+    }
 
+    @Override
+    public boolean run(Hero hero) {
+        System.out.println(this.initialMessage);
         readContinue();
         cleanScreen();
 
         boolean heroWin = hero.attack(this.enemy);
-        if (!heroWin) {
+        if (!heroWin){
             System.out.println(this.defeatMessage);
-        } else {
-            hero.upgradeLevel(this.enemy);
-            System.out.println(this.victoryMessage);
-            System.out.println("Por ter vencido esse desafio, você subiu para o nível " + hero.getLevel() + ",\n" +
-                    "ganhou 10 pontos de vida e 1 ponto de força!\n");
-
-            int option = readAndValidateInput("Digite 1 para consultar informações do personagem\n\033[3mDigite 0 para continuar..\033[0m", 0, 1);
-            if (option == 1){
-                hero.showDetails();
-                readContinue();
-            }
+            readContinue();
+            return false;
         }
-        return heroWin;
+        hero.upgradeLevel(this.enemy);
+        System.out.println(this.victoryMessage);
+        // TODO: Show upgrade info
+        System.out.println("Você subiu para o nível " + hero.getLevel() + ", ganhou 10 HP,");
+        System.out.println(" 1 ponto de força e " + enemy.getGold() + " moedas!");
+        readContinue();
+        cleanScreen();
+
+        //TODO : Adapt usePotion
+        System.out.println("Que tal reforçar as energias?");
+        hero.usePotion();
+
+        if (this.hasNext){
+            return this.nextEnvironment.run(hero);
+        }
+        return true;
     }
 }
