@@ -89,7 +89,6 @@ public class ChallengeStrings {
                     " ) )  seja tarde demais. Você conseguirá trazer o cliente de volta, ( (\n" +
                     "( (   ou o escritório enfrentará uma crise?                          ) )\n" +
                     " ) )                                                                ( (\n" +
-                    "( (                                                                  ) )\n" +
                     "( (_.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-.) )\n" +
                     " `._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._,.-._,.-._'\n";
 
