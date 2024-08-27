@@ -27,7 +27,7 @@ public class ShopkeeperTest {
     // Copy of private method initShopkeeper from class Game
     public static Shopkeeper initShopkeeper() {
         ArrayList<Weapon> weapons = WeaponCreator.initWeapons();
-        ArrayList<CombatConsumable> combatConsumables = CombatConsumableCreator.initCombatConsumables();
+        ArrayList<CombatConsumable> combatConsumables = CombatConsumableCreator.getCombatConsumables();
         ArrayList<Potion> potions = PotionCreator.initPotions();
 
         ArrayList<ItemHero> shop = new ArrayList<>();
