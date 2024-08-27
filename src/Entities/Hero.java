@@ -67,7 +67,7 @@ public abstract class Hero extends Entity {
                 }
             }
         }
-        System.out.println("+-----------------------------------------------------------------------------+\n");
+        System.out.println("+-----------------------------------------------------------------------------+");
     }
 
     public void usePotion() {
