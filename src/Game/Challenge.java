@@ -41,14 +41,13 @@ public class Challenge extends GameEnvironment{
         }
         hero.upgradeLevel(this.enemy);
         System.out.println(this.victoryMessage);
-        // TODO: Show upgrade info
-        System.out.println("Você subiu para o nível " + hero.getLevel() + ", ganhou 10 HP,");
-        System.out.println(" 1 ponto de força e " + enemy.getGold() + " moedas!");
+        System.out.println("Você subiu para o nível " + hero.getLevel() + " !!");
+        System.out.println("Com isso, você ganhou 10 HP,  1 ponto de força e " + enemy.getGold() + " moedas!");
         readContinue();
         cleanScreen();
 
-        //TODO : Adapt usePotion
-        System.out.println("Que tal reforçar as energias?");
+        System.out.println("Após essa grande vitória, que tal reforçar as energias?");
+        readContinue("Pressione enter para ver as suas opções..");
         hero.usePotion();
 
         if (this.hasNext){
