@@ -7,8 +7,7 @@ import Game.EnvironmentCreator.ShopkeeperCreator;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-import static Util.Strings.PlotStrings.creationPointsTable;
-import static Util.Strings.PlotStrings.initMessage;
+import static Util.Strings.PlotStrings.*;
 import static Util.Util.*;
 import static Util.Util.cleanScreen;
 
@@ -20,22 +19,39 @@ public class ScrantonSaga {
         this.nodeCreator = new NodeCreator();
     }
 
-    public void theScrantonSaga(){
-        Hero hero;
+    public void initGame(){
+        Hero hero = null;
+        int option = -1;
 
-        // Explain the adventure to the player
-        cleanScreen();
-        System.out.println(initMessage);
-        readContinue();
+        System.out.println(title);
+        readContinue("Pressione enter para iniciar o jogo..");
 
-        hero = createHero();
-        //labyrinth(hero);
+        do{
+            if (option != 1){
+                hero = createHero();
+            }
 
+            cleanScreen();
+            System.out.println(initMessage);
+            readContinue();
+            cleanScreen();
+
+            boolean heroWin = labyrinth(hero);
+            if (heroWin){
+                System.out.println(championMessage);
+            } else {
+                System.out.println(loserMessage);
+            }
+            option = readAndValidateInput("O que deseja fazer agora:" +
+                        "\n1 - Jogar novamente com o mesmo personagem" +
+                        "\n2 - Escolher um novo personagem" +
+                        "\n3 - Sair", 1,3);
+
+        } while (option != 3);
     }
 
 
-    // TODO: Change to private
-    public void labyrinth(Hero hero){
+    private boolean labyrinth(Hero hero){
         ShopkeeperCreator.getShopkeeperById(1).run(hero);
         Node node;
 
@@ -46,11 +62,7 @@ public class ScrantonSaga {
             newNode = node.run(hero);
         }
 
-        if (newNode == -1){
-            System.out.println("VOCE PERDEU");
-        } else {
-            System.out.println("PARABENS");
-        }
+        return newNode == 0;
     }
 
     public Hero createHero() {
@@ -79,7 +91,6 @@ public class ScrantonSaga {
         int strength = 1;
         int hp = 20;
 
-        // TODO: Refactor to another method ?
         cleanScreen();
         while (creationPoints > 0) {
             System.out.println(creationPointsTable);
@@ -145,8 +156,10 @@ public class ScrantonSaga {
                 break;
         }
 
-        System.out.println("\nPersonagem criado com sucesso!\n");
-        System.out.println("Confira as características do seu personagem:");
+        System.out.println("\nPersonagem " + player.getName() + " criado com sucesso!");
+        readContinue("Pressione enter para conferir as características do seu personagem:");
+        cleanScreen();
+
         player.showDetails();
         readContinue();
         cleanScreen();
