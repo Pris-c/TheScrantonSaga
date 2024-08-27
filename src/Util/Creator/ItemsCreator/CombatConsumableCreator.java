@@ -74,7 +74,7 @@ public class CombatConsumableCreator {
         );
     }
 
-    public static ArrayList<CombatConsumable> initCombatConsumables() {
+    public static ArrayList<CombatConsumable> getCombatConsumables() {
         return new ArrayList<>(Arrays.asList(createPamHelp(), createAngelaHelp(), createDwightHelp(), createJimHelp(), createRyanHelp(), createPhyllisHelp()));
     }
 }
