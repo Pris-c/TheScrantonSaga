@@ -76,13 +76,14 @@ public class Intern extends Hero {
                 return true;
             }
             System.out.println("Boa! Você tornou as coisas mais fáceis!!");
-
             // Enemy Attack
             enemyStrength = (int) Math.round(enemy.strength * 1.10);
             if (this.decrementHp(enemyStrength) <= 0) {
                 return false;
             }
             System.out.println("Mas você ainda não conseguiu concluir a missão e perdeu " + enemyStrength + " HP.\n");
+            readContinue();
+            cleanScreen();
 
         } while (!endOfFight);
         return false;

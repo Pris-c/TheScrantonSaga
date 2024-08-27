@@ -37,14 +37,15 @@ public class SalesRepresentative extends Hero {
         specialAttack = true;
 
         do {
-            printScoreboard(enemy);
-
             // Enemy Attack
             enemyStrength = (int) Math.round(enemy.strength * 0.8);
             if (this.decrementHp(enemyStrength) <= 0) {
                 return false;
             }
             System.out.println("Você não agiu rápido o suficiente e perdeu " + enemy.getStrength() + " HP.\n");
+            printScoreboard(enemy);
+            readContinue();
+            cleanScreen();
 
             do {
                 printScoreboard(enemy);
@@ -83,6 +84,9 @@ public class SalesRepresentative extends Hero {
                 return true;
             }
             System.out.println("Boa! Você tornou as coisas mais fáceis!\n");
+            printScoreboard(enemy);
+            readContinue();
+            cleanScreen();
 
         } while (!endOfFight);
 

@@ -80,6 +80,8 @@ public class Receptionist extends Hero {
                 return false;
             }
             System.out.println("Mas você ainda não conseguiu concluir a missão e perdeu " + enemy.getStrength() + " HP.\n");
+            readContinue();
+            cleanScreen();
 
         } while (!endOfFight);
         return false;
