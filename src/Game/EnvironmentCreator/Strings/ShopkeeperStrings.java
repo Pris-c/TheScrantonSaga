@@ -6,7 +6,7 @@ public class ShopkeeperStrings {
                     "   _.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-.__.-.\n" +
                     " ,'_.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._`..-\n" +
                     "( (                                                            ) )\n" +
-                    " ) )  \033[3mAgora começa a sua Scranton Saga!\033[0m                       ( (\n" +
+                    " ) )  \033[1mAgora começa a sua Scranton Saga!\033[0m                       ( (\n" +
                     "( (   É o seu primeiro dia e você logo encontra o famoso       ) )\n" +
                     " ) )  armário de suprimentos. Conhecido por ter de tudo,      ( (\n" +
                     "( (   desde papel higiênico até grampeadores, o armário        ) )\n" +
@@ -19,8 +19,8 @@ public class ShopkeeperStrings {
                     " ) )  na manga para escapar do escritório em momentos         ( (\n" +
                     "( (   difíceis nunca é uma má ideia!                           ) )\n" +
                     " ) )                                                          ( (\n" +
-                    "( (   O armário range ao se abrir...                           ) )\n" +
-                    " ) )  \033[3mAlgum dos itens disponíveis te interessa?\033[0m               ( (\n" +
+                    "( (   \033[3mO armário range ao se abrir...\\033[0m                           ) )\n" +
+                    " ) )  \033[1mAlgum dos itens disponíveis te interessa?\033[0m               ( (\n" +
                     "( (                                                            ) )\n" +
                     "( (_.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-.) )\n" +
                     " `._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._,.-.'\n";
@@ -37,9 +37,8 @@ public class ShopkeeperStrings {
                     "( (   perfeita para escapar de uma tarefa indesejada ou um item perdido que     ) )\n" +
                     " ) )  possa render um favor no futuro.                                         ( (\n" +
                     "( (                                                                             ) )\n" +
-                    " ) )  O armário range ao se abrir...                                            ( (\n" +
-                    "( (                                                                              ) )\n" +
-                    " ) )  Algum dos itens disponíveis te interessa?                                 ( (\n" +
+                    " ) )  \033[3mO armário range ao se abrir...\\033[0m                                            ( (\n" +
+                    "( (   \033[1mAlgum dos itens disponíveis te interessa?\033[0m                                  ) )\n" +
                     "( (                                                                              ) )\n" +
                     "( (_.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.) )\n" +
                     " `._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._,.-..-._.-._.-._.-._,'\n";
@@ -57,9 +56,8 @@ public class ShopkeeperStrings {
                     "( (  esquecido que pode ser trocado por uma ajuda preciosa. Sem contar      ) )\n" +
                     " ) )  as desculpas, que podem ser úteis em momentos críticos.              ( (\n" +
                     "( (                                                                         ) )\n" +
-                    " ) )  O armário range ao se abrir...                                       ( (\n" +
-                    "( (                                                                         ) )\n" +
-                    " ) )  Algum dos itens disponíveis te interessa?                            ( (\n" +
+                    " ) )  \033[3mO armário range ao se abrir...\\033[0m                                       ( (\n" +
+                    "( (   \033[1mAlgum dos itens disponíveis te interessa?\033[0m                             ) )\n" +
                     "( (                                                                         ) )\n" +
                     "( (_.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-.-._.-._.-._-._) )\n" +
                     " `._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._,.-.-._.-._.-_,.-'\n";
