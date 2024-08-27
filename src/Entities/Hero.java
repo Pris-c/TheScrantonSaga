@@ -11,13 +11,15 @@ import static Util.Util.*;
 
 public abstract class Hero extends Entity {
 
+    protected int maxHp;
     protected int level;
     protected Weapon mainWeapon;
     protected ArrayList<Consumable> inventory;
 
-    public Hero(String name, int maxHp, int strength, int gold, Weapon mainWeapon, ArrayList<Consumable> inventory) {
-        super(name, maxHp, strength, gold);
+    public Hero(String name, int hp, int strength, int gold, Weapon mainWeapon, ArrayList<Consumable> inventory) {
+        super(name, hp, strength, gold);
         this.level = 1;
+        this.maxHp = hp;
         this.mainWeapon = mainWeapon;
         this.inventory = inventory;
     }
@@ -49,6 +51,7 @@ public abstract class Hero extends Entity {
         super.showDetails();
         System.out.printf(largeDetailFormat, "Nível", this.level);
         System.out.printf(largeDetailFormat, "Arma Principal", this.mainWeapon.getName());
+        System.out.printf(largeDetailFormat, "Hp máximo", this.maxHp);
 
         System.out.println("+-----------------------------------------------------------------------------+");
         System.out.printf(largeTextFormat, " -- Consumíveis -- ");
@@ -64,7 +67,7 @@ public abstract class Hero extends Entity {
                 }
             }
         }
-        System.out.println("+-----------------------------------------------------------------------------+\n\n");
+        System.out.println("+-----------------------------------------------------------------------------+\n");
     }
 
     public void usePotion() {
@@ -108,7 +111,7 @@ public abstract class Hero extends Entity {
 
                     // Increment strength or Hp
                     Potion potionToUse = potions.get(option);
-                    super.addHp(potionToUse.getHealing());
+                    this.incrementHp(potionToUse.getHealing());
                     super.strength += potionToUse.getStrengthIncrement();
                     // Remove potion
                     inventory.remove(potionToUse);
@@ -117,10 +120,11 @@ public abstract class Hero extends Entity {
                     System.out.println("Ótima escolha!\nAgora você está mais preparado para as próximas missões!\n");
 
                     option = readAndValidateInput("Digite 1 para consultar informações da personagem\n\033[3mDigite 0 para continuar..\033[0m", 0, 1);
-                    if (option == 1){
+                    if (option == 1) {
                         this.showDetails();
                         readContinue();
                     }
+                    cleanScreen();
                 }
             }
         }
@@ -133,6 +137,7 @@ public abstract class Hero extends Entity {
         // Shows CombatConsumables in inventory
         if (this.inventory.isEmpty()) {
             System.out.println("Infelizmente você não tem favores a cobrar. Terá que lidar com isso sozinho!\n\n");
+            readContinue();
             return -1;
         }
 
@@ -146,6 +151,7 @@ public abstract class Hero extends Entity {
 
         if (consumables.isEmpty()) {
             System.out.println("Você não tem sido um bom colega e ninguém te deve favor algum.\nVocê terá que lidar com isso sozinho!\n\n");
+            readContinue();
             return -1;
         }
 
@@ -172,11 +178,28 @@ public abstract class Hero extends Entity {
         return -1;
     }
 
-    public void upgradeLevel(Npc enemy){
+    public void upgradeLevel(Npc enemy) {
         this.level += 1;
-        super.addHp(10);
+        this.maxHp += 10;
+        this.hp += 10;
         super.strength += 1;
         super.gold += enemy.gold;
+    }
+
+    public void incremetStrength(int strengthIncrement) {
+        int newStrength = super.strength + strengthIncrement;
+        super.strength = Math.max(newStrength, 100);
+    }
+
+    public void decrementStrength(int strengthDecrement) {
+        int newStrength = super.strength - strengthDecrement;
+        super.strength = Math.max(newStrength, 1);
+    }
+
+    public void incrementHp(int increment) {
+        double incrementTotal = 1 + (increment / 100);
+        int newHp = (int) (super.hp * incrementTotal);
+        super.hp = Math.min(newHp, this.maxHp);
     }
 
     public abstract boolean attack(Npc enemy);
