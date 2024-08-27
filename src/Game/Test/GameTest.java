@@ -9,8 +9,8 @@ public class GameTest {
 
 
         ScrantonSaga game = new ScrantonSaga();
+        game.labyrinth(HeroCreator.createIntern());
         //game.theScrantonSaga();
 
-        game.labyrinth(HeroCreator.createIntern());
     }
 }
