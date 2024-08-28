@@ -75,6 +75,11 @@ public class Shopkeeper extends GameEnvironment{
                 }
             }
         }
+        cleanScreen();
+        int consumeOpt = readAndValidateInput("Deseja consumir algo agora?\n1 - Sim\n0 - Continuar sem consumir nada", 0, 1);
+        if (consumeOpt == 1){
+            hero.usePotion();
+        }
         return true;
     }
 

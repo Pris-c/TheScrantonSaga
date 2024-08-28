@@ -20,14 +20,14 @@ public class ShopkeeperTest {
         shopkeeper1.run(hero);
         System.out.println();
 
-        System.out.println("Shopkeeper 2");
+     /*   System.out.println("Shopkeeper 2");
         shopkeeper2.run(hero);
         System.out.println();
 
         System.out.println("Shopkeeper 3");
         shopkeeper3.run(hero);
         System.out.println();
-
+*/
     }
 
 }
