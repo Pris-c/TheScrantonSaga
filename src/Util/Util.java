@@ -45,7 +45,7 @@ public class Util {
 
     public static void readContinue(String message) {
         Scanner input = new Scanner(System.in);
-        System.out.println("\n\n\033[3m" + message + "\033[0m");
+        System.out.println("\033[3m" + message + "\033[0m");
         input.nextLine();
     }
 
