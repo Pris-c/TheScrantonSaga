@@ -60,11 +60,9 @@ public class Intern extends Hero {
                         break;
                     case 2:
                         decrement = this.strength + this.mainWeapon.getStandardAttack();
-                        //TODO: REMOVE ATTRIBUTE System.out.println(this.mainWeapon.getStandarAttackddescription());
-                        break;
+git                        break;
                     case 3:
                         decrement = this.strength + this.mainWeapon.getSpecialAttack();
-                        //TODO: REMOVE ATTRIBUTE System.out.println(this.mainWeapon.getSpecialAttackdescription());
                         specialAttack = false;
                         break;
                 }
