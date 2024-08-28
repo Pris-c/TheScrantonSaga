@@ -93,7 +93,7 @@ public class Shopkeeper extends GameEnvironment{
             } else {
                 if (item instanceof Weapon) {
                     hero.setMainWeapon((Weapon) item);
-                    System.out.println("Arma Principal atualizada com sucesso!\n");
+                    System.out.println("Instrumento de Poder atualizado com sucesso!\n");
                 } else {
                     Consumable itemC = (Consumable) item;
                     hero.addConsumableToInventory(itemC);

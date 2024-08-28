@@ -56,13 +56,13 @@ public abstract class Hero extends Entity {
         super.showDetails();
         System.out.printf(largeDetailFormat, "Hp máximo", this.maxHp);
         System.out.printf(largeDetailFormat, "Nível", this.level);
-        System.out.printf(largeDetailFormat, "Arma Principal", this.mainWeapon.getName());
-        System.out.printf(detailsWeaponFormat, "Ataque comum:", this.mainWeapon.getStandardAttack());
-        System.out.printf(detailsWeaponFormat, "Ataque especial:", this.mainWeapon.getSpecialAttack());
+        System.out.printf(largeDetailFormat, "Instrumento de Poder", this.mainWeapon.getName());
+        System.out.printf(detailsWeaponFormat, "Manobra Comum:", this.mainWeapon.getStandardAttack());
+        System.out.printf(detailsWeaponFormat, "Enfrentamento Criativo:", this.mainWeapon.getSpecialAttack());
 
 
         System.out.println("+-----------------------------------------------------------------------------+");
-        System.out.printf(largeTextFormat, " -- Consumíveis -- ");
+        System.out.printf(largeTextFormat, " -- Suplementos -- ");
         System.out.println("+-----------------------------------------------------------------------------+");
         if (inventory.isEmpty()) {
             System.out.printf(largeTextFormat, "Nenhum consumível disponível");

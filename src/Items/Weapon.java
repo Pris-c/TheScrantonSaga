@@ -22,8 +22,8 @@ public class Weapon extends ItemHero {
         System.out.printf(headerFormat, super.name.toUpperCase());
         System.out.println("+---------------------------------+");
 
-        System.out.printf(format, "Ataque comum:", this.standardAttack);
-        System.out.printf(format, "Ataque especial:", this.specialAttack);
+        System.out.printf(format, "Uso Comum:", this.standardAttack);
+        System.out.printf(format, "Uso Criativo:", this.specialAttack);
         System.out.printf(format, "Preço:", this.price);
         System.out.println("+---------------------------------+\n");
     }
