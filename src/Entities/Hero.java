@@ -4,6 +4,7 @@ import Items.CombatConsumable;
 import Items.Consumable;
 import Items.Potion;
 import Items.Weapon;
+import Util.Util;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -208,12 +209,12 @@ public abstract class Hero extends Entity {
 
     public void incrementHp(int hp) {
         int newHp = this.hp + hp;
-        if (newHp > maxHp){
+        if (newHp > maxHp) {
             cleanScreen();
-            System.out.println("Seu teto de pontos de vida é " + this.maxHp +".");
+            System.out.println("Seu teto de pontos de vida é " + this.maxHp + ".");
             System.out.println("Ao usar esta poção, perderá o excedente de " + (newHp + maxHp) + "pontos.");
             int option = readAndValidateInput("Deseja continuar?\n1 - Sim\n0 - Cancelar", 0, 1);
-            if (option == 1){
+            if (option == 1) {
                 super.hp = maxHp;
             }
             return;
@@ -221,7 +222,7 @@ public abstract class Hero extends Entity {
         super.hp = newHp;
     }
 
-    public String getHeroAttackMessage(){
+    public String getHeroAttackMessage() {
         ArrayList<String> attackMessages = new ArrayList<>(List.of(
                 "Seu plano funcionou muito bem! O desafio está enfraquecido.",
                 "Você avançou com firmeza e fez um bom progresso!",
@@ -231,7 +232,8 @@ public abstract class Hero extends Entity {
         ));
         return attackMessages.get(rd.nextInt(0, attackMessages.size()));
     }
-    public String getEnemyAttackMessage(){
+
+    public String getEnemyAttackMessage() {
         ArrayList<String> enemyAttackMessages = new ArrayList<>(List.of(
                 "Parece que você se atrapalhou... Isso custou alguns pontos de energia.",
                 "O desafio te pegou desprevenido. Sua confiança está um pouco abalada.",
@@ -242,7 +244,75 @@ public abstract class Hero extends Entity {
         return enemyAttackMessages.get(rd.nextInt(0, enemyAttackMessages.size()));
     }
 
+    protected int heroAttack(Npc enemy, boolean specialAttackAvailable) {
+        int decrement = 0;
+        boolean done;
+        int option;
+
+        do {
+            done = true;
+            printScoreboard(enemy);
+            if (specialAttackAvailable) {
+                String message = "\nEscolha como lidar com essa situação:\n1 - Pedir Ajuda de um Colega\n2 - Lidar Pessoalmente \n3 - Apostar em uma Estratégia Criativa";
+                option = Util.readAndValidateInput(message, 1, 3);
+            } else {
+                String message = "Escolha como lidar com essa situação:\n1 - Pedir Ajuda de um Colega\n2 - Lidar Pessoalmente";
+                option = Util.readAndValidateInput(message, 1, 2);
+            }
+
+            cleanScreen();
+            switch (option) {
+                case 1:
+                    int instantAttack = this.instantAttack();
+                    if (instantAttack != -1) {
+                        decrement = instantAttack;
+                    } else {
+                        done = false;
+                    }
+                    break;
+                case 2:
+                    decrement = this.strength + this.mainWeapon.getStandardAttack();
+                    break;
+                case 3:
+                    decrement = this.strength + this.mainWeapon.getSpecialAttack();
+                    break;
+            }
+
+            cleanScreen();
+        } while (!done);
+        enemy.decrementHp(decrement);
+        System.out.println(this.getHeroAttackMessage());
+        readContinue();
+        cleanScreen();
+        return option;
+    }
+
+    protected boolean enemyAttack(Npc enemy, double enemyStrengthAdjust){
+        int enemyStrength = (int) Math.round(enemy.strength * enemyStrengthAdjust);
+        if (this.decrementHp(enemyStrength) <= 0) {
+            return false;
+        }
+        System.out.println(this.getEnemyAttackMessage());
+        readContinue();
+        cleanScreen();
+        return true;
+    }
 
 
     public abstract boolean attack(Npc enemy);
+
+    private void printScoreboard(Npc enemy) {
+        String headerFormat = "\t| %-16s | %-16s |\n";
+        String scoreFormat = "\t| %16d | %16d |\n";
+
+        String scoreboard =
+                "\t+------------------+------------------+\n" +
+                        "\t|           PLACAR                    |\n" +
+                        "\t+------------------+------------------+\n" +
+                        String.format(headerFormat, "Herói", "Missão") +
+                        "\t+------------------+------------------+\n" +
+                        String.format(scoreFormat, this.hp, enemy.hp) +
+                        "\t+------------------+------------------+\n\n";
+        System.out.println(scoreboard);
+    }
 }
