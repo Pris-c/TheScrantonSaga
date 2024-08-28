@@ -157,7 +157,7 @@ public class ScrantonSaga {
         }
 
         System.out.println("\nPersonagem " + player.getName() + " criado com sucesso!");
-        readContinue("Pressione enter para conferir as características do seu personagem:");
+        readContinue("Pressione enter para conferir as características do seu personagem..");
         cleanScreen();
 
         player.showDetails();
