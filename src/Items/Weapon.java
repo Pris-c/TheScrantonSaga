@@ -6,15 +6,11 @@ public class Weapon extends ItemHero {
 
     private int standardAttack;
     private int specialAttack;
-    private String standarAttackddescription;
-    private String specialAttackdescription;
 
-    public Weapon(String name, int price, ArrayList<String> allowedTo, int standardAttack, int specialAttack, String standarAttackddescription, String specialAttackdescription) {
+    public Weapon(String name, int price, ArrayList<String> allowedTo, int standardAttack, int specialAttack) {
         super(name, price, allowedTo);
         this.standardAttack = standardAttack;
         this.specialAttack = specialAttack;
-        this.standarAttackddescription = standarAttackddescription;
-        this.specialAttackdescription = specialAttackdescription;
     }
 
     @Override
@@ -30,14 +26,6 @@ public class Weapon extends ItemHero {
         System.out.printf(format, "Ataque especial:", this.specialAttack);
         System.out.printf(format, "Preço:", this.price);
         System.out.println("+---------------------------------+\n");
-    }
-
-    public String getStandarAttackddescription() {
-        return standarAttackddescription;
-    }
-
-    public String getSpecialAttackdescription() {
-        return specialAttackdescription;
     }
 
     public int getStandardAttack() {
