@@ -64,7 +64,39 @@ public class PlotStrings {
                      \tele acaba sofrendo 10% a mais de impacto do que outros personagens, tornando-o mais suscetível às dificuldades.
                     """;
 
-
+    public static String aboutGameElement =
+            """
+                    \033[1m1 - Elementos do Personagem\033[0m\s
+                    
+                    \033[1mHP Atual\033[0m
+                    \tA quantidade de pontos de vida que seu personagem possui no momento. Durante o jogo, você pode perder HP em desafios
+                    \tou recuperá-lo utilizando itens de recuperação e salas da sorte.\s
+                     
+                    \033[1mHP Máximo\033[0m
+                    \tO número máximo de pontos de vida que seu personagem pode ter. Ele é definido no inicio do jogo e aumentado após cada
+                    \t desafio vencido. Aumentar seu HP máximo permite que você suporte mais danos durante os desafios.
+                     
+                    \033[1mForça\033[0m
+                    \tRepresenta o poder de ataque do seu personagem. A força é somada ao poder do seu Instrumento de Poder em cada ataque.
+                    \tQuanto maior for sua força, mais eficaz será seu ataque.\s
+                     
+                    \033[1mMoedas\033[0m
+                    \tSão os recursos que você possui para adquirir itens no Armário de Suprimentos. Use moedas para comprar 
+                    \tnovos Instrumentos de Poder, Ajuda Extra e Recursos Adicionais que ajudarão em seus desafios.
+                     
+                    \033[1mNível\033[0m
+                    \tMostra o progresso do seu personagem. A cada desafio vencido, você sobe de nível, o que pode desbloquear 
+                    \tnovas habilidades ou benefícios.
+                    
+                    \033[1mInstrumento de Poder\033[0m
+                    O item que fortalece seus ataques. A força do Instrumento de Poder é combinada com sua própria força para determinar 
+                    o total de dano em cada ataque. Lembre-se, você pode usar a Estratégia Criativa uma vez por desafio para causar um grande impacto.
+                    
+                    \033[1mSuplementos\033[0m
+                    São itens que oferecem benefícios adicionais. As "AJUDAS" proporcionam um ataque instantâneo com força especial, substituindo
+                    temporariamente sua força normal. Já os "LANCHES" aumentam seus pontos de vida e/ou força, ajudando a enfrentar os desafios com
+                    mais eficácia.
+                    """;
 
 
 
