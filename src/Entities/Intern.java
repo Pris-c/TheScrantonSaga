@@ -41,10 +41,10 @@ public class Intern extends Hero {
                 printScoreboard(enemy);
                 next = true;
                 if (specialAttack) {
-                    String message = "\nEscolha como lidar com essa situação:\n1 - Pedir Ajuda de um Colega.\n2 - Lidar com a Situação Pessoalmente \n3 - Apostar em uma Estratégia Criativa";
+                    String message = "\nEscolha como lidar com essa situação:\n1 - Pedir Ajuda de um Colega.\n2 - Lidar Pessoalmente \n3 - Apostar em uma Estratégia Criativa";
                     option = Util.readAndValidateInput(message, 1, 3);
                 } else {
-                    String message = "Escolha como lidar com essa situação:\n1 - Pedir Ajuda de um Colega.\n2 - Lidar com a Situação Pessoalmente";
+                    String message = "Escolha como lidar com essa situação:\n1 - Pedir Ajuda de um Colega.\n2 - Lidar Pessoalmente";
                     option = Util.readAndValidateInput(message, 1, 2);
                 }
 
