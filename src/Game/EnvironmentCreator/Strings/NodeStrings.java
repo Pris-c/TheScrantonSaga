@@ -68,7 +68,7 @@ public class NodeStrings {
 
 
     public static String optNode3 =
-            "Escolha uma opção:\n1 - Para procurar um lanchinho no refrigerador.\n2 - Para entrar na sala de reniões";
+            "Escolha uma opção:\n1 - Para procurar um lanchinho no refrigerador.\n2 - Para entrar na sala de reuniões";
 
 
 
