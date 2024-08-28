@@ -38,6 +38,7 @@ public class Room extends GameEnvironment {
         System.out.println(this.initialMessage);
 
         int option = -1;
+        int option2 = -1;
         while(option != 0){
             option = readAndValidateInput(this.questionToPlayer, 0, 1);
             cleanScreen();
@@ -47,8 +48,8 @@ public class Room extends GameEnvironment {
                     System.out.println("Você ganhou " + this.hpIncrement + " HP e " + this.strengthIncrement + " pontos de força.\n");
                     hero.incrementHp(this.hpIncrement);
                     hero.incrementStrength(this.strengthIncrement);
-                    option = readAndValidateInput("Digite 1 para consultar suas informações.\n\033[3mDigite 0 para continuar..\033[0m", 0, 1);
-                    if (option == 1){
+                    option2 = readAndValidateInput("Digite 1 para consultar suas informações.\n\033[3mDigite 0 para continuar..\033[0m", 0, 1);
+                    if (option2 == 1){
                         hero.showDetails();
                         readContinue();
                         cleanScreen();
