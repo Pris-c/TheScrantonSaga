@@ -19,7 +19,7 @@ public class ShopkeeperStrings {
                     " ) )  na manga para escapar do escritório em momentos         ( (\n" +
                     "( (   difíceis nunca é uma má ideia!                           ) )\n" +
                     " ) )                                                          ( (\n" +
-                    "( (   \033[3mO armário range ao se abrir...\\033[0m                           ) )\n" +
+                    "( (   \033[3mO armário range ao se abrir...\033[0m                           ) )\n" +
                     " ) )  \033[1mAlgum dos itens disponíveis te interessa?\033[0m               ( (\n" +
                     "( (                                                            ) )\n" +
                     "( (_.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-.) )\n" +
@@ -37,7 +37,7 @@ public class ShopkeeperStrings {
                     "( (   perfeita para escapar de uma tarefa indesejada ou um item perdido que     ) )\n" +
                     " ) )  possa render um favor no futuro.                                         ( (\n" +
                     "( (                                                                             ) )\n" +
-                    " ) )  \033[3mO armário range ao se abrir...\\033[0m                                            ( (\n" +
+                    " ) )  \033[3mO armário range ao se abrir...\033[0m                                            ( (\n" +
                     "( (   \033[1mAlgum dos itens disponíveis te interessa?\033[0m                                  ) )\n" +
                     "( (                                                                              ) )\n" +
                     "( (_.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.) )\n" +
@@ -56,7 +56,7 @@ public class ShopkeeperStrings {
                     "( (  esquecido que pode ser trocado por uma ajuda preciosa. Sem contar      ) )\n" +
                     " ) )  as desculpas, que podem ser úteis em momentos críticos.              ( (\n" +
                     "( (                                                                         ) )\n" +
-                    " ) )  \033[3mO armário range ao se abrir...\\033[0m                                       ( (\n" +
+                    " ) )  \033[3mO armário range ao se abrir...\033[0m                                       ( (\n" +
                     "( (   \033[1mAlgum dos itens disponíveis te interessa?\033[0m                             ) )\n" +
                     "( (                                                                         ) )\n" +
                     "( (_.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-.-._.-._.-._-._) )\n" +
