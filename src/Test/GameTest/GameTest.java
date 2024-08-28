@@ -1,7 +1,6 @@
-package Game.Test;
+package Test.GameTest;
 
 import Game.ScrantonSaga;
-import Test.TestHelper.HeroCreator;
 
 public class GameTest {
 

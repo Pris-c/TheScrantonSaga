@@ -1,11 +1,9 @@
-package Game.Test;
+package Test.GameTest;
 
 import Entities.Hero;
 import Game.Challenge;
-import Game.EnvironmentCreator.ChallengeCreator;
-import Game.EnvironmentCreator.ShopkeeperCreator;
+import Util.Creator.EnvironmentCreator.ChallengeCreator;
 import Test.TestHelper.HeroCreator;
-import Util.Creator.EntityCreator.NpcCreator;
 
 public class ChallengeTest {
 

@@ -1,11 +1,11 @@
-package Game.Test;
+package Test.GameTest;
 
-import static Game.EnvironmentCreator.Strings.ChallengeStrings.*;
-import static Game.EnvironmentCreator.Strings.ChallengeStrings.victoryMessageC2;
-import static Game.EnvironmentCreator.Strings.NodeStrings.*;
-import static Game.EnvironmentCreator.Strings.RoomStrings.*;
-import static Game.EnvironmentCreator.Strings.ShopkeeperStrings.*;
-import static Util.Strings.PlotStrings.*;
+import static Util.Strings.EnvironmentStrings.ChallengeStrings.*;
+import static Util.Strings.EnvironmentStrings.ChallengeStrings.victoryMessageC2;
+import static Util.Strings.EnvironmentStrings.NodeStrings.*;
+import static Util.Strings.EnvironmentStrings.RoomStrings.*;
+import static Util.Strings.EnvironmentStrings.ShopkeeperStrings.*;
+import static Util.Strings.GeneralStrings.*;
 
 public class EnvironmentStringsTest {
 

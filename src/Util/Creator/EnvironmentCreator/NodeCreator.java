@@ -1,12 +1,11 @@
-package Game.EnvironmentCreator;
+package Util.Creator.EnvironmentCreator;
 
-import Entities.Hero;
 import Game.Node;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static Game.EnvironmentCreator.Strings.NodeStrings.*;
+import static Util.Strings.EnvironmentStrings.NodeStrings.*;
 
 public class NodeCreator {
 

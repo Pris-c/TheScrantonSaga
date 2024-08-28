@@ -1,6 +1,6 @@
-package Game.Test;
+package Test.GameTest;
 
-import Game.EnvironmentCreator.NodeCreator;
+import Util.Creator.EnvironmentCreator.NodeCreator;
 import Game.Node;
 import Test.TestHelper.HeroCreator;
 

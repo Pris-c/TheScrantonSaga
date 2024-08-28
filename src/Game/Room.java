@@ -4,7 +4,7 @@ import Entities.Hero;
 
 import java.util.Random;
 
-import static Game.EnvironmentCreator.Strings.RoomStrings.defeatRoom;
+import static Util.Strings.EnvironmentStrings.RoomStrings.defeatRoom;
 import static Util.Util.*;
 
 public class Room extends GameEnvironment {

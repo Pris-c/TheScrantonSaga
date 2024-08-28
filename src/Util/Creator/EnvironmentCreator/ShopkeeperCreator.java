@@ -1,8 +1,8 @@
-package Game.EnvironmentCreator;
+package Util.Creator.EnvironmentCreator;
 
 import Game.Shopkeeper;
 
-import static Game.EnvironmentCreator.Strings.ShopkeeperStrings.*;
+import static Util.Strings.EnvironmentStrings.ShopkeeperStrings.*;
 
 public class ShopkeeperCreator {
 

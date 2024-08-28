@@ -1,11 +1,10 @@
-package Game.EnvironmentCreator;
+package Util.Creator.EnvironmentCreator;
 
 
 import Game.Challenge;
 import Util.Creator.EntityCreator.NpcCreator;
 
-import static Game.EnvironmentCreator.Strings.ChallengeStrings.*;
-import static Util.Strings.PlotStrings.*;
+import static Util.Strings.EnvironmentStrings.ChallengeStrings.*;
 
 public class ChallengeCreator {
 

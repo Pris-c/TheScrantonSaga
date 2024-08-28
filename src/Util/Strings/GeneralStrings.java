@@ -1,6 +1,6 @@
 package Util.Strings;
 
-public class PlotStrings {
+public class GeneralStrings {
 
     public static String title =
                     "\n" +

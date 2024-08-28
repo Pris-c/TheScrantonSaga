@@ -1,7 +1,7 @@
-package Game.Test;
+package Test.GameTest;
 
 import Entities.Hero;
-import Game.EnvironmentCreator.RoomCreator;
+import Util.Creator.EnvironmentCreator.RoomCreator;
 import Game.Room;
 import Test.TestHelper.HeroCreator;
 

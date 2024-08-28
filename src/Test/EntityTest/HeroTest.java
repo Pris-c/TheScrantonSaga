@@ -1,4 +1,4 @@
-package Entities.Test;
+package Test.EntityTest;
 
 import Entities.Hero;
 import Test.TestHelper.HeroCreator;

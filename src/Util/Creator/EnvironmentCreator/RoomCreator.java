@@ -1,9 +1,8 @@
-package Game.EnvironmentCreator;
+package Util.Creator.EnvironmentCreator;
 
 import Game.Room;
 
-import static Game.EnvironmentCreator.Strings.RoomStrings.*;
-import static Util.Strings.PlotStrings.*;
+import static Util.Strings.EnvironmentStrings.RoomStrings.*;
 
 public class RoomCreator {
 

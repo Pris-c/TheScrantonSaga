@@ -5,13 +5,13 @@ import Entities.Hero;
 import Entities.Intern;
 import Entities.Receptionist;
 import Entities.SalesRepresentative;
-import Game.EnvironmentCreator.NodeCreator;
-import Game.EnvironmentCreator.ShopkeeperCreator;
+import Util.Creator.EnvironmentCreator.NodeCreator;
+import Util.Creator.EnvironmentCreator.ShopkeeperCreator;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-import static Util.Strings.PlotStrings.*;
+import static Util.Strings.GeneralStrings.*;
 import static Util.Util.*;
 
 public class ScrantonSaga {

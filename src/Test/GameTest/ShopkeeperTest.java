@@ -1,10 +1,10 @@
-package Game.Test;
+package Test.GameTest;
 
 import Entities.Hero;
 import Game.Shopkeeper;
 import Test.TestHelper.HeroCreator;
 
-import static Game.EnvironmentCreator.ShopkeeperCreator.getShopkeeperById;
+import static Util.Creator.EnvironmentCreator.ShopkeeperCreator.getShopkeeperById;
 
 public class ShopkeeperTest {
 

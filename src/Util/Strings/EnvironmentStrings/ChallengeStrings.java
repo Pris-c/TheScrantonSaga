@@ -1,4 +1,4 @@
-package Game.EnvironmentCreator.Strings;
+package Util.Strings.EnvironmentStrings;
 
 public class ChallengeStrings {
 
