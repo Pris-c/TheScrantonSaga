@@ -3,6 +3,9 @@ package Game.EnvironmentCreator;
 import Entities.Hero;
 import Game.Node;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static Game.EnvironmentCreator.Strings.NodeStrings.*;
 
 public class NodeCreator {
@@ -14,8 +17,10 @@ public class NodeCreator {
                         1,
                         intNode1,
                         optNode1,
-                        ChallengeCreator.getInstance().getById(1),
-                        ChallengeCreator.getInstance().getById(2),
+                        new ArrayList<>(List.of(ChallengeCreator.getInstance().getById(1))),
+                        new ArrayList<>(List.of(
+                                ChallengeCreator.getInstance().getById(2),
+                                ChallengeCreator.getInstance().getById(1))),
                         2,
                         2
                 );
@@ -24,8 +29,13 @@ public class NodeCreator {
                         2,
                         intNode2,
                         optNode2,
-                        ChallengeCreator.getInstance().getById(3),
-                        RoomCreator.getInstance().getById(1),
+                        new ArrayList<>(List.of(
+                                ChallengeCreator.getInstance().getById(3),
+                                ShopkeeperCreator.getShopkeeperById(2))),
+                        new ArrayList<>(List.of(
+                                RoomCreator.getInstance().getById(1),
+                                ChallengeCreator.getInstance().getById(3),
+                                ShopkeeperCreator.getShopkeeperById(2))),
                         3,
                         3
                 );
@@ -34,8 +44,12 @@ public class NodeCreator {
                         3,
                         intNode3,
                         optNode3,
-                        RoomCreator.getInstance().getById(2),
-                        ChallengeCreator.getInstance().getById(5),
+                        new ArrayList<>(List.of(
+                                RoomCreator.getInstance().getById(2),
+                                ChallengeCreator.getInstance().getById(4),
+                                ChallengeCreator.getInstance().getById(6))),
+                        new ArrayList<>(List.of(
+                                ChallengeCreator.getInstance().getById(5))),
                         5,
                         4
                 );
@@ -44,17 +58,23 @@ public class NodeCreator {
                         4,
                         intNode4,
                         optNode4,
-                        ChallengeCreator.getInstance().getById(6),
-                        RoomCreator.getInstance().getById(3),
-                        0,
-                        0);
+                        new ArrayList<>(List.of(
+                                ChallengeCreator.getInstance().getById(6))),
+                        new ArrayList<>(List.of(
+                                RoomCreator.getInstance().getById(3),
+                                ChallengeCreator.getInstance().getById(6))),
+                        5,
+                        5);
             case 5:
                 return new Node(
                         5,
-                        intNode4,
-                        optNode4,
-                        ShopkeeperCreator.getShopkeeperById(3),
-                        ChallengeCreator.getInstance().getById(7),
+                        intNode5,
+                        optNode5,
+                        new ArrayList<>(List.of(
+                                ShopkeeperCreator.getShopkeeperById(3),
+                                ChallengeCreator.getInstance().getById(7))),
+                        new ArrayList<>(List.of(
+                                ChallengeCreator.getInstance().getById(7))),
                         0,
                         0);
             default:
