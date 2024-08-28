@@ -199,12 +199,13 @@ public class ScrantonSaga {
     }
 
     private void printHeroCreationInfo(String name, int creationPoints, int strength, int hp) {
+        String textFormat = "\t\t| %-35s |\n";
         System.out.println("Você possui " + creationPoints + " moedas disponíveis para preparar o seu personagem.");
         System.out.println("\t\t+-------------------------------------+");
-        System.out.printf(singleTextFormat, "  Jogador: " + name.toUpperCase());
+        System.out.printf(textFormat, "  Jogador: " + name.toUpperCase());
         System.out.println("\t\t+-------------------------------------+");
-        System.out.printf(singleTextFormat, "   FORÇA : " + strength);
-        System.out.printf(singleTextFormat, "   HP    : " + hp);
+        System.out.printf(textFormat, "   FORÇA : " + strength);
+        System.out.printf(textFormat, "   HP    : " + hp);
         System.out.println("\t\t+-------------------------------------+\n");
     }
 
