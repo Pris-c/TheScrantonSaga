@@ -19,7 +19,7 @@ public class Intern extends Hero {
     @Override
     public void showDetails() {
         System.out.println("+-----------------------------------------------------------------------------+");
-        System.out.printf(largeTextFormat, "                           DETALHES ESTAGIÁRIO");
+        System.out.printf(largeTextFormat, "                      ESTAGIÁRIO");
         System.out.println("+-----------------------------------------------------------------------------+");
         System.out.printf(largeDetailFormat, "Nome", super.name);
         super.showDetails();
@@ -41,10 +41,10 @@ public class Intern extends Hero {
                 printScoreboard(enemy);
                 next = true;
                 if (specialAttack) {
-                    String message = "\nEscolha como lidar com essa situação:\n1 - Utilizar ajuda de um colega que te deve um favor.\n2 - Utilizar seus próprios meios para cumprir a missão \n3 - Utilizar seus próprios meios com energia extra";
+                    String message = "\nEscolha como lidar com essa situação:\n1 - Pedir Ajuda de um Colega.\n2 - Lidar com a Situação Pessoalmente \n3 - Apostar em uma Estratégia Criativa";
                     option = Util.readAndValidateInput(message, 1, 3);
                 } else {
-                    String message = "Escolha como lidar com essa situação:\n1 - Utilizar ajuda de um colega que te deve um favor.\n2 - Utilizar seus próprios meios para cumprir a missão";
+                    String message = "Escolha como lidar com essa situação:\n1 - Pedir Ajuda de um Colega.\n2 - Lidar com a Situação Pessoalmente";
                     option = Util.readAndValidateInput(message, 1, 2);
                 }
 
@@ -73,13 +73,13 @@ public class Intern extends Hero {
             if (enemy.decrementHp(decrement) <= 0) {
                 return true;
             }
-            System.out.println("Boa! Você tornou as coisas mais fáceis!!");
+            System.out.println(super.getHeroAttackMessage());
             // Enemy Attack
             enemyStrength = (int) Math.round(enemy.strength * 1.10);
             if (this.decrementHp(enemyStrength) <= 0) {
                 return false;
             }
-            System.out.println("Mas você ainda não conseguiu concluir a missão e perdeu " + enemyStrength + " HP.\n");
+            System.out.println(super.getEnemyAttackMessage());
             readContinue();
             cleanScreen();
 

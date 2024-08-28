@@ -6,6 +6,8 @@ import Items.Potion;
 import Items.Weapon;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 import static Util.Util.*;
 
@@ -15,9 +17,11 @@ public abstract class Hero extends Entity {
     protected int level;
     protected Weapon mainWeapon;
     protected ArrayList<Consumable> inventory;
+    protected Random rd;
 
     public Hero(String name, int hp, int strength, int gold, Weapon mainWeapon, ArrayList<Consumable> inventory) {
         super(name, hp, strength, gold);
+        this.rd = new Random();
         this.level = 1;
         this.maxHp = hp;
         this.mainWeapon = mainWeapon;
@@ -207,6 +211,29 @@ public abstract class Hero extends Entity {
         int newHp = (int) (super.hp * incrementTotal);
         super.hp = Math.min(newHp, this.maxHp);
     }
+
+    public String getHeroAttackMessage(){
+        ArrayList<String> attackMessages = new ArrayList<>(List.of(
+                "Seu plano funcionou muito bem! O desafio está enfraquecido.",
+                "Você avançou com firmeza e fez um bom progresso!",
+                "Uma jogada certeira! O desafio está começando a ser vencido.",
+                "Você encontrou uma boa estratégia e reduziu a pressão!",
+                "Com essa ação, o desafio perdeu força. Continue assim!"
+        ));
+        return attackMessages.get(rd.nextInt(0, attackMessages.size()));
+    }
+    public String getEnemyAttackMessage(){
+        ArrayList<String> enemyAttackMessages = new ArrayList<>(List.of(
+                "Parece que você se atrapalhou... Isso custou alguns pontos de energia.",
+                "O desafio te pegou desprevenido. Sua confiança está um pouco abalada.",
+                "A missão está mais difícil do que parecia... Você perdeu terreno.",
+                "A missão está difícil. Você sente o peso do escritório se intensificar.",
+                "Um erro estratégico... Isso te deixou um pouco mais cansado."
+        ));
+        return enemyAttackMessages.get(rd.nextInt(0, enemyAttackMessages.size()));
+    }
+
+
 
     public abstract boolean attack(Npc enemy);
 }
