@@ -48,10 +48,14 @@ public abstract class Hero extends Entity {
 
     @Override
     public void showDetails() {
+        String detailsWeaponFormat = "|                             %-17s : %-27s |\n";
         super.showDetails();
+        System.out.printf(largeDetailFormat, "Hp máximo", this.maxHp);
         System.out.printf(largeDetailFormat, "Nível", this.level);
         System.out.printf(largeDetailFormat, "Arma Principal", this.mainWeapon.getName());
-        System.out.printf(largeDetailFormat, "Hp máximo", this.maxHp);
+        System.out.printf(detailsWeaponFormat, "Ataque comum:", this.mainWeapon.getStandardAttack());
+        System.out.printf(detailsWeaponFormat, "Ataque especial:", this.mainWeapon.getSpecialAttack());
+
 
         System.out.println("+-----------------------------------------------------------------------------+");
         System.out.printf(largeTextFormat, " -- Consumíveis -- ");
@@ -77,6 +81,7 @@ public abstract class Hero extends Entity {
             System.out.println("+---------------------------------+");
             System.out.printf(headerFormat, "INVENTÁRIO VAZIO");
             System.out.println("+---------------------------------+\n");
+            readContinue();
         } else {
             // Filter potions in inventory
             ArrayList<Potion> potions =
@@ -90,22 +95,23 @@ public abstract class Hero extends Entity {
                 System.out.println("+---------------------------------+");
                 System.out.printf(headerFormat, "NENHUMA POÇÃO DISPONÍVEL");
                 System.out.println("+---------------------------------+\n");
+                readContinue();
             } else {
                 // Show potions
                 System.out.println("\n+---------------------------------+");
                 System.out.printf(headerFormat, "POÇÕES DISPONÍVEIS");
-                System.out.println("+---------------------------------+\n");
+                System.out.println("+---------------------------------+");
 
                 for (int i = 0; i < potions.size(); i++) {
                     System.out.printf(headerFormat, "# " + (i + 1));
-                    potions.get(i).showDetails();
+                    potions.get(i).offerPotion();
                 }
                 System.out.println();
 
 
                 // Read and validate an option
-                int option = readAndValidateInput("Escolha a poção a utilizar:\n\033[3mPara voltar, digite 0. \033[0m", 0, potions.size());
-
+                int option = readAndValidateInput("Escolha a poção a utilizar:\n\033[3mPara seguir, digite 0. \033[0m", 0, potions.size());
+                cleanScreen();
                 if (option != 0) {
                     option--;
 
@@ -186,9 +192,9 @@ public abstract class Hero extends Entity {
         super.gold += enemy.gold;
     }
 
-    public void incremetStrength(int strengthIncrement) {
+    public void incrementStrength(int strengthIncrement) {
         int newStrength = super.strength + strengthIncrement;
-        super.strength = Math.max(newStrength, 100);
+        super.strength = Math.min(newStrength, 100);
     }
 
     public void decrementStrength(int strengthDecrement) {
@@ -197,7 +203,7 @@ public abstract class Hero extends Entity {
     }
 
     public void incrementHp(int increment) {
-        double incrementTotal = 1 + (increment / 100);
+        double incrementTotal = 1 + ((double) increment / 100);
         int newHp = (int) (super.hp * incrementTotal);
         super.hp = Math.min(newHp, this.maxHp);
     }
