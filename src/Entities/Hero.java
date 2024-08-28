@@ -206,10 +206,19 @@ public abstract class Hero extends Entity {
         super.strength = Math.max(newStrength, 1);
     }
 
-    public void incrementHp(int increment) {
-        double incrementTotal = 1 + ((double) increment / 100);
-        int newHp = (int) (super.hp * incrementTotal);
-        super.hp = Math.min(newHp, this.maxHp);
+    public void incrementHp(int hp) {
+        int newHp = this.hp + hp;
+        if (newHp > maxHp){
+            cleanScreen();
+            System.out.println("Seu teto de pontos de vida é " + this.maxHp +".");
+            System.out.println("Ao usar esta poção, perderá o excedente de " + (newHp + maxHp) + "pontos.");
+            int option = readAndValidateInput("Deseja continuar?\n1 - Sim\n0 - Cancelar", 0, 1);
+            if (option == 1){
+                super.hp = maxHp;
+            }
+            return;
+        }
+        super.hp = newHp;
     }
 
     public String getHeroAttackMessage(){
