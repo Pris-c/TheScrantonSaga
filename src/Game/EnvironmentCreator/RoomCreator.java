@@ -29,8 +29,7 @@ public class RoomCreator {
                         2,
                         4,
                         20,
-                        20,
-                        ChallengeCreator.getInstance().getById(3)
+                        20
                         );
             case 2:
                 return new Room(2,
@@ -40,8 +39,7 @@ public class RoomCreator {
                         3,
                         6,
                         20,
-                        25,
-                        ChallengeCreator.getInstance().getById(4)
+                        25
                 );
             case 3:
                 return new Room(
@@ -52,8 +50,7 @@ public class RoomCreator {
                         5,
                         10,
                         30,
-                        30,
-                        ChallengeCreator.getInstance().getById(6)
+                        30
                 );
             default:
                 return null;

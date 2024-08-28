@@ -3,8 +3,7 @@ package Game;
 import Entities.Hero;
 import Entities.Npc;
 
-import static Util.Util.cleanScreen;
-import static Util.Util.readContinue;
+import static Util.Util.*;
 
 public class Challenge extends GameEnvironment{
 
@@ -20,8 +19,8 @@ public class Challenge extends GameEnvironment{
         this.defeatMessage = defeatMessage;
     }
 
-    public Challenge(int id, String initialMessage,  String victoryMessage, String defeatMessage, Npc enemy, GameEnvironment nextEnvironment) {
-        super(id, initialMessage, nextEnvironment);
+    public Challenge(int id, String initialMessage,  String victoryMessage, String defeatMessage, Npc enemy, boolean last) {
+        super(id, initialMessage, last);
         this.enemy = enemy;
         this.victoryMessage = victoryMessage;
         this.defeatMessage = defeatMessage;
@@ -39,19 +38,23 @@ public class Challenge extends GameEnvironment{
             readContinue();
             return false;
         }
+
         hero.upgradeLevel(this.enemy);
         System.out.println(this.victoryMessage);
         System.out.println("Você subiu para o nível " + hero.getLevel() + " !!");
         System.out.println("Com isso, você ganhou 10 HP,  1 ponto de força e " + enemy.getGold() + " moedas!");
-        readContinue();
+        int option =  readAndValidateInput("Para consultar suas informações digite 1\n\033[3mDigite 0 continuar...\033[0m", 0, 1);
         cleanScreen();
-
-        System.out.println("Após essa grande vitória, que tal reforçar as energias?");
-        readContinue("Pressione enter para ver as suas opções..");
-        hero.usePotion();
-
-        if (this.hasNext){
-            return this.nextEnvironment.run(hero);
+        if (option == 1){
+                hero.showDetails();
+                readContinue();
+        }
+        if (!this.last){
+            cleanScreen();
+            System.out.println("Após essa grande vitória, que tal reforçar as energias?");
+            readContinue("Pressione enter para ver as suas opções..");
+            cleanScreen();
+            hero.usePotion();
         }
         return true;
     }

@@ -25,14 +25,6 @@ public class Shopkeeper extends GameEnvironment{
         }
     }
 
-    public Shopkeeper(int id, String initialMessage, GameEnvironment nextEnvironment) {
-        super(id, initialMessage, nextEnvironment);
-        if (!initInstance){
-            initInstance = true;
-            store = fillInventory();
-        }
-    }
-
     @Override
     public boolean run(Hero hero) {
         System.out.println(this.initialMessage);

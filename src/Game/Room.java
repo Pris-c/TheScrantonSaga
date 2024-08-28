@@ -4,6 +4,7 @@ import Entities.Hero;
 
 import java.util.Random;
 
+import static Game.EnvironmentCreator.Strings.RoomStrings.defeatRoom;
 import static Util.Util.*;
 
 public class Room extends GameEnvironment {
@@ -18,17 +19,7 @@ public class Room extends GameEnvironment {
     public Room(int id, String initialMessage, String questionToPlayer, int percentLuck, int strengthIncrement, int strengthDecrement, int hpIncrement, int hpDecrement) {
         super(id, initialMessage);
         this.questionToPlayer = questionToPlayer;
-        this.percentLuck = percentLuck;
-        this.strengthIncrement = strengthIncrement;
-        this.strengthDecrement = strengthDecrement;
-        this.hpIncrement = hpIncrement;
-        this.hpDecrement = hpDecrement;
-    }
-
-    public Room(int id, String initialMessage, String questionToPlayer, int percentLuck, int strengthIncrement, int strengthDecrement, int hpIncrement, int hpDecrement, GameEnvironment nextEnvironment) {
-        super(id, initialMessage, nextEnvironment);
-        this.questionToPlayer = questionToPlayer;
-        this.percentLuck = percentLuck;
+        setPercentLuck(percentLuck);
         this.strengthIncrement = strengthIncrement;
         this.strengthDecrement = strengthDecrement;
         this.hpIncrement = hpIncrement;
@@ -55,8 +46,8 @@ public class Room extends GameEnvironment {
                     System.out.println("Parabéns! Você é uma pessoa de sorte!");
                     System.out.println("Você ganhou " + this.hpIncrement + " HP e " + this.strengthIncrement + " pontos de força.\n");
                     hero.incrementHp(this.hpIncrement);
-                    hero.incremetStrength(this.strengthIncrement);
-                    option = readAndValidateInput("Digite 1 para consultar informações da personagem\n\033[3mDigite 0 para continuar..\033[0m", 0, 1);
+                    hero.incrementStrength(this.strengthIncrement);
+                    option = readAndValidateInput("Digite 1 para consultar suas informações.\n\033[3mDigite 0 para continuar..\033[0m", 0, 1);
                     if (option == 1){
                         hero.showDetails();
                         readContinue();
@@ -68,7 +59,15 @@ public class Room extends GameEnvironment {
                     System.out.println("Você perdeu " + this.hpDecrement + " HP e " + this.strengthDecrement + " pontos de força.\n");
                     hero.decrementHp(this.hpDecrement);
                     hero.decrementStrength(this.strengthDecrement);
-                    option = readAndValidateInput("Digite 1 para consultar informações da personagem\n\033[3mDigite 0 para continuar..\033[0m", 0, 1);
+
+                    if (hero.getHp() <= 0) {
+                        readContinue();
+                        cleanScreen();
+                        System.out.println(defeatRoom);
+                        return false;
+                    }
+
+                    option = readAndValidateInput("Digite 1 para consultar suas informações\n\033[3mDigite 0 para continuar..\033[0m", 0, 1);
                     if (option == 1){
                         hero.showDetails();
                         readContinue();
@@ -78,15 +77,9 @@ public class Room extends GameEnvironment {
             }
 
             cleanScreen();
-            if (hero.getHp() <= 0) {
-                return false;
-            }
+
         }
 
-        if (this.hasNext) {
-            return this.nextEnvironment.run(hero);
-        }
-
-        return hero.getHp() > 0;
+        return true;
     }
 }

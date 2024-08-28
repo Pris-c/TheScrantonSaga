@@ -6,20 +6,20 @@ public abstract class GameEnvironment {
 
     protected int id;
     protected String initialMessage;
-    protected GameEnvironment nextEnvironment;
-    protected final boolean hasNext;
+    //protected GameEnvironment nextEnvironment;
+    //protected final boolean hasNext;
+    protected boolean last;
 
     public GameEnvironment(int id, String initialMessage) {
-        this.hasNext = false;
         this.initialMessage = initialMessage;
         this.id = id;
+        this.last = false;
     }
 
-    public GameEnvironment(int id, String initialMessage, GameEnvironment nextEnvironment) {
+    public GameEnvironment(int id, String initialMessage, boolean last) {
         this.id = id;
         this.initialMessage = initialMessage;
-        this.nextEnvironment = nextEnvironment;
-        this.hasNext = true;
+        this.last = last;
     }
 
     public abstract boolean run(Hero hero);

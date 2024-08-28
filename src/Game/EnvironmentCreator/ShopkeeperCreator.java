@@ -13,7 +13,7 @@ public class ShopkeeperCreator {
             case 2:
                 return new Shopkeeper(2, intShopk2);
             case 3:
-                return new Shopkeeper(3, intShopk3, ChallengeCreator.getInstance().getById(7));
+                return new Shopkeeper(3, intShopk3);
             default:
                 return null;
         }

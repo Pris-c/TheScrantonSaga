@@ -57,4 +57,18 @@ public class RoomStrings {
     public static String optRoom3 =
             "Digite 1 para ajudar o Dwight\n\033[3mDigite 0 enter para seguir em frente...\033[0m";
 
+
+
+    public static String defeatRoom =
+            "   _.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-.__.-.\n" +
+            " ,'_.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._-._`..-\n" +
+            "( (                                                               ) )\n" +
+            " ) )  Parece que a sorte não estava ao seu lado desta vez. Sua     ( (\n" +
+            "( (  tentativa acabou não dando certo, e as consequências foram   ) )\n" +
+            " ) )  maiores do que você esperava. Com a energia esgotada e os    ( (\n" +
+            "( (  recursos perdidos, seu dia no escritório chegou ao fim.      ) )\n" +
+            "( (                                                               ) )\n" +
+            "( (_.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-.) )\n" +
+            " `._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._,.-._,.-.'\n";
+
 }
