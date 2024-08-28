@@ -7,7 +7,6 @@ public class Util {
 
     public static String largeTextFormat = "| %-75s |\n";
     public static String largeDetailFormat = "| %-25s : %-47s |\n";
-    public static String singleTextFormat = "\t\t| %-35s |\n";
 
     public static int readAndValidateInput(String message, int min, int max) {
         Scanner input = new Scanner(System.in);
@@ -50,6 +49,7 @@ public class Util {
     }
 
     public static void cleanScreen() {
-        System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+        System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n" +
+                           "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
     }
 }
