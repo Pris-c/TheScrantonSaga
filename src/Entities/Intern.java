@@ -60,7 +60,7 @@ public class Intern extends Hero {
                         break;
                     case 2:
                         decrement = this.strength + this.mainWeapon.getStandardAttack();
-git                        break;
+                       break;
                     case 3:
                         decrement = this.strength + this.mainWeapon.getSpecialAttack();
                         specialAttack = false;
