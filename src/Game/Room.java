@@ -45,7 +45,7 @@ public class Room extends GameEnvironment {
             if (option == 1) {
                 if (rd.nextInt(0, 101) < this.percentLuck) {
                     System.out.println("Parabéns! Você é uma pessoa de sorte!");
-                    System.out.println("Você ganhou " + this.hpIncrement + " HP e " + this.strengthIncrement + " pontos de força.\n");
+                    System.out.println("Você ganhou " + this.hpIncrement + " pontos de vida e " + this.strengthIncrement + " pontos de força.\n");
                     hero.incrementHp(this.hpIncrement);
                     hero.incrementStrength(this.strengthIncrement);
                     option2 = readAndValidateInput("Digite 1 para consultar suas informações.\n\033[3mDigite 0 para continuar..\033[0m", 0, 1);
@@ -57,7 +57,7 @@ public class Room extends GameEnvironment {
 
                 } else {
                     System.out.println("Que pena! A sorte não está ao seu lado!");
-                    System.out.println("Você perdeu " + this.hpDecrement + " HP e " + this.strengthDecrement + " pontos de força.\n");
+                    System.out.println("Você perdeu " + this.hpDecrement + " pontos de vida e " + this.strengthDecrement + " pontos de força.\n");
                     hero.decrementHp(this.hpDecrement);
                     hero.decrementStrength(this.strengthDecrement);
 

@@ -6,14 +6,14 @@ public class RoomStrings {
                     "   _.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-.__.-.\n" +
                     " ,'_.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._`.-..-\n" +
                     "( (                                                                 ) )\n" +
-                    " ) )  Você chegou na copa e descobriu que a máquina de vendas está ( (\n" +
-                    "( (   agindo de forma estranha hoje. Ao tentar comprar um item,     ) )\n" +
-                    " ) )  você pode ter a sorte de receber um bônus e aumentar seu HP  ( (\n" +
-                    "( (   e sua força sem custo! Mas cuidado: se a máquina falhar,      ) )\n" +
-                    " ) )  você pode acabar sem nada e ainda ficar mais fraco por não   ( (\n" +
-                    "( (   conseguir se alimentar. Você arrisca tentar a sorte ou busca   ) )\n" +
-                    " ) )  outra forma de suprir suas necessidades?                      ( (\n" +
-                    "( (                                                                 ) )\n" +
+                    " ) )  Você chegou na copa e descobriu que a máquina de vendas está  ( (\n" +
+                    "( (   agindo de forma estranha hoje. Ao tentar comprar um item,      ) )\n" +
+                    " ) )  você pode ter a sorte de receber um bônus e aumentar seus     ( (\n" +
+                    "( (   pontos de vida e sua força sem custo! Mas cuidado:             ) )\n" +
+                    " ) )  se a máquina falhar, você pode acabar sem nada e ainda ficar  ( (\n" +
+                    "( (   mais fraco por não conseguir se alimentar. Você arrisca        ) )\n" +
+                    " ) )  tentar a sorte?                                                ( (\n" +
+                    "( (                                                                   ) )\n" +
                     "( (_.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-.) )\n" +
                     " `._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._,.-.'\n";
 
@@ -29,8 +29,8 @@ public class RoomStrings {
                     "( (   não identificada no refrigerador. O alimento pode ser uma         ) )\n" +
                     " ) )  fonte inesperada de força extra sem gastar moedas, mas também    ( (\n" +
                     "( (   pode ser perigoso. Arriscar comer pode levar a uma                ) )\n" +
-                    " ) )  intoxicação e perda de força e HP. Você se atreve a experimentar ( (\n" +
-                    "( (   essa refeição misteriosa?                                         ) )\n" +
+                    " ) )  intoxicação e perda de força e vida.                             ( (\n" +
+                    "( (   Você se atreve a experimentaressa refeição misteriosa?            ) )\n" +
                     " ) )                                                                   ( (\n" +
                     "( (_.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._._.-._._.-.) )\n" +
                     " `._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-.._.-.._.-.-.'\n";

@@ -17,7 +17,7 @@ public abstract class Entity {
     }
 
     protected void showDetails() {
-        System.out.printf(largeDetailFormat, "Hp atual", this.hp);
+        System.out.printf(largeDetailFormat, "Vida atual", this.hp);
         System.out.printf(largeDetailFormat, "Força", this.strength);
         System.out.printf(largeDetailFormat, "Moedas", this.gold);
     }

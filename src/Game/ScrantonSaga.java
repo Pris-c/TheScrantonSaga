@@ -126,7 +126,7 @@ public class ScrantonSaga {
                     break;
 
                 case 2:
-                    System.out.print("\nQuantidade de hp a adicionar: ");
+                    System.out.print("\nQuantidade de pontos de vida a adicionar: ");
                     value = this.readValidInputToCreationPoints();
 
                     cleanScreen();

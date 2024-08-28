@@ -42,7 +42,7 @@ public class Challenge extends GameEnvironment{
         hero.upgradeLevel(this.enemy);
         System.out.println(this.victoryMessage);
         System.out.println("Você subiu para o nível " + hero.getLevel() + " !!");
-        System.out.println("Com isso, você ganhou 10 HP,  1 ponto de força e " + enemy.getGold() + " moedas!");
+        System.out.println("Com isso, você ganhou 10 pontos de vida,  1 ponto de força e " + enemy.getGold() + " moedas!");
         int option =  readAndValidateInput("Para consultar suas informações digite 1\n\033[3mDigite 0 continuar...\033[0m", 0, 1);
         cleanScreen();
         if (option == 1){

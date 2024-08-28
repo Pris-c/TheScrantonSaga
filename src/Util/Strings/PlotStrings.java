@@ -66,15 +66,15 @@ public class PlotStrings {
 
     public static String aboutGameElement =
             """
-                    \033[1m1 - Elementos do Personagem\033[0m\s
+                    \033[1m2 - Elementos do Personagem\033[0m\s
                     
-                    \033[1mHP Atual\033[0m
-                    \tA quantidade de pontos de vida que seu personagem possui no momento. Durante o jogo, você pode perder HP em desafios
-                    \tou recuperá-lo utilizando itens de recuperação e salas da sorte.\s
+                    \033[1mVida Atual\033[0m
+                    \tA quantidade de pontos de vida que seu personagem possui no momento. Durante o jogo, você pode perder pontos de vida
+                    \tem desafios ou recuperá-lo utilizando itens de recuperação e salas da sorte.\s
                      
-                    \033[1mHP Máximo\033[0m
+                    \033[1mVida Máximo\033[0m
                     \tO número máximo de pontos de vida que seu personagem pode ter. Ele é definido no inicio do jogo e aumentado após cada
-                    \t desafio vencido. Aumentar seu HP máximo permite que você suporte mais danos durante os desafios.
+                    \t desafio vencido. Aumentar sua vida máxima permite que você suporte mais danos durante os desafios.
                      
                     \033[1mForça\033[0m
                     \tRepresenta o poder de ataque do seu personagem. A força é somada ao poder do seu Instrumento de Poder em cada ataque.

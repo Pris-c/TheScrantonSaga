@@ -54,7 +54,7 @@ public abstract class Hero extends Entity {
     public void showDetails() {
         String detailsWeaponFormat = "|                             %-17s : %-27s |\n";
         super.showDetails();
-        System.out.printf(largeDetailFormat, "Hp máximo", this.maxHp);
+        System.out.printf(largeDetailFormat, "Vida máx", this.maxHp);
         System.out.printf(largeDetailFormat, "Nível", this.level);
         System.out.printf(largeDetailFormat, "Instrumento de Poder", this.mainWeapon.getName());
         System.out.printf(detailsWeaponFormat, "Manobra Comum:", this.mainWeapon.getStandardAttack());
