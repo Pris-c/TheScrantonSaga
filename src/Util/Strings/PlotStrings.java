@@ -45,6 +45,29 @@ public class PlotStrings {
                     "( (_.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-.) )\n" +
                     " `._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._,.-.'\n";
 
+    public static String aboutHeroes =
+
+            """
+                    \033[1m1 - Personagens\033[0m\s
+                    
+                    \033[1mRepresentante de Vendas:\033[0m\s
+                    \tDurante os desafios, em cada fase do confronto, este funcionário reage ao desafio primeiro, 
+                    \tenfrentando o impacto inicial antes de contra-atacar. No entanto, por ser um colaborador experiente
+                    \tele consegue lidar melhor com a pressão, absorvendo apenas 80% do impacto dos desafios enfrentados.\s
+                    
+                    \033[1mRecepcionista:\033[0m\s
+                    \tEnfrenta os desafios de maneira direta e equilibrada. Tanto ao enfrentar como ao reagir, suas ações
+                    \tsão neutras, sem ganhos ou perdas adicionais de força.\s
+                    
+                    \033[1mEstagiário:\033[0m\s
+                    \tDevido à pouca experiência no escritório, o estagiário é mais vulnerável aos desafios. A cada confronto,
+                     \tele acaba sofrendo 10% a mais de impacto do que outros personagens, tornando-o mais suscetível às dificuldades.
+                    """;
+
+
+
+
+
     public static String creationPointsTable =
             "\t\t+--------------------------------------+\n" +
             "\t\t|          Tabelas de Conversão         |\n" +
