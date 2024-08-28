@@ -1,6 +1,10 @@
 package Game;
 
-import Entities.*;
+
+import Entities.Hero;
+import Entities.Intern;
+import Entities.Receptionist;
+import Entities.SalesRepresentative;
 import Game.EnvironmentCreator.NodeCreator;
 import Game.EnvironmentCreator.ShopkeeperCreator;
 
@@ -9,56 +13,50 @@ import java.util.Scanner;
 
 import static Util.Strings.PlotStrings.*;
 import static Util.Util.*;
-import static Util.Util.cleanScreen;
 
 public class ScrantonSaga {
 
-    NodeCreator nodeCreator;
 
-    public ScrantonSaga() {
-        this.nodeCreator = new NodeCreator();
-    }
-
-    public void initGame(){
+    public void initGame() {
         Hero hero = null;
         int option = -1;
 
         System.out.println(title);
         readContinue("Pressione enter para iniciar o jogo..");
 
-        do{
-            if (option != 1){
+        cleanScreen();
+        System.out.println(initMessage);
+        readContinue();
+        cleanScreen();
+
+        do {
+            if (option != 1) {
                 hero = createHero();
             }
 
-            cleanScreen();
-            System.out.println(initMessage);
-            readContinue();
-            cleanScreen();
-
             boolean heroWin = labyrinth(hero);
-            if (heroWin){
+            if (heroWin) {
                 System.out.println(championMessage);
             } else {
                 System.out.println(loserMessage);
             }
             option = readAndValidateInput("O que deseja fazer agora:" +
-                        "\n1 - Jogar novamente com o mesmo personagem" +
-                        "\n2 - Escolher um novo personagem" +
-                        "\n3 - Sair", 1,3);
+                    "\n1 - Jogar novamente com o mesmo personagem" +
+                    "\n2 - Escolher um novo personagem" +
+                    "\n3 - Sair", 1, 3);
 
         } while (option != 3);
     }
 
 
-    private boolean labyrinth(Hero hero){
+    private boolean labyrinth(Hero hero) {
         ShopkeeperCreator.getShopkeeperById(1).run(hero);
         Node node;
 
         int newNode = 1;
-        while (newNode > 0){
+        while (newNode > 0) {
             cleanScreen();
-            node = nodeCreator.getNodeById(newNode);
+            node = NodeCreator.getNodeById(newNode);
             newNode = node.run(hero);
         }
 
@@ -69,17 +67,25 @@ public class ScrantonSaga {
         cleanScreen();
         int creationPoints;
         int gold;
+        int heroNumber = 4;
 
-        String message = ("Escolha o seu personagem:\n1 - Representante de vendas\n2 - Recepcionista\n3 - Estagiário");
-        int hero = readAndValidateInput(message, 1, 3);
+        while (heroNumber == 4) {
+            String message = (
+                    "Escolha o seu personagem:" +
+                            "\n1 - Representante de vendas" +
+                            "\n2 - Recepcionista" +
+                            "\n3 - Estagiário" +
+                            "\n\033[3mOu digite 4 para conhecer as características de cada personagem..\033[0m");
+            heroNumber = readAndValidateInput(message, 1, 4);
+            if (heroNumber == 4) {
+                this.printHeroesInfo();
+            }
+        }
         cleanScreen();
 
         String name = this.readValidUserName();
         cleanScreen();
-
         int difficult = readAndValidateInput("Escolha o modo de jogo:\n1 - Fácil\n2 - Difícil", 1, 2);
-
-
         if (difficult == 1) {
             creationPoints = 300;
             gold = 20;
@@ -88,8 +94,8 @@ public class ScrantonSaga {
             gold = 15;
         }
 
-        int strength = 1;
-        int hp = 20;
+        int strength = 10;
+        int hp = 30;
 
         cleanScreen();
         while (creationPoints > 0) {
@@ -143,8 +149,7 @@ public class ScrantonSaga {
         cleanScreen();
 
         Hero player = null;
-
-        switch (hero) {
+        switch (heroNumber) {
             case 1:
                 player = new SalesRepresentative(name, hp, strength, gold);
                 break;
@@ -161,7 +166,11 @@ public class ScrantonSaga {
         cleanScreen();
 
         player.showDetails();
-        readContinue();
+        int option = readAndValidateInput("Digite 1 para consultar informações sobre os elementos da tabela acima." +
+                "\n\033[3mOu digite 0 para continuar..\033[0m", 0, 1);
+        if (option == 1) {
+            printItemsInfo();
+        }
         cleanScreen();
         return player;
     }
@@ -221,5 +230,18 @@ public class ScrantonSaga {
         return -1;
     }
 
+    public void printHeroesInfo() {
+        cleanScreen();
+        System.out.println(aboutHeroes);
+        readContinue("\033[3mPressione enter para voltar...\033[0m");
+        cleanScreen();
+    }
+
+    public void printItemsInfo() {
+        cleanScreen();
+        System.out.println(aboutGameElement);
+        readContinue("\033[3mPressione enter para voltar...\033[0m");
+        cleanScreen();
+    }
 
 }
