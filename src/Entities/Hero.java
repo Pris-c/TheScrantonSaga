@@ -53,13 +53,13 @@ public abstract class Hero extends Entity {
 
     @Override
     public void showDetails() {
-        String detailsWeaponFormat = "|                             %-17s : %-27s |\n";
+        String detailsWeaponFormat = "|%28s %-25s: %-20s |\n";
         super.showDetails();
         System.out.printf(largeDetailFormat, "Vida máx", this.maxHp);
         System.out.printf(largeDetailFormat, "Nível", this.level);
         System.out.printf(largeDetailFormat, "Instrumento de Poder", this.mainWeapon.getName());
-        System.out.printf(detailsWeaponFormat, "Manobra Comum:", this.mainWeapon.getStandardAttack());
-        System.out.printf(detailsWeaponFormat, "Enfrentamento Criativo:", this.mainWeapon.getSpecialAttack());
+        System.out.printf(detailsWeaponFormat, " ", "Manobra Comum", this.mainWeapon.getStandardAttack());
+        System.out.printf(detailsWeaponFormat, " ", "Enfrentamento Criativo", this.mainWeapon.getSpecialAttack());
 
 
         System.out.println("+-----------------------------------------------------------------------------+");
@@ -80,65 +80,74 @@ public abstract class Hero extends Entity {
     }
 
     public void usePotion() {
-        String headerFormat = " %-31s \n";
+        String textFormat = " %-31s \n";
+        boolean sair;
 
-        if (this.inventory.isEmpty()) {
-            System.out.println("+---------------------------------+");
-            System.out.printf(headerFormat, "INVENTÁRIO VAZIO");
-            System.out.println("+---------------------------------+\n");
-            readContinue();
-        } else {
-            // Filter potions in inventory
-            ArrayList<Potion> potions =
-                    new ArrayList<>(inventory.stream().
-                            filter(i -> i instanceof Potion)
-                            .map(i -> (Potion) i)
-                            .toList()
-                    );
-
-            if (potions.isEmpty()) {
+        do{
+            sair = false;
+            if (this.inventory.isEmpty()) {
                 System.out.println("+---------------------------------+");
-                System.out.printf(headerFormat, "NENHUMA POÇÃO DISPONÍVEL");
+                System.out.printf(textFormat, "INVENTÁRIO VAZIO");
                 System.out.println("+---------------------------------+\n");
+                sair = true;
                 readContinue();
             } else {
-                // Show potions
-                System.out.println("\n+---------------------------------+");
-                System.out.printf(headerFormat, "POÇÕES DISPONÍVEIS");
-                System.out.println("+---------------------------------+");
+                // Filter potions in inventory
+                ArrayList<Potion> potions =
+                        new ArrayList<>(inventory.stream().
+                                filter(i -> i instanceof Potion)
+                                .map(i -> (Potion) i)
+                                .toList()
+                        );
 
-                for (int i = 0; i < potions.size(); i++) {
-                    System.out.printf(headerFormat, "# " + (i + 1));
-                    potions.get(i).offerPotion();
-                }
-                System.out.println();
+                if (potions.isEmpty()) {
+                    System.out.println("+---------------------------------+");
+                    System.out.printf(textFormat, "NENHUMA POÇÃO DISPONÍVEL");
+                    System.out.println("+---------------------------------+\n");
+                    sair = true;
+                    readContinue();
+                } else {
+                    // Show potions
+                    System.out.println("\n+---------------------------------+");
+                    System.out.printf(textFormat, "POÇÕES DISPONÍVEIS");
+                    System.out.println("+---------------------------------+");
 
-
-                // Read and validate an option
-                int option = readAndValidateInput("Escolha a poção a utilizar:\n\033[3mPara seguir, digite 0. \033[0m", 0, potions.size());
-                cleanScreen();
-                if (option != 0) {
-                    option--;
-
-                    // Increment strength or Hp
-                    Potion potionToUse = potions.get(option);
-                    this.incrementHp(potionToUse.getHealing());
-                    super.strength += potionToUse.getStrengthIncrement();
-                    // Remove potion
-                    inventory.remove(potionToUse);
-
-                    cleanScreen();
-                    System.out.println("Ótima escolha!\nAgora você está mais preparado para as próximas missões!\n");
-
-                    option = readAndValidateInput("Digite 1 para consultar informações da personagem\n\033[3mDigite 0 para continuar..\033[0m", 0, 1);
-                    if (option == 1) {
-                        this.showDetails();
-                        readContinue();
+                    for (int i = 0; i < potions.size(); i++) {
+                        System.out.printf(textFormat, "# " + (i + 1));
+                        potions.get(i).offerPotion();
                     }
+                    System.out.println();
+
+                    // Read and validate an option
+                    int option = readAndValidateInput("Escolha a poção a utilizar:\n\033[3mPara seguir em frente, digite 0. \033[0m", 0, potions.size());
                     cleanScreen();
+                    if (option == 0){
+                        sair = true;
+                    } else {
+                        option--;
+                        Potion potionToUse = potions.get(option);
+                        option++;
+
+                        // Increment strength or Hp
+                        if (this.incrementHp(potionToUse.getHealing())){
+                            // Remove potion
+                            super.strength += potionToUse.getStrengthIncrement();
+                            inventory.remove(potionToUse);
+                            cleanScreen();
+                            System.out.println("Ótima escolha!\nAgora você está mais preparado para as próximas missões!\n");
+                            option = readAndValidateInput("Digite 1 para consultar informações da personagem\n\033[3mDigite 0 para continuar..\033[0m", 0, 1);
+                            cleanScreen();
+                            if (option == 1){
+                                this.showDetails();
+                                readContinue();
+                            }
+                        }
+                        cleanScreen();
+                    }
                 }
             }
-        }
+        } while (!sair);
+
     }
 
 
@@ -207,19 +216,22 @@ public abstract class Hero extends Entity {
         super.strength = Math.max(newStrength, 1);
     }
 
-    public void incrementHp(int hp) {
+    public boolean incrementHp(int hp) {
         int newHp = this.hp + hp;
         if (newHp > maxHp) {
             cleanScreen();
             System.out.println("Seu teto de pontos de vida é " + this.maxHp + ".");
-            System.out.println("Ao usar esta poção, perderá o excedente de " + (newHp + maxHp) + "pontos.");
+            System.out.println("Ao usar esta poção, perderá o excedente de " + (newHp - maxHp) + " pontos.");
             int option = readAndValidateInput("Deseja continuar?\n1 - Sim\n0 - Cancelar", 0, 1);
+            cleanScreen();
             if (option == 1) {
                 super.hp = maxHp;
+                return true;
             }
-            return;
+            return false;
         }
         super.hp = newHp;
+        return true;
     }
 
     public String getHeroAttackMessage() {
