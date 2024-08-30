@@ -1,7 +1,10 @@
 package Entities;
 
-import static Util.Util.largeDetailFormat;
-
+/**
+ * Represents an abstract entity in the game, with the attributes
+ * name, health points (hp), strength, and gold.
+ * Subclasses must define specific types of entities.
+ */
 public abstract class Entity {
 
     protected String name;
@@ -9,6 +12,14 @@ public abstract class Entity {
     protected int strength;
     protected int gold;
 
+    /**
+     * Constructs an Entity with specified attributes.
+     *
+     * @param name     The name of the Entity.
+     * @param hp       The amount of health points the Entity has.
+     * @param strength The strength value of the Entity, used during attacks.
+     * @param gold     The amount of money the Entity has, used to obtain items during the game.
+     */
     public Entity(String name, int hp, int strength, int gold) {
         this.name = name;
         this.hp = hp;
@@ -16,15 +27,30 @@ public abstract class Entity {
         this.gold = gold;
     }
 
+    /**
+     * Prints the Entity's HP, strength, and gold to the console.
+     * Subclasses are responsible for print the Entity's name to ensure
+     * the appropriate organization of the information.
+     */
     protected void showDetails() {
-        System.out.printf(largeDetailFormat, "Vida atual", this.hp);
-        System.out.printf(largeDetailFormat, "Força", this.strength);
-        System.out.printf(largeDetailFormat, "Moedas", this.gold);
+        String tableFormat = "| %-25s : %-47s |\n";
+        System.out.printf(tableFormat, "Vida atual", this.hp);
+        System.out.printf(tableFormat, "Força", this.strength);
+        System.out.printf(tableFormat, "Moedas", this.gold);
     }
 
-    public int decrementHp(int hp) {
-        int newHp = this.hp - hp;
-        this.hp = Math.max(0, newHp);
+    /**
+     * This method decreases the hp by a specified amount, ensuring a lower limit of 0.
+     * If the specified amount is negative, the hp is not changed.
+     *
+     * @param hp The amount of HP to decrease. Must be non-negative.
+     * @return The new hp value after the decrease.
+     */
+    public int decreaseHp(int hp) {
+        if (hp > 0) {
+            int newHp = this.hp - hp;
+            this.hp = Math.max(0, newHp);
+        }
         return this.hp;
     }
 
