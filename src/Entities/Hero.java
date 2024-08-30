@@ -292,7 +292,7 @@ public abstract class Hero extends Entity {
 
             cleanScreen();
         } while (!done);
-        enemy.decrementHp(decrement);
+        enemy.decreaseHp(decrement);
         System.out.println(this.getHeroAttackMessage());
         readContinue();
         cleanScreen();
@@ -301,7 +301,7 @@ public abstract class Hero extends Entity {
 
     protected boolean enemyAttack(Npc enemy, double enemyStrengthAdjust){
         int enemyStrength = (int) Math.round(enemy.strength * enemyStrengthAdjust);
-        if (this.decrementHp(enemyStrength) <= 0) {
+        if (this.decreaseHp(enemyStrength) <= 0) {
             return false;
         }
         System.out.println(this.getEnemyAttackMessage());
