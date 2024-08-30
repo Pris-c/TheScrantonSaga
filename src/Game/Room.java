@@ -59,7 +59,7 @@ public class Room extends GameEnvironment {
                     System.out.println("Que pena! A sorte não está ao seu lado!");
                     System.out.println("Você perdeu " + this.hpDecrement + " pontos de vida e " + this.strengthDecrement + " pontos de força.\n");
                     hero.decreaseHp(this.hpDecrement);
-                    hero.decrementStrength(this.strengthDecrement);
+                    hero.decreaseStrength(this.strengthDecrement);
 
                     if (hero.getHp() <= 0) {
                         readContinue();
