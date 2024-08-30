@@ -49,12 +49,15 @@ public class Challenge extends GameEnvironment{
                 hero.showDetails();
                 readContinue();
         }
+
         if (!this.last){
             cleanScreen();
-            System.out.println("Após essa grande vitória, que tal reforçar as energias?");
-            readContinue("Pressione enter para ver as suas opções..");
-            cleanScreen();
-            hero.usePotion();
+            if (hero.checkPotionAvailability()){
+                System.out.println("Após essa grande vitória, que tal reforçar as energias?");
+                readContinue("Pressione enter para ver as suas opções..");
+                cleanScreen();
+                hero.offerPotionsIfAvailable();
+            }
         }
         return true;
     }

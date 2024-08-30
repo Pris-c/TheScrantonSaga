@@ -76,9 +76,14 @@ public class Shopkeeper extends GameEnvironment{
             }
         }
         cleanScreen();
-        int consumeOpt = readAndValidateInput("Deseja consumir algo agora?\n1 - Sim\n0 - Continuar sem consumir nada", 0, 1);
-        if (consumeOpt == 1){
-            hero.usePotion();
+
+        if (hero.checkPotionAvailability()){
+            int consumeOption = -1;
+            consumeOption = readAndValidateInput("Deseja consumir algo agora?\n1 - Sim, me mostre minhas opções\n0 - Não, quero seguir em frente", 0, 1);
+            cleanScreen();
+            if (consumeOption == 1){
+                hero.offerPotionsIfAvailable();
+            }
         }
         return true;
     }
@@ -90,7 +95,7 @@ public class Shopkeeper extends GameEnvironment{
             cleanScreen();
             return false;
         } else {
-            if (!hero.pay(item.getPrice())) {
+            if (!hero.payForAItem(item.getPrice())) {
                 System.out.println("Desculpe, algo deu errado com a sua compra.\n");
                 readContinue();
                 cleanScreen();
