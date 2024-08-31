@@ -3,16 +3,15 @@ package Test.GameTest;
 import Entities.Hero;
 import Game.Shopkeeper;
 import Test.TestHelper.HeroCreator;
-
-import static Util.Creator.EnvironmentCreator.ShopkeeperCreator.getShopkeeperById;
+import Util.Creator.EnvironmentCreator.ShopkeeperCreator;
 
 public class ShopkeeperTest {
 
     public static void main(String[] args) {
 
-        Shopkeeper shopkeeper1 = getShopkeeperById(1);
-        Shopkeeper shopkeeper2 = getShopkeeperById(2);
-        Shopkeeper shopkeeper3 = getShopkeeperById(3);
+        Shopkeeper shopkeeper1 = ShopkeeperCreator.getInstance().getShopkeeperById(1);
+        Shopkeeper shopkeeper2 = ShopkeeperCreator.getInstance().getShopkeeperById(2);
+        Shopkeeper shopkeeper3 = ShopkeeperCreator.getInstance().getShopkeeperById(3);
 
         Hero hero = HeroCreator.createReceptionist();
 

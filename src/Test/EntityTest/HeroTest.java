@@ -2,13 +2,14 @@ package Test.EntityTest;
 
 import Entities.Hero;
 import Test.TestHelper.HeroCreator;
-import Util.Creator.EntityCreator.NpcCreator;
 
 public class HeroTest {
 
     public static void main(String[] args) {
 
         Hero hero = HeroCreator.createSalesRepresentative();
+        //hero.showDetails();
+        hero.offerPotionsIfAvailable();
 
 /*        System.out.println("------ Testing changes in HP ------ ");
         System.out.println("Hp: " + hero.getHp());
@@ -28,7 +29,7 @@ public class HeroTest {
         System.out.println("Hp: " + hero.getHp());
         System.out.println("Strength: " + hero.getStrength());*/
 
-        System.out.println(hero.attack(NpcCreator.createRhMeeting()));
+        //System.out.println(hero.attack(NpcCreator.createRhMeeting()));
 
     }
 }

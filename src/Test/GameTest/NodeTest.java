@@ -8,11 +8,11 @@ public class NodeTest {
 
     public static void main(String[] args) {
 
-        Node node1 = NodeCreator.getNodeById(1);
-        Node node2 = NodeCreator.getNodeById(2);
-        Node node3 = NodeCreator.getNodeById(3);
-        Node node4 = NodeCreator.getNodeById(4);
-        Node node5 = NodeCreator.getNodeById(5);
+        Node node1 = NodeCreator.getInstance().getNodeById(1);
+        Node node2 = NodeCreator.getInstance().getNodeById(2);
+        Node node3 = NodeCreator.getInstance().getNodeById(3);
+        Node node4 = NodeCreator.getInstance().getNodeById(4);
+        Node node5 = NodeCreator.getInstance().getNodeById(5);
 
         System.out.println("NODE 1");
         System.out.println("Next node1: " + node1.run(HeroCreator.createIntern()));
