@@ -40,7 +40,7 @@ public class Challenge extends GameEnvironment {
      * @param victoryMessage The message to be printed when the Hero win the challenge
      * @param defeatMessage  The message to be prinited when the Hero loses the challenge
      * @param enemy          The Enemy the Hero must attack
-     * @param nextEnvironment The next environment to be called, when exists.
+     * @param nextEnvironment The next environment to be called
      */
     public Challenge(int id, String initialMessage, String victoryMessage, String defeatMessage, Npc enemy, GameEnvironment nextEnvironment) {
         super(id, initialMessage, nextEnvironment);

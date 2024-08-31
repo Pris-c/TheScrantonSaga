@@ -18,7 +18,7 @@ public abstract class GameEnvironment {
      *
      * @param id             The unique identifier of the environment
      * @param initialMessage The message to be displayed in the beginning of the environment situation
-     * @param nextEnvironment The next environment to be called, when exists.
+     * @param nextEnvironment The next environment to be called
      */
     public GameEnvironment(int id, String initialMessage, GameEnvironment nextEnvironment) {
         this.id = id;
