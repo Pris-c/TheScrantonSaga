@@ -47,7 +47,7 @@ public abstract class GameEnvironment {
      *
      * @param hero The hero character interacting with the environment.
      * @return An integer representing a game status:
-     *          -1 if the Hero lost the game in current environment
+     *          -1 if the Hero loses the game in current environment
      *          0 if the Environment is the last obstacle in the game
      *          or the nextNode id if Hero passes successfully by the environment
      */
