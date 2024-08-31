@@ -14,10 +14,17 @@ import java.util.Scanner;
 import static Util.Strings.GeneralStrings.*;
 import static Util.Util.*;
 
+/**
+ * Represents the game flow including hero creation, labyrinth navigation,
+ * and decision-making throughout the game.
+ */
 public class ScrantonSaga {
 
-
-    public void initGame() {
+    /**
+     * Initializes the game, allowing the player to create a hero, navigate through the labyrinth,
+     * and make decisions. Manages the Node loop and handles player choices for restarting or exiting the game.
+     */
+    public void scrantonSaga() {
         Hero hero = null;
         int option = -1;
 
@@ -51,17 +58,29 @@ public class ScrantonSaga {
     }
 
 
+    /**
+     * Manages the game flow through the game environments
+     *
+     * @param hero The hero chosen by the player
+     * @return True if the labyrinth is completed successfully, false otherwise.
+     */
     private boolean labyrinth(Hero hero) {
-        int nextNode = ShopkeeperCreator.getShopkeeperById(1).run(hero);
+        int nextNode = ShopkeeperCreator.getInstance().getShopkeeperById(1).run(hero);
         Node node;
         while (nextNode > 0) {
             cleanScreen();
-            node = NodeCreator.getNodeById(nextNode);
+            node = NodeCreator.getInstance().getNodeById(nextNode);
             nextNode = node.run(hero);
         }
         return nextNode == 0;
     }
 
+    /**
+     * Allows the player to create a hero by allocating creation points, witch are defined according to the chosen
+     * difficult level.
+     *
+     * @return The created hero.
+     */
     public Hero createHero() {
         cleanScreen();
         int creationPoints;
@@ -121,7 +140,7 @@ public class ScrantonSaga {
                                 System.out.println("\t\tPontos de força adicionados com sucesso!\n");
                             }
                         } else {
-                            System.out.println("\nVocê não tem moedas suficientes para adicionar " + value + " pontos de força.\n");
+                            System.out.println("\nVocê não tem pontos de criação suficientes para adicionar " + value + " pontos de força.\n");
                         }
                     }
                     break;
@@ -141,7 +160,7 @@ public class ScrantonSaga {
                             }
 
                         } else {
-                            System.out.println("\nVocê não tem moedas suficientes para adicionar " + value + " hp.\n");
+                            System.out.println("\nVocê não tem pontos de criação suficientes para adicionar " + value + " hp.\n");
                         }
                     }
                     break;
@@ -176,6 +195,12 @@ public class ScrantonSaga {
         return player;
     }
 
+    /**
+     * Reads a valid username from the player.
+     * The name can't be blank or empty.
+     *
+     * @return The validated username.
+     */
     private String readValidUserName() {
         Scanner input = new Scanner(System.in);
         String name;
@@ -201,9 +226,17 @@ public class ScrantonSaga {
         return name;
     }
 
+    /**
+     * Prints the current hero creation details including remaining creation points, strength, and health points.
+     *
+     * @param name           The name chose by the player
+     * @param creationPoints Amount of available creation points
+     * @param strength       Value of the current hero strength
+     * @param hp             Value of the current hero hp
+     */
     private void printHeroCreationInfo(String name, int creationPoints, int strength, int hp) {
         String textFormat = "\t\t| %-35s |\n";
-        System.out.println("Você possui " + creationPoints + " moedas disponíveis para preparar o seu personagem.");
+        System.out.println("Você possui " + creationPoints + " pontos de criação disponíveis para preparar o seu personagem.");
         System.out.println("\t\t+-------------------------------------+");
         System.out.printf(textFormat, "  Jogador: " + name.toUpperCase());
         System.out.println("\t\t+-------------------------------------+");
@@ -212,6 +245,11 @@ public class ScrantonSaga {
         System.out.println("\t\t+-------------------------------------+\n");
     }
 
+    /**
+     * Reads and validates user input for the number of creation points to allocate.
+     *
+     * @return The valid number of points to allocate or -1 if the input is invalid.
+     */
     private int readValidInputToCreationPoints() {
         Scanner input = new Scanner(System.in);
         int value;
@@ -234,6 +272,9 @@ public class ScrantonSaga {
         return -1;
     }
 
+    /**
+     * Prints to the console information about the available heroes in the game.
+     */
     public void printHeroesInfo() {
         cleanScreen();
         System.out.println(aboutHeroes);
@@ -241,6 +282,9 @@ public class ScrantonSaga {
         cleanScreen();
     }
 
+    /**
+     * Prints to the console information about the hero elements, such as items and personal abilities.
+     */
     public void printItemsInfo() {
         cleanScreen();
         System.out.println(aboutGameElement);
