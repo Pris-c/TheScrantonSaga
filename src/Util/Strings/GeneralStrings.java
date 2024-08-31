@@ -103,11 +103,11 @@ public class GeneralStrings {
 
 
     public static String creationPointsTable =
-            "\t\t+--------------------------------------+\n" +
+                    "\t\t+--------------------------------------+\n" +
                     "\t\t|          Tabelas de Conversão         |\n" +
                     "\t\t+--------------------------------------+\n" +
-                    "\t\t|     1 ponto de força = 5 moedas       |\n" +
-                    "\t\t|     1 ponto de vida  = 1 moeda        |\n" +
+                    "\t\t|     1 pt de força = 5 pt criação      |\n" +
+                    "\t\t|     1 pt de vida  = 1 pt criação      |\n" +
                     "\t\t+--------------------------------------+\n\n";
 
 
