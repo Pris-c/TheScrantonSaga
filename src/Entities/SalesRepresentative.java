@@ -3,12 +3,12 @@ package Entities;
 import Util.Creator.ItemsCreator.CombatConsumableCreator;
 import Util.Creator.ItemsCreator.PotionCreator;
 import Util.Creator.ItemsCreator.WeaponCreator;
-import Util.Util;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static Util.Util.*;
+import static Util.Util.largeDetailFormat;
+import static Util.Util.largeTextFormat;
 
 /**
  * Represents a specific type of Hero with unique characteristics.
@@ -60,10 +60,10 @@ public class SalesRepresentative extends Hero {
             }
 
             int attack = super.heroAttack(enemy, specialAttack);
-            if (attack == 3){
+            if (attack == 3) {
                 specialAttack = false;
             }
-            if (enemy.getHp() <= 0){
+            if (enemy.getHp() <= 0) {
                 return true;
             }
         } while (!endOfFight);

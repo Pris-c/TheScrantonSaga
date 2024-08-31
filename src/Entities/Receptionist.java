@@ -54,7 +54,6 @@ public class Receptionist extends Hero {
 
         boolean specialAttack = true;
         boolean endOfFight = false;
-        boolean heroWon = false;
 
         do {
             int attack = super.heroAttack(enemy, specialAttack);

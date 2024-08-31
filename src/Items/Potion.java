@@ -50,7 +50,7 @@ public class Potion extends Consumable {
     /**
      * Print to the console the potion's benefits when offering it to the player.
      */
-    private void presentPotionBenefits() {
+    public void presentPotionBenefits() {
         String format = "| %-20s %-10s |\n";
         String headerFormat = "| %-31s |\n";
         System.out.printf(headerFormat, super.name.toUpperCase());

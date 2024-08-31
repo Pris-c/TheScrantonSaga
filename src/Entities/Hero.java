@@ -173,7 +173,7 @@ public abstract class Hero extends Entity {
                 System.out.println("+---------------------------------+");
                 for (int i = 0; i < potions.size(); i++) {
                     System.out.printf(textFormat, "# " + (i + 1));
-                    potions.get(i).offerPotion();
+                    potions.get(i).presentPotionBenefits();
                 }
                 System.out.println();
 

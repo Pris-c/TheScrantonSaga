@@ -15,11 +15,11 @@ public class Weapon extends ItemHero {
     /**
      * Constructs a Weapon with specified attributes.
      *
-     * @param name The name of the Weapon.
-     * @param price The value that the Hero must pay to obtain the item.
-     * @param allowedTo A list of Hero types that can buy the item.
+     * @param name           The name of the Weapon.
+     * @param price          The value that the Hero must pay to obtain the item.
+     * @param allowedTo      A list of Hero types that can buy the item.
      * @param standardAttack The value to be added to the Hero strength during standards attacks
-     * @param specialAttack The value to be added to the Hero strength during specials attacks
+     * @param specialAttack  The value to be added to the Hero strength during specials attacks
      */
     public Weapon(String name, int price, ArrayList<String> allowedTo, int standardAttack, int specialAttack) {
         super(name, price, allowedTo);
