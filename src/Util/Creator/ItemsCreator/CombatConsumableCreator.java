@@ -5,6 +5,9 @@ import Items.CombatConsumable;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+/**
+ * A utility class for centralize the creation of CombatConsumable items.
+ */
 public class CombatConsumableCreator {
 
     public static CombatConsumable createDwightHelp() {

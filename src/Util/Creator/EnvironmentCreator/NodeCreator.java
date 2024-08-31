@@ -7,6 +7,9 @@ import java.util.List;
 
 import static Util.Strings.EnvironmentStrings.NodeStrings.*;
 
+/**
+ * A utility class for centralize the creation of Node instances.
+ */
 public class NodeCreator {
 
     public static Node getNodeById(int id) {

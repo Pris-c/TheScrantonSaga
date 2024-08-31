@@ -4,6 +4,9 @@ import Game.Shopkeeper;
 
 import static Util.Strings.EnvironmentStrings.ShopkeeperStrings.*;
 
+/**
+ * A utility class for centralize the creation of Shopkeeper instances.
+ */
 public class ShopkeeperCreator {
 
     public static Shopkeeper getShopkeeperById(int id) {

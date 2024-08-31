@@ -6,21 +6,25 @@ import Util.Creator.EntityCreator.NpcCreator;
 
 import static Util.Strings.EnvironmentStrings.ChallengeStrings.*;
 
+/**
+ * A utility class for centralize the creation of Challenge instances.
+ */
 public class ChallengeCreator {
 
     private static ChallengeCreator instance;
 
-    private ChallengeCreator(){}
-
-    public static ChallengeCreator getInstance(){
-        if (instance == null){
-            instance = new ChallengeCreator();
-        }
-            return instance;
+    private ChallengeCreator() {
     }
 
-    public Challenge getById(int id){
-        switch (id){
+    public static ChallengeCreator getInstance() {
+        if (instance == null) {
+            instance = new ChallengeCreator();
+        }
+        return instance;
+    }
+
+    public Challenge getById(int id) {
+        switch (id) {
             case 1:
                 return new Challenge(1, intChallenge1, victoryMessageC1, defeatMessageC1, NpcCreator.createMichaelLunch());
             case 2:
@@ -34,16 +38,11 @@ public class ChallengeCreator {
             case 6:
                 return new Challenge(6, intChallenge6, victoryMessageC6, defeatMessageC6, NpcCreator.createBasketGame());
             case 7:
-                return new Challenge(7, intChallenge7, victoryMessageC7, defeatMessageC7, NpcCreator.createChristmasParty(),true);
+                return new Challenge(7, intChallenge7, victoryMessageC7, defeatMessageC7, NpcCreator.createChristmasParty(), true);
             default:
-            return null;
+                return null;
         }
     }
-
-
-
-
-
 
 
 }

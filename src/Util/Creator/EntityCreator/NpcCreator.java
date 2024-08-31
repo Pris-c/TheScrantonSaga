@@ -2,6 +2,9 @@ package Util.Creator.EntityCreator;
 
 import Entities.Npc;
 
+/**
+ * A utility class for centralize the creation of NPC instances.
+ */
 public class NpcCreator {
 
     public static Npc createMichaelLunch() {

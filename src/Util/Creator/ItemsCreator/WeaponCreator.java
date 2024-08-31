@@ -5,6 +5,9 @@ import Items.Weapon;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+/**
+ * A utility class for centralize the creation of Weapon items.
+ */
 public class WeaponCreator {
 
     public static Weapon createSickRelativeExcuse() {

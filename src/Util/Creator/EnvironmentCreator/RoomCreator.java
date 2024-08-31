@@ -4,21 +4,25 @@ import Game.Room;
 
 import static Util.Strings.EnvironmentStrings.RoomStrings.*;
 
+/**
+ * A utility class for centralize the creation of Room instances.
+ */
 public class RoomCreator {
 
     private static RoomCreator instance;
 
-    private RoomCreator(){}
+    private RoomCreator() {
+    }
 
-    public static RoomCreator getInstance(){
-        if (instance == null){
+    public static RoomCreator getInstance() {
+        if (instance == null) {
             instance = new RoomCreator();
         }
         return instance;
     }
 
-    public Room getById(int id){
-        switch (id){
+    public Room getById(int id) {
+        switch (id) {
             case 1:
                 return new Room(
                         1,
@@ -29,7 +33,7 @@ public class RoomCreator {
                         4,
                         20,
                         20
-                        );
+                );
             case 2:
                 return new Room(2,
                         intRoom2,

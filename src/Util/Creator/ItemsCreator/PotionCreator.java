@@ -5,6 +5,9 @@ import Items.Potion;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+/**
+ * A utility class for centralize the creation of Potion items.
+ */
 public class PotionCreator {
 
     public static Potion coffee() {
