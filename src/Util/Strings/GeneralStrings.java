@@ -1,9 +1,12 @@
 package Util.Strings;
 
+/**
+ * Keeps the Strings to be used along the game
+ */
 public class GeneralStrings {
 
     public static String title =
-                    "\n" +
+            "\n" +
                     "\t\t\t\t\t████████╗██╗  ██╗███████╗\n" +
                     "\t\t\t\t\t╚══██╔══╝██║  ██║██╔════╝\n" +
                     "\t\t\t\t\t   ██║   ███████║█████╗  \n" +
@@ -20,7 +23,7 @@ public class GeneralStrings {
                     "╚══════╝ ╚═════╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝   ╚═╝    ╚═════╝ ╚═╝  ╚═══╝    ╚══════╝╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═╝\n";
 
     public static String initMessage =
-                    "   _.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-.__.-.\n" +
+            "   _.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-.__.-.\n" +
                     " ,'_.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._.-._`..-\n" +
                     "( (                                                            ) )\n" +
                     " ) )                                                          ( (\n" +
@@ -71,19 +74,19 @@ public class GeneralStrings {
                     \033[1mVida Atual\033[0m
                     \tA quantidade de pontos de vida que seu personagem possui no momento. Durante o jogo, você pode perder pontos de vida
                     \tem desafios ou recuperá-lo utilizando itens de recuperação e salas da sorte.\s
-                     
+                    
                     \033[1mVida Máximo\033[0m
                     \tO número máximo de pontos de vida que seu personagem pode ter. Ele é definido no inicio do jogo e aumentado após cada
                     \t desafio vencido. Aumentar sua vida máxima permite que você suporte mais danos durante os desafios.
-                     
+                    
                     \033[1mForça\033[0m
                     \tRepresenta o poder de ataque do seu personagem. A força é somada ao poder do seu Instrumento de Poder em cada ataque.
                     \tQuanto maior for sua força, mais eficaz será seu ataque.\s
-                     
+                    
                     \033[1mMoedas\033[0m
                     \tSão os recursos que você possui para adquirir itens no Armário de Suprimentos. Use moedas para comprar 
                     \tnovos Instrumentos de Poder, Ajuda Extra e Recursos Adicionais que ajudarão em seus desafios.
-                     
+                    
                     \033[1mNível\033[0m
                     \tMostra o progresso do seu personagem. A cada desafio vencido, você sobe de nível, o que pode desbloquear 
                     \tnovas habilidades ou benefícios.
@@ -99,18 +102,17 @@ public class GeneralStrings {
                     """;
 
 
-
     public static String creationPointsTable =
             "\t\t+--------------------------------------+\n" +
-            "\t\t|          Tabelas de Conversão         |\n" +
-            "\t\t+--------------------------------------+\n" +
-            "\t\t|     1 ponto de força = 5 moedas       |\n" +
-            "\t\t|     1 ponto de vida  = 1 moeda        |\n" +
-            "\t\t+--------------------------------------+\n\n";
+                    "\t\t|          Tabelas de Conversão         |\n" +
+                    "\t\t+--------------------------------------+\n" +
+                    "\t\t|     1 ponto de força = 5 moedas       |\n" +
+                    "\t\t|     1 ponto de vida  = 1 moeda        |\n" +
+                    "\t\t+--------------------------------------+\n\n";
 
 
     public static String championMessage =
-                    "                                  ___________\n" +
+            "                                  ___________\n" +
                     "                             .---'::'        `---.\n" +
                     "                            (::::::'              )\n" +
                     "                            |`-----._______.-----'|\n" +

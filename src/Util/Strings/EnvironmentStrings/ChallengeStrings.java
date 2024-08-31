@@ -1,5 +1,8 @@
 package Util.Strings.EnvironmentStrings;
 
+/**
+ * Keeps the Strings to be used by the Challenges instances.
+ */
 public class ChallengeStrings {
 
     public static String intChallenge1 =
