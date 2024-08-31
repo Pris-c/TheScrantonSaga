@@ -6,21 +6,22 @@ public abstract class GameEnvironment {
 
     protected int id;
     protected String initialMessage;
-    //protected GameEnvironment nextEnvironment;
-    //protected final boolean hasNext;
-    protected boolean last;
+    protected GameEnvironment nextEnviroment;
+    protected int nextNode;
 
-    public GameEnvironment(int id, String initialMessage) {
-        this.initialMessage = initialMessage;
-        this.id = id;
-        this.last = false;
-    }
-
-    public GameEnvironment(int id, String initialMessage, boolean last) {
+    public GameEnvironment(int id, String initialMessage, GameEnvironment nextEnviroment) {
         this.id = id;
         this.initialMessage = initialMessage;
-        this.last = last;
+        this.nextEnviroment = nextEnviroment;
+        this.nextNode = 0;
     }
 
-    public abstract boolean run(Hero hero);
+    public GameEnvironment(int id, String initialMessage, int nextNode) {
+        this.id = id;
+        this.initialMessage = initialMessage;
+        this.nextNode = nextNode;
+        this.nextEnviroment = null;
+    }
+
+    public abstract int run(Hero hero);
 }

@@ -16,30 +16,34 @@ public class Room extends GameEnvironment {
     private int hpIncrement;
     private int hpDecrement;
 
-    public Room(int id, String initialMessage, String questionToPlayer, int percentLuck, int strengthIncrement, int strengthDecrement, int hpIncrement, int hpDecrement) {
-        super(id, initialMessage);
+    public Room(int id, String initialMessage, String questionToPlayer, int percentLuck, int strengthIncrement, int strengthDecrement, int hpIncrement, int hpDecrement, GameEnvironment nextEnviroment) {
+        super(id, initialMessage, nextEnviroment);
         this.questionToPlayer = questionToPlayer;
-        setPercentLuck(percentLuck);
+        this.percentLuck = percentLuck;
         this.strengthIncrement = strengthIncrement;
         this.strengthDecrement = strengthDecrement;
         this.hpIncrement = hpIncrement;
         this.hpDecrement = hpDecrement;
     }
 
-    private void setPercentLuck(int percentLuck) {
-        this.percentLuck = Math.min(percentLuck, 100);
-        this.percentLuck = Math.max(this.percentLuck, 0);
+    public Room(int id, String initialMessage, String questionToPlayer, int percentLuck, int strengthIncrement, int strengthDecrement, int hpIncrement, int hpDecrement, int nextNode) {
+        super(id, initialMessage, nextNode);
+        this.questionToPlayer = questionToPlayer;
+        this.percentLuck = percentLuck;
+        this.strengthIncrement = strengthIncrement;
+        this.strengthDecrement = strengthDecrement;
+        this.hpIncrement = hpIncrement;
+        this.hpDecrement = hpDecrement;
     }
 
-
     @Override
-    public boolean run(Hero hero) {
+    public int run(Hero hero) {
         Random rd = new Random();
         System.out.println(this.initialMessage);
 
         int option = -1;
-        int option2 = -1;
-        while(option != 0){
+        int option2;
+        while (option != 0) {
             option = readAndValidateInput(this.questionToPlayer, 0, 1);
             cleanScreen();
             if (option == 1) {
@@ -49,7 +53,7 @@ public class Room extends GameEnvironment {
                     hero.incrementHp(this.hpIncrement);
                     hero.incrementStrength(this.strengthIncrement);
                     option2 = readAndValidateInput("Digite 1 para consultar suas informações.\n\033[3mDigite 0 para continuar..\033[0m", 0, 1);
-                    if (option2 == 1){
+                    if (option2 == 1) {
                         hero.showDetails();
                         readContinue();
                         cleanScreen();
@@ -65,11 +69,11 @@ public class Room extends GameEnvironment {
                         readContinue();
                         cleanScreen();
                         System.out.println(defeatRoom);
-                        return false;
+                        return -1;
                     }
 
                     option = readAndValidateInput("Digite 1 para consultar suas informações\n\033[3mDigite 0 para continuar..\033[0m", 0, 1);
-                    if (option == 1){
+                    if (option == 1) {
                         hero.showDetails();
                         readContinue();
                         cleanScreen();
@@ -78,9 +82,10 @@ public class Room extends GameEnvironment {
             }
 
             cleanScreen();
-
+            if (this.nextEnviroment != null) {
+                return this.nextEnviroment.run(hero);
+            }
         }
-
-        return true;
+        return this.nextNode;
     }
 }

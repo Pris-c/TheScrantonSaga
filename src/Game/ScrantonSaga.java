@@ -40,27 +40,26 @@ public class ScrantonSaga {
             } else {
                 System.out.println(loserMessage);
             }
-            option = readAndValidateInput("O que deseja fazer agora:" +
-                    "\n1 - Jogar novamente com o mesmo personagem" +
-                    "\n2 - Escolher um novo personagem" +
-                    "\n3 - Sair", 1, 3);
+            option = readAndValidateInput("""
+                            O que deseja fazer agora:
+                            1 - Jogar novamente com o mesmo personagem
+                            2 - Escolher um novo personagem
+                            3 - Sair""",
+                    1, 3);
 
         } while (option != 3);
     }
 
 
     private boolean labyrinth(Hero hero) {
-        ShopkeeperCreator.getShopkeeperById(1).run(hero);
+        int nextNode = ShopkeeperCreator.getShopkeeperById(1).run(hero);
         Node node;
-
-        int newNode = 1;
-        while (newNode > 0) {
+        while (nextNode > 0) {
             cleanScreen();
-            node = NodeCreator.getNodeById(newNode);
-            newNode = node.run(hero);
+            node = NodeCreator.getNodeById(nextNode);
+            nextNode = node.run(hero);
         }
-
-        return newNode == 0;
+        return nextNode == 0;
     }
 
     public Hero createHero() {
@@ -71,11 +70,13 @@ public class ScrantonSaga {
 
         while (heroNumber == 4) {
             String message = (
-                    "Escolha o seu personagem:" +
-                            "\n1 - Representante de vendas" +
-                            "\n2 - Recepcionista" +
-                            "\n3 - Estagiário" +
-                            "\n\033[3mOu digite 4 para conhecer as características de cada personagem..\033[0m");
+                    """
+                                    Escolha o seu personagem:
+                                    1 - Representante de vendas
+                                    2 - Recepcionista
+                                    3 - Estagiário
+                                    \033[3mOu digite 4 para conhecer as características de cada personagem..\033[0m
+                            """);
             heroNumber = readAndValidateInput(message, 1, 4);
             if (heroNumber == 4) {
                 this.printHeroesInfo();
@@ -99,10 +100,10 @@ public class ScrantonSaga {
 
         cleanScreen();
         while (creationPoints > 0) {
-            System.out.println(creationPointsTable);
             printHeroCreationInfo(name, creationPoints, strength, hp);
 
-            int option = readAndValidateInput("O que deseja adicionar?\n1 - Pontos de força\n2 - Pontos de vida", 1, 2);
+            String message = creationPointsTable + "O que deseja adicionar?\n1 - Pontos de força\n2 - Pontos de vida";
+            int option = readAndValidateInput(message, 1, 2);
 
             int value;
             switch (option) {
@@ -188,9 +189,11 @@ public class ScrantonSaga {
 
             if (name.isEmpty() || name.isBlank()) {
                 validName = false;
+                cleanScreen();
                 System.out.println("O nome deve ter ao menos um caracter.");
             } else if (name.length() > 20) {
                 validName = false;
+                cleanScreen();
                 System.out.println("O nome deve ter no máximo 20 caracteres.");
             }
 

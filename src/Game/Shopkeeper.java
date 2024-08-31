@@ -17,15 +17,27 @@ public class Shopkeeper extends GameEnvironment{
     private static ArrayList<ItemHero> store;
     private static boolean initInstance;
 
-    public Shopkeeper(int id, String initialMessage) {
-        super(id, initialMessage);
+    public Shopkeeper(int id, String initialMessage, GameEnvironment nextEnviroment) {
+        super(id, initialMessage, nextEnviroment);
+    }
+
+    public Shopkeeper(int id, String initialMessage, int nextNode) {
+        super(id, initialMessage, nextNode);
         if (!initInstance){
             initInstance = true;
             store = fillInventory();
         }
     }
 
-    @Override
+    /*    public Shopkeeper(int id, String initialMessage) {
+        super(id, initialMessage);
+        if (!initInstance){
+            initInstance = true;
+            store = fillInventory();
+        }
+    }*/
+
+/*    @Override
     public boolean run(Hero hero) {
         System.out.println(this.initialMessage);
         readContinue();
@@ -86,6 +98,74 @@ public class Shopkeeper extends GameEnvironment{
             }
         }
         return true;
+    }*/
+
+    @Override
+    public int run(Hero hero) {
+        System.out.println(this.initialMessage);
+        readContinue();
+
+        Random random = new Random();
+        ArrayList<ItemHero> heroItems = this.filterDistinctItemsToHero(hero);
+        ArrayList<ItemHero> itensToSell = new ArrayList<>();
+        if (heroItems.size() <= 10) {
+            itensToSell = heroItems;
+        } else {
+            while (itensToSell.size() < 10) {
+                ItemHero item = heroItems.get(random.nextInt(heroItems.size()));
+                itensToSell.add(item);
+                heroItems.remove(item);
+            }
+        }
+
+        int option;
+        int nItem = -1;
+        while (nItem != 0) {
+
+            cleanScreen();
+            printItemsToSell(itensToSell);
+            System.out.println("Você tem " + hero.getGold() + " moedas.");
+            nItem = Util.readAndValidateInput("Informe o número do item para ver os detalhes:\n\033[3mPara sair, digite 0. \033[0m", 0, itensToSell.size());
+
+            if (nItem > 0) {
+
+                cleanScreen();
+                nItem--;
+                ItemHero item = itensToSell.get(nItem);
+                nItem++;
+                item.showDetails();
+                option = Util.readAndValidateInput("Digite 1 para comprar o item.\n\033[3mPara voltar, digite 0. \033[0m", 0, 1);
+                cleanScreen();
+
+                if (option == 1) {
+                    if (this.sell(hero, item)) {
+                        itensToSell.remove(item);
+                        option = readAndValidateInput("Digite 1 para consultar as informações da personagem\n\033[3mDigite 0 para retornar à loja..\033[0m", 0, 1);
+                        if (option == 1){
+                            cleanScreen();
+                            hero.showDetails();
+                            readContinue("Pressione enter para voltar à loja..");
+                        }
+                    }
+                }
+            }
+        }
+        cleanScreen();
+
+        if (hero.checkPotionAvailability()){
+            int consumeOption = -1;
+            consumeOption = readAndValidateInput("Deseja consumir algo agora?\n1 - Sim, me mostre minhas opções\n0 - Não, quero seguir em frente", 0, 1);
+            cleanScreen();
+            if (consumeOption == 1){
+                hero.offerPotionsIfAvailable();
+            }
+        }
+
+        if (this.nextEnviroment != null){
+            return this.nextEnviroment.run(hero);
+
+        }
+        return nextNode;
     }
 
     private boolean sell(Hero hero, ItemHero item) {
