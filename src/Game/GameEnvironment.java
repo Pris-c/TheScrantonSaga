@@ -14,7 +14,8 @@ public abstract class GameEnvironment {
     protected int nextNode;
 
     /**
-     * Constructs a GameEnvironment that follows to a next environment
+     * Constructs a GameEnvironment that that transitions to another one.
+     * Sets nextNode value to -1. This information is used by the Environment's rum method.
      *
      * @param id             The unique identifier of the environment
      * @param initialMessage The message to be displayed in the beginning of the environment situation
@@ -24,11 +25,12 @@ public abstract class GameEnvironment {
         this.id = id;
         this.initialMessage = initialMessage;
         this.nextEnvironment = nextEnvironment;
-        this.nextNode = 0;
+        this.nextNode = -1;
     }
 
     /**
      * Constructs the final GameEnvironment in a sequence.
+     * Sets nextEnvironment value to null. This information is used by the Environment's rum method.
      *
      * @param id             The unique identifier of the environment
      * @param initialMessage The message to be displayed in the beginning of the environment situation

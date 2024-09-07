@@ -83,7 +83,7 @@ public class Challenge extends GameEnvironment {
             readContinue();
         }
 
-        if (this.nextEnvironment != null) {
+        if (this.nextNode != 0) {
             cleanScreen();
             if (hero.checkPotionAvailability()) {
                 System.out.println("Após essa grande vitória, que tal reforçar as energias?");
@@ -91,6 +91,9 @@ public class Challenge extends GameEnvironment {
                 cleanScreen();
                 hero.offerPotionsIfAvailable();
             }
+        }
+
+        if (this.nextEnvironment != null){
             cleanScreen();
             return this.nextEnvironment.run(hero);
         }
