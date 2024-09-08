@@ -19,24 +19,27 @@ public class ChallengeTest {
 
         //Hero hero = HeroCreator.createSalesRepresentative();
         Hero hero = HeroCreator.createReceptionist();
-
-        System.out.println("Challenge 1: " + challengeTest1.run(hero));
         System.out.println();
-        System.out.println("Challenge 2: " + challengeTest2.run(hero));
+        System.out.println("---------------- Challenge 1: ");
+        challengeTest1.run(hero);
         System.out.println();
-        System.out.println("Challenge 3: " + challengeTest3.run(hero));
+        System.out.println("---------------- Challenge 2: ");
+        challengeTest2.run(hero);
         System.out.println();
-        System.out.println("Challenge 4: " + challengeTest4.run(hero));
+        System.out.println("---------------- Challenge 3: ");
+        challengeTest3.run(hero);
         System.out.println();
-        System.out.println("Challenge 5: " + challengeTest5.run(hero));
+        System.out.println(" ---------------- Challenge 4: ");
+        challengeTest4.run(hero);
         System.out.println();
-        System.out.println("Challenge 6: " + challengeTest6.run(hero));
+        System.out.println(" --------------- Challenge 5: ");
+        challengeTest5.run(hero);
         System.out.println();
-        System.out.println("Challenge 7: " + challengeTest7.run(hero));
-
-
-
-
+        System.out.println("--------------- Challenge 6: ");
+        challengeTest6.run(hero);
+        System.out.println();
+        System.out.println(" -------------- Challenge 7: ");
+        challengeTest7.run(hero);
     }
 
 }
