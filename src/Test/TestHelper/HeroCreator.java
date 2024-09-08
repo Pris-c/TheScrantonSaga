@@ -4,6 +4,9 @@ import Entities.Intern;
 import Entities.Receptionist;
 import Entities.SalesRepresentative;
 
+/**
+ * This class is responsible to create heroes objects to be used in tests
+ */
 public class HeroCreator {
 
     public static Intern createIntern() {
