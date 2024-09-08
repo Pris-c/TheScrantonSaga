@@ -7,6 +7,9 @@ import static Util.Strings.EnvironmentStrings.RoomStrings.*;
 import static Util.Strings.EnvironmentStrings.ShopkeeperStrings.*;
 import static Util.Strings.GeneralStrings.*;
 
+/**
+ * This class is used to test Environment methods
+ */
 public class EnvironmentStringsTest {
 
     public static void main(String[] args) {

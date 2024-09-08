@@ -4,6 +4,9 @@ import Util.Creator.EnvironmentCreator.NodeCreator;
 import Game.Node;
 import Test.TestHelper.HeroCreator;
 
+/**
+ * This class is used to test Node methods
+ */
 public class NodeTest {
 
     public static void main(String[] args) {

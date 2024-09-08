@@ -5,6 +5,9 @@ import Game.Shopkeeper;
 import Test.TestHelper.HeroCreator;
 import Util.Creator.EnvironmentCreator.ShopkeeperCreator;
 
+/**
+ * This class is used to test Shopkeeper methods
+ */
 public class ShopkeeperTest {
 
     public static void main(String[] args) {

@@ -5,6 +5,9 @@ import Game.Challenge;
 import Util.Creator.EnvironmentCreator.ChallengeCreator;
 import Test.TestHelper.HeroCreator;
 
+/**
+ * This class is used to test Challenge methods
+ */
 public class ChallengeTest {
 
     public static void main(String[] args) {

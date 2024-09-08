@@ -5,6 +5,9 @@ import Util.Creator.EnvironmentCreator.RoomCreator;
 import Game.Room;
 import Test.TestHelper.HeroCreator;
 
+/**
+ * This class is used to test Room methods
+ */
 public class RoomTest {
 
     public static void main(String[] args) {

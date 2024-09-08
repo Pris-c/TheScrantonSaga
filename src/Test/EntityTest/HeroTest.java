@@ -3,6 +3,9 @@ package Test.EntityTest;
 import Entities.Hero;
 import Test.TestHelper.HeroCreator;
 
+/**
+ * This class is used to test Heroes methods
+ */
 public class HeroTest {
 
     public static void main(String[] args) {
