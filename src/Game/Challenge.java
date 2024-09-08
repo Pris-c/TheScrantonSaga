@@ -91,6 +91,10 @@ public class Challenge extends GameEnvironment {
                 cleanScreen();
                 hero.offerPotionsIfAvailable();
             }
+            else {
+                System.out.println("Esse seria um bom momento para reforçar suas energias, mas infelizmente\nvocê não tem nenhum lanche disponível..");
+                readContinue();
+            }
         }
 
         if (this.nextEnvironment != null){
