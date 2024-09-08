@@ -27,6 +27,7 @@ public class ScrantonSaga {
     public void scrantonSaga() {
         Hero hero = null;
         int option = -1;
+        int heroType = 1;
 
         System.out.println(title);
         readContinue("Pressione enter para iniciar o jogo..");
@@ -38,8 +39,10 @@ public class ScrantonSaga {
 
         do {
             if (option != 1) {
-                hero = createHero();
+                heroType = chooseHero();
             }
+
+            hero = distributeCreationPoints(heroType);
 
             boolean heroWin = labyrinth(hero);
             if (heroWin) {
@@ -76,32 +79,43 @@ public class ScrantonSaga {
     }
 
     /**
-     * Allows the player to create a hero by allocating creation points, witch are defined according to the chosen
-     * difficult level.
-     *
-     * @return The created hero.
+     * Allows the player to choose the hero type between three existing types
+     * Also provides an option to display detailed information about each hero
+     * @return a number that represents the choosen hero type:
+     * 1 for Sales Representative, 2 for Receptionist, 3 for Intern
      */
-    public Hero createHero() {
+    private int chooseHero(){
         cleanScreen();
-        int creationPoints;
-        int gold;
         int heroNumber = 4;
 
         while (heroNumber == 4) {
             String message = (
                     """
-                                    Escolha o seu personagem:
-                                    1 - Representante de vendas
-                                    2 - Recepcionista
-                                    3 - Estagiário
-                                    \033[3mOu digite 4 para conhecer as características de cada personagem..\033[0m
+                       Escolha o seu personagem:
+                        1 - Representante de vendas
+                        2 - Recepcionista
+                        3 - Estagiário
+                        \033[3mOu digite 4 para conhecer as características de cada personagem..\033[0m
                             """);
             heroNumber = readAndValidateInput(message, 1, 4);
             if (heroNumber == 4) {
                 this.printHeroesInfo();
             }
         }
+        return heroNumber;
+    }
+
+
+    /**
+     * Allows the player to create a hero by allocating creation points, witch are defined according to the chosen
+     * difficult level.
+     *
+     * @return The created hero.
+     */
+    private Hero distributeCreationPoints(int heroType) {
         cleanScreen();
+        int creationPoints;
+        int gold;
 
         String name = this.readValidUserName();
         cleanScreen();
@@ -114,8 +128,8 @@ public class ScrantonSaga {
             gold = 15;
         }
 
-        int strength = 10;
-        int hp = 30;
+        int strength = 5;
+        int hp = 10;
 
         cleanScreen();
         while (creationPoints > 0) {
@@ -169,7 +183,7 @@ public class ScrantonSaga {
         cleanScreen();
 
         Hero player = null;
-        switch (heroNumber) {
+        switch (heroType) {
             case 1:
                 player = new SalesRepresentative(name, hp, strength, gold);
                 break;
@@ -185,11 +199,14 @@ public class ScrantonSaga {
         readContinue("Pressione enter para conferir as características do seu personagem..");
         cleanScreen();
 
-        player.showDetails();
-        int option = readAndValidateInput("Digite 1 para consultar informações sobre os elementos da tabela acima." +
-                "\n\033[3mOu digite 0 para continuar..\033[0m", 0, 1);
-        if (option == 1) {
-            printItemsInfo();
+        int option = 1;
+        while (option == 1){
+            player.showDetails();
+            option = readAndValidateInput("Digite 1 para consultar informações sobre os elementos da tabela." +
+                    "\n\033[3mOu digite 0 para continuar..\033[0m", 0, 1);
+            if (option == 1) {
+                printItemsInfo();
+            }
         }
         cleanScreen();
         return player;
