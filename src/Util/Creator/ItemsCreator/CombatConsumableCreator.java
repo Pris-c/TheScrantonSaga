@@ -16,16 +16,16 @@ public class CombatConsumableCreator {
                 "Dwight",
                 35,
                 ItemsLimitationCreator.internAndReceptionist(),
-                40
+                70
         );
     }
 
     public static CombatConsumable createJimHelp() {
         return new CombatConsumable(
                 "Jim",
-                50,
+                40,
                 ItemsLimitationCreator.allHeroes(),
-                45
+                80
         );
     }
 
@@ -33,27 +33,27 @@ public class CombatConsumableCreator {
         // default to SalesRepresentative
         return new CombatConsumable(
                 "Pam",
-                45,
+                50,
                 ItemsLimitationCreator.salesAndReceptionist(),
-                43
+                100
         );
     }
 
     public static CombatConsumable createPhyllisHelp() {
         return new CombatConsumable(
                 "Phyllis",
-                40,
+                30,
                 ItemsLimitationCreator.allHeroes(),
-                30
+                70
         );
     }
 
     public static CombatConsumable createAngelaHelp() {
         return new CombatConsumable(
                 "Angela",
-                45,
+                35,
                 ItemsLimitationCreator.allHeroes(),
-                35
+                75
         );
     }
 
@@ -61,9 +61,9 @@ public class CombatConsumableCreator {
         // default to Intern
         return new CombatConsumable(
                 "Ryan",
-                50,
+                40,
                 ItemsLimitationCreator.internOnly(),
-                40
+                80
         );
 
     }
@@ -73,7 +73,7 @@ public class CombatConsumableCreator {
                 "Stanley",
                 50,
                 ItemsLimitationCreator.internAndSales(),
-                48
+                110
         );
     }
 
